@@ -1,2 +1,2 @@
 # web
-Frontend Architecture
+NextJs | Typescript | Tailwind CSS 
