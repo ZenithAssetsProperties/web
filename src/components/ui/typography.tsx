@@ -3,14 +3,14 @@ import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
-const headingVariants = cva("text-foreground", {
+const headingVariants = cva("font-heading font-bold text-foreground", {
   variants: {
     level: {
-      display: "font-serif text-5xl font-medium tracking-tight sm:text-6xl lg:text-7xl",
-      h1: "font-serif text-4xl font-medium tracking-tight sm:text-5xl",
-      h2: "font-semibold text-3xl tracking-tight sm:text-4xl",
-      h3: "font-semibold text-2xl tracking-tight sm:text-3xl",
-      h4: "font-semibold text-xl tracking-tight sm:text-2xl",
+      display: "text-5xl tracking-tight sm:text-6xl lg:text-7xl",
+      h1: "text-4xl tracking-tight sm:text-5xl",
+      h2: "text-3xl tracking-tight sm:text-4xl",
+      h3: "text-2xl tracking-tight sm:text-3xl",
+      h4: "text-xl tracking-tight sm:text-2xl",
     },
   },
   defaultVariants: { level: "h2" },

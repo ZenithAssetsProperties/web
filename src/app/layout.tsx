@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { ThemeProvider } from "@/components/theme/theme-provider";
-import { fraunces, inter } from "@/lib/fonts";
+import { inter, leagueSpartan } from "@/lib/fonts";
 import { siteConfig } from "@/lib/site-config";
 import "./globals.css";
 
@@ -31,7 +31,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${fraunces.variable}`}
+      className={`${inter.variable} ${leagueSpartan.variable}`}
       suppressHydrationWarning
     >
       <body className="flex min-h-screen flex-col font-sans">

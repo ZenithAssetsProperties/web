@@ -4,19 +4,37 @@
 
 @theme {
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, sans-serif;
-  --font-serif: var(--font-fraunces), ui-serif, Georgia, serif;
+  --font-heading: var(--font-league-spartan), var(--font-inter), ui-sans-serif, sans-serif;
 
-  --color-brand-50: #eff6ff;
-  --color-brand-100: #dbeafe;
-  --color-brand-200: #bfdbfe;
-  --color-brand-300: #93c5fd;
-  --color-brand-400: #60a5fa;
-  --color-brand-500: #3b82f6;
-  --color-brand-600: #2563eb;
-  --color-brand-700: #1d4ed8;
-  --color-brand-800: #1e40af;
-  --color-brand-900: #1e3a8a;
-  --color-brand-950: #172554;
+  /* "Seaworld" — primary brand teal. #14505b is the exact guideline hex, anchored
+     at 600 to match how every component already references bg-brand-600/700. */
+  --color-brand-50: #eef5f6;
+  --color-brand-100: #d8e8ea;
+  --color-brand-200: #b2d1d6;
+  --color-brand-300: #85b4bc;
+  --color-brand-400: #558f99;
+  --color-brand-500: #326d78;
+  --color-brand-600: #14505b;
+  --color-brand-700: #103f48;
+  --color-brand-800: #0b2e35;
+  --color-brand-900: #081f24;
+  --color-brand-950: #041013;
+
+  /* "Laser Red" — accent for action/urgency only. #f03030 is the exact guideline hex. */
+  --color-accent-50: #fef1f1;
+  --color-accent-100: #fde1e1;
+  --color-accent-200: #fbc4c4;
+  --color-accent-300: #f79d9d;
+  --color-accent-400: #f56b6b;
+  --color-accent-500: #f24747;
+  --color-accent-600: #f03030;
+  --color-accent-700: #c31f1f;
+  --color-accent-800: #9c1919;
+  --color-accent-900: #7a1414;
+  --color-accent-950: #400a0a;
+
+  /* "Pale Sage" — the guideline's supporting color, exact hex. */
+  --color-sage: #e0e2da;
 
   /* Semantic tokens — sourced from CSS variables so the value can flip per-theme
      without touching a single class in a component. */
@@ -59,27 +77,31 @@
   }
 }
 
+/* Light mode: pale sage background with deep-teal foreground — the exact duo the
+   guideline itself uses for its own light panels. */
 :root {
-  --background: #ffffff;
-  --foreground: #0a0a0a;
-  --muted: #f5f5f5;
-  --muted-foreground: #737373;
-  --border: #e5e5e5;
-  --ring: #3b82f6;
-  --destructive: #dc2626;
-  --destructive-foreground: #fef2f2;
+  --background: #e0e2da;
+  --foreground: #081f24;
+  --muted: #d3d6cb;
+  --muted-foreground: #4a5a57;
+  --border: #c7cabd;
+  --ring: #14505b;
+  --destructive: #f03030;
+  --destructive-foreground: #fff5f5;
   --radius: 0.625rem;
 }
 
+/* Dark mode: the guideline's own "dark panel" treatment (deep teal + pale sage
+   text), inverted from light mode rather than a generic neutral dark theme. */
 .dark {
-  --background: #0a0a0a;
-  --foreground: #fafafa;
-  --muted: #171717;
-  --muted-foreground: #a3a3a3;
-  --border: #262626;
-  --ring: #60a5fa;
-  --destructive: #f87171;
-  --destructive-foreground: #450a0a;
+  --background: #041013;
+  --foreground: #e0e2da;
+  --muted: #081f24;
+  --muted-foreground: #9aa9a6;
+  --border: #0b2e35;
+  --ring: #558f99;
+  --destructive: #f56b6b;
+  --destructive-foreground: #2a0a0a;
 }
 
 @layer base {
