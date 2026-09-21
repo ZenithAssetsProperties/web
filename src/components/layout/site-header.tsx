@@ -1,13 +1,48 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Menu, X } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { siteConfig } from "@/lib/site-config";
+import { cn } from "@/lib/utils";
 
+/**
+ * Fixed overlay header: transparent over the hero (which bleeds up behind
+ * it), solid/blurred once the page scrolls. Only the homepage currently has
+ * a dark hero to sit on top of — a future page without one should either
+ * give its top section a dark background too, or this header should gain a
+ * per-page "always solid" opt-out.
+ */
 export function SiteHeader() {
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [scrolled]);
+
+  const solid = scrolled || menuOpen;
+
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur">
+    <header
+      className={cn(
+        "fixed inset-x-0 top-0 z-50 transition-colors duration-300",
+        solid
+          ? "border-b border-border bg-background/85 backdrop-blur-md"
+          : "border-b border-transparent bg-transparent",
+      )}
+    >
       <Container className="flex h-16 items-center justify-between">
         <Link href="/" className="flex items-center gap-2.5">
           <Image
@@ -18,7 +53,12 @@ export function SiteHeader() {
             priority
             className="size-8"
           />
-          <span className="font-heading text-lg font-bold tracking-tight text-foreground">
+          <span
+            className={cn(
+              "font-heading text-lg font-bold tracking-tight transition-colors",
+              solid ? "text-foreground" : "text-white",
+            )}
+          >
             {siteConfig.name}
           </span>
         </Link>
@@ -28,7 +68,12 @@ export function SiteHeader() {
             <Link
               key={item.href}
               href={item.href}
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              className={cn(
+                "text-sm font-medium transition-colors",
+                solid
+                  ? "text-muted-foreground hover:text-foreground"
+                  : "text-white/80 hover:text-white",
+              )}
             >
               {item.label}
             </Link>
@@ -36,12 +81,44 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <ThemeToggle />
+          <ThemeToggle
+            className={cn(!solid && "text-white hover:bg-white/10")}
+          />
           <Button asChild className="hidden md:inline-flex">
             <Link href="/contact">Get in touch</Link>
           </Button>
+          <Button
+            variant="ghost"
+            size="icon"
+            className={cn("md:hidden", !solid && "text-white hover:bg-white/10")}
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen((v) => !v)}
+          >
+            {menuOpen ? <X /> : <Menu />}
+          </Button>
         </div>
       </Container>
+
+      {menuOpen && (
+        <nav className="border-t border-border bg-background md:hidden">
+          <Container className="flex flex-col gap-1 py-3">
+            {siteConfig.nav.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="rounded-md px-3 py-2.5 text-sm font-medium text-foreground hover:bg-muted"
+                onClick={() => setMenuOpen(false)}
+              >
+                {item.label}
+              </Link>
+            ))}
+            <Button asChild className="mt-2">
+              <Link href="/contact">Get in touch</Link>
+            </Button>
+          </Container>
+        </nav>
+      )}
     </header>
   );
 }

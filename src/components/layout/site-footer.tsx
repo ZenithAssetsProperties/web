@@ -1,28 +1,73 @@
 import Image from "next/image";
+import Link from "next/link";
+import { Globe, Mail } from "lucide-react";
 import { Container } from "@/components/ui/container";
+import { Text } from "@/components/ui/typography";
 import { siteConfig } from "@/lib/site-config";
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-border">
-      <Container className="flex flex-col items-center justify-between gap-4 py-10 text-sm text-muted-foreground md:flex-row">
-        <div className="flex items-center gap-2">
-          <Image src="/brand/icon.png" alt="" width={20} height={20} className="size-5" />
+    <footer className="border-t border-border bg-muted/40">
+      <Container size="lg" className="py-16">
+        <div className="grid gap-12 md:grid-cols-[2fr_1fr_1fr]">
+          <div className="max-w-sm space-y-4">
+            <Link href="/" className="flex items-center gap-2.5">
+              <Image src="/brand/icon.png" alt="" width={28} height={28} className="size-7" />
+              <span className="font-heading text-base font-bold tracking-tight text-foreground">
+                {siteConfig.name}
+              </span>
+            </Link>
+            <Text size="sm" className="text-muted-foreground">
+              {siteConfig.description}
+            </Text>
+          </div>
+
+          <div className="space-y-3">
+            <p className="text-sm font-semibold text-foreground">Quick links</p>
+            <ul className="space-y-2">
+              {siteConfig.nav.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="space-y-3">
+            <p className="text-sm font-semibold text-foreground">Contact</p>
+            <ul className="space-y-2">
+              <li>
+                <a
+                  href="mailto:hello@zenithassetgroup.com"
+                  className="flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  <Mail className="size-4 shrink-0" aria-hidden="true" />
+                  hello@zenithassetgroup.com
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.zenithassetgroup.com"
+                  className="flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  <Globe className="size-4 shrink-0" aria-hidden="true" />
+                  www.zenithassetgroup.com
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 text-xs text-muted-foreground sm:flex-row">
           <p>
             &copy; {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
           </p>
         </div>
-        <nav className="flex items-center gap-6">
-          {siteConfig.nav.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="transition-colors hover:text-foreground"
-            >
-              {item.label}
-            </a>
-          ))}
-        </nav>
       </Container>
     </footer>
   );

@@ -1,3 +1,8 @@
+declare module "*.css" {
+  const content: { [className: string]: string };
+  export default content;
+}
+
 import type { Metadata } from "next";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
@@ -37,7 +42,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="flex min-h-screen flex-col font-sans">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <SiteHeader />
-          <main className="flex-1">{children}</main>
+          {/* pt-16 clears the fixed header for normal content; a hero that
+              wants to bleed full-bleed under the transparent header cancels
+              this with -mt-16 on its own root element. */}
+          <main className="flex-1 pt-16">{children}</main>
           <SiteFooter />
         </ThemeProvider>
       </body>
