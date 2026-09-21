@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
@@ -11,28 +12,30 @@ import { siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 
 /**
- * Fixed overlay header: transparent over the hero (which bleeds up behind
- * it), solid/blurred once the page scrolls. Only the homepage currently has
- * a dark hero to sit on top of — a future page without one should either
- * give its top section a dark background too, or this header should gain a
- * per-page "always solid" opt-out.
+ * Fixed overlay header: transparent over the homepage hero (which bleeds up
+ * behind it), solid/blurred once the page scrolls. Every other route has no
+ * dark hero to sit on top of, so it's always solid there regardless of
+ * scroll position.
  */
 export function SiteHeader() {
+  const pathname = usePathname();
+  const isHome = pathname === "/";
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
+    if (!isHome) return;
     const onScroll = () => setScrolled(window.scrollY > 8);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [isHome]);
 
   useEffect(() => {
     setMenuOpen(false);
-  }, [scrolled]);
+  }, [scrolled, pathname]);
 
-  const solid = scrolled || menuOpen;
+  const solid = !isHome || scrolled || menuOpen;
 
   return (
     <header
