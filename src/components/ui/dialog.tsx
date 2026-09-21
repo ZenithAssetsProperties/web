@@ -77,7 +77,7 @@ export function Dialog({ open, onClose, title, description, children, className 
   if (!open || typeof document === "undefined") return null;
 
   return createPortal(
-    <div className="fixed inset-0 z-100 flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
       <div
         className="absolute inset-0 animate-fade-in bg-brand-950/60 backdrop-blur-sm"
         onClick={onClose}

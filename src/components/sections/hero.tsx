@@ -52,9 +52,13 @@ export function Hero() {
         </Stack>
       </Container>
 
-      <div className="absolute inset-x-0 bottom-8 z-10 flex animate-bounce justify-center text-white/70">
+      <a
+        href="#tv-scroll"
+        aria-label="Scroll to explore"
+        className="absolute inset-x-0 bottom-8 z-10 flex animate-bounce justify-center text-white/70 transition-colors hover:text-white"
+      >
         <ChevronDown className="size-6" aria-hidden="true" />
-      </div>
+      </a>
     </section>
   );
 }
