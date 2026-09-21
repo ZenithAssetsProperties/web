@@ -67,19 +67,19 @@ Adding a new route (e.g. `/listings`) follows normal Next.js App Router conventi
 Hooks live in [`.githooks/`](./.githooks), are tracked in the repo, and run automatically — no
 package to install, nothing that can fail during `pnpm install`:
 
-| Hook         | Runs                                                                     | Why                                                                |
-| ------------ | ------------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `pre-commit` | ESLint + Prettier on staged files only (via `git diff --cached`)          | Fast — keeps every commit clean without slowing you down.           |
-| `pre-push`   | `pnpm verify` (lint + typecheck + format check + full production build) | The full gate — nothing that fails to build can reach the remote.   |
+| Hook         | Runs                                                                    | Why                                                               |
+| ------------ | ----------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| `pre-commit` | ESLint + Prettier on staged files only (via `git diff --cached`)        | Fast — keeps every commit clean without slowing you down.         |
+| `pre-push`   | `pnpm verify` (lint + typecheck + format check + full production build) | The full gate — nothing that fails to build can reach the remote. |
 
 If `pre-push` fails, fix the reported error — don't bypass it with `--no-verify`. CI runs the same
 checks again on the PR regardless, so skipping the hook only delays the failure.
 
 ## Scripts
 
-| Script          | Description                                          |
-| ---------------- | ----------------------------------------------------- |
-| `pnpm dev`        | Start the dev server                                   |
-| `pnpm verify`      | Run the full local gate (same checks as `pre-push`/CI) |
-| `pnpm lint:fix`    | Auto-fix lint issues                                    |
-| `pnpm format`      | Auto-format with Prettier                               |
+| Script          | Description                                            |
+| --------------- | ------------------------------------------------------ |
+| `pnpm dev`      | Start the dev server                                   |
+| `pnpm verify`   | Run the full local gate (same checks as `pre-push`/CI) |
+| `pnpm lint:fix` | Auto-fix lint issues                                   |
+| `pnpm format`   | Auto-format with Prettier                              |

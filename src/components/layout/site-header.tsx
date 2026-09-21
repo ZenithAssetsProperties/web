@@ -42,20 +42,13 @@ export function SiteHeader() {
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-colors duration-300",
         solid
-          ? "border-b border-border bg-background/85 backdrop-blur-md"
+          ? "border-border bg-background/85 border-b backdrop-blur-md"
           : "border-b border-transparent bg-transparent",
       )}
     >
       <Container className="flex h-16 items-center justify-between">
         <Link href="/" className="flex items-center gap-2.5">
-          <Image
-            src="/brand/icon.png"
-            alt=""
-            width={32}
-            height={32}
-            priority
-            className="size-8"
-          />
+          <Image src="/brand/icon.png" alt="" width={32} height={32} priority className="size-8" />
           <span
             className={cn(
               "font-heading text-lg font-bold tracking-tight transition-colors",
@@ -84,9 +77,7 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <ThemeToggle
-            className={cn(!solid && "text-white hover:bg-white/10")}
-          />
+          <ThemeToggle className={cn(!solid && "text-white hover:bg-white/10")} />
           <Button asChild className="hidden md:inline-flex">
             <Link href="/contact">Get in touch</Link>
           </Button>
@@ -104,13 +95,13 @@ export function SiteHeader() {
       </Container>
 
       {menuOpen && (
-        <nav className="border-t border-border bg-background md:hidden">
+        <nav className="border-border bg-background border-t md:hidden">
           <Container className="flex flex-col gap-1 py-3">
             {siteConfig.nav.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="rounded-md px-3 py-2.5 text-sm font-medium text-foreground hover:bg-muted"
+                className="text-foreground hover:bg-muted rounded-md px-3 py-2.5 text-sm font-medium"
                 onClick={() => setMenuOpen(false)}
               >
                 {item.label}

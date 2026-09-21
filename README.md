@@ -11,11 +11,11 @@ add a new section or page and what the git hooks enforce before anything reaches
 Every color and typeface in this codebase is sourced from the official brand guideline, not
 guessed — see `src/app/globals.css` for how these map to design tokens:
 
-| Token                     | Hex       | Use                                                        |
-| -------------------------- | --------- | ------------------------------------------------------------ |
-| Seaworld (`brand-600`)    | `#14505B` | Primary brand teal — buttons, links, focus rings            |
-| Laser Red (`accent-600`)  | `#F03030` | Action/urgency accent only — errors, destructive actions     |
-| Pale Sage (`sage` / `--background`) | `#E0E2DA` | Supporting color — light-mode page background      |
+| Token                               | Hex       | Use                                                      |
+| ----------------------------------- | --------- | -------------------------------------------------------- |
+| Seaworld (`brand-600`)              | `#14505B` | Primary brand teal — buttons, links, focus rings         |
+| Laser Red (`accent-600`)            | `#F03030` | Action/urgency accent only — errors, destructive actions |
+| Pale Sage (`sage` / `--background`) | `#E0E2DA` | Supporting color — light-mode page background            |
 
 Typography: **League Spartan** for all headings (`font-heading`), **Inter** for body text
 (`font-sans`) — both loaded in `src/lib/fonts.ts`.
@@ -52,13 +52,13 @@ numbers and steps over vague promises.
 `src/components/ui/` is the primitive layer everything else — including every future section — is
 built from:
 
-| Component                               | Purpose                                                                                                                            |
-| ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| `Heading`, `Text`, `Code`, `Blockquote` | Typography scale (`display`/`h1`-`h4` in League Spartan bold, `lead`/`base`/`sm`/`muted` body text) — `typography.tsx`            |
-| `Container`, `Section`, `Stack`, `Grid` | Layout primitives with variant props (size, spacing, gap, direction, cols)                                                        |
-| `Button`                                | `primary` / `secondary` / `ghost` / `destructive` / `link` variants, `sm`/`md`/`lg`/`icon` sizes, `asChild` to render as a `Link` |
-| `Card`, `Badge`, `Separator`, `Skeleton` | Supporting content, status, and loading primitives (`Badge` supports a pulsing `dot`)                                            |
-| `Alert`, `EmptyState`                   | Inline and full-block error/warning/success/info states (destructive uses the brand's Laser Red)                                 |
+| Component                                | Purpose                                                                                                                           |
+| ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| `Heading`, `Text`, `Code`, `Blockquote`  | Typography scale (`display`/`h1`-`h4` in League Spartan bold, `lead`/`base`/`sm`/`muted` body text) — `typography.tsx`            |
+| `Container`, `Section`, `Stack`, `Grid`  | Layout primitives with variant props (size, spacing, gap, direction, cols)                                                        |
+| `Button`                                 | `primary` / `secondary` / `ghost` / `destructive` / `link` variants, `sm`/`md`/`lg`/`icon` sizes, `asChild` to render as a `Link` |
+| `Card`, `Badge`, `Separator`, `Skeleton` | Supporting content, status, and loading primitives (`Badge` supports a pulsing `dot`)                                             |
+| `Alert`, `EmptyState`                    | Inline and full-block error/warning/success/info states (destructive uses the brand's Laser Red)                                  |
 
 Page/landing content is composed from `src/components/sections/` — one file per section (see
 `hero.tsx` for the current homepage). This is the pattern other developers extend; details in
@@ -87,16 +87,16 @@ The app runs at http://localhost:3000.
 
 ## Scripts
 
-| Script                         | Description                                               |
-| ------------------------------- | ----------------------------------------------------------- |
-| `pnpm dev`                     | Start the dev server (Turbopack)                            |
-| `pnpm build`                   | Production build                                             |
-| `pnpm start`                   | Serve the production build                                   |
-| `pnpm lint` / `lint:fix`       | Run ESLint                                                    |
-| `pnpm typecheck`               | Run `tsc --noEmit`                                            |
-| `pnpm format` / `format:check` | Run/check Prettier                                            |
+| Script                         | Description                                                                |
+| ------------------------------ | -------------------------------------------------------------------------- |
+| `pnpm dev`                     | Start the dev server (Turbopack)                                           |
+| `pnpm build`                   | Production build                                                           |
+| `pnpm start`                   | Serve the production build                                                 |
+| `pnpm lint` / `lint:fix`       | Run ESLint                                                                 |
+| `pnpm typecheck`               | Run `tsc --noEmit`                                                         |
+| `pnpm format` / `format:check` | Run/check Prettier                                                         |
 | `pnpm verify`                  | Full gate: lint + typecheck + format check + build (same as `pre-push`/CI) |
-| `pnpm analyze`                 | Production build with bundle analyzer enabled                |
+| `pnpm analyze`                 | Production build with bundle analyzer enabled                              |
 
 ## Project structure
 

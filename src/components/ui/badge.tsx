@@ -19,8 +19,7 @@ const badgeVariants = cva(
 );
 
 export interface BadgeProps
-  extends HTMLAttributes<HTMLSpanElement>,
-    VariantProps<typeof badgeVariants> {
+  extends HTMLAttributes<HTMLSpanElement>, VariantProps<typeof badgeVariants> {
   /** Shows a pulsing status dot in front of the label — e.g. "In development". */
   dot?: boolean;
 }
