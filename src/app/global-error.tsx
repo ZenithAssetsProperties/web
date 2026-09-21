@@ -1,10 +1,8 @@
 "use client";
 
-import { Inter } from "next/font/google";
 import { Button } from "@/components/ui/button";
+import { inter } from "@/lib/fonts";
 import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 /**
  * Catches errors thrown by the root layout itself, so it must render its

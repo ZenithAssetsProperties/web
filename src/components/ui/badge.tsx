@@ -3,7 +3,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const badgeVariants = cva(
-  "inline-flex w-fit items-center rounded-full px-2.5 py-0.5 text-xs font-medium",
+  "inline-flex w-fit items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium",
   {
     variants: {
       variant: {
@@ -19,8 +19,22 @@ const badgeVariants = cva(
 );
 
 export interface BadgeProps
-  extends HTMLAttributes<HTMLSpanElement>, VariantProps<typeof badgeVariants> {}
+  extends HTMLAttributes<HTMLSpanElement>,
+    VariantProps<typeof badgeVariants> {
+  /** Shows a pulsing status dot in front of the label — e.g. "In development". */
+  dot?: boolean;
+}
 
-export function Badge({ className, variant, ...props }: BadgeProps) {
-  return <span className={cn(badgeVariants({ variant }), className)} {...props} />;
+export function Badge({ className, variant, dot, children, ...props }: BadgeProps) {
+  return (
+    <span className={cn(badgeVariants({ variant }), className)} {...props}>
+      {dot && (
+        <span className="relative flex size-1.5">
+          <span className="absolute inline-flex size-full animate-ping rounded-full bg-current opacity-75" />
+          <span className="relative inline-flex size-1.5 rounded-full bg-current" />
+        </span>
+      )}
+      {children}
+    </span>
+  );
 }

@@ -16,7 +16,8 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "analyze": "ANALYZE=true next build",
-    "prepare": "husky"
+    "verify": "pnpm lint && pnpm typecheck && pnpm format:check && pnpm build",
+    "prepare": "git config core.hooksPath .githooks"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.1.1",
@@ -38,19 +39,9 @@
     "@types/react-dom": "^19.0.2",
     "eslint": "^9.17.0",
     "eslint-config-next": "^15.1.0",
-    "husky": "^9.1.7",
-    "lint-staged": "^15.2.11",
     "prettier": "^3.4.2",
     "prettier-plugin-tailwindcss": "^0.6.9",
     "tailwindcss": "^4.0.0",
     "typescript": "^5.7.2"
-  },
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "eslint --fix"
-    ],
-    "*.{js,jsx,ts,tsx,json,css,md,mdx}": [
-      "prettier --write"
-    ]
   }
 }
