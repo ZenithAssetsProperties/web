@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+# Full gate before code leaves the machine: lint, typecheck, format check,
+# and a real production build. Nothing that fails to build reaches the remote.
+set -e
+
+echo "Running full verification before push (lint, typecheck, format, build)..."
+pnpm verify

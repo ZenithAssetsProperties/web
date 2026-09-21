@@ -1,0 +1,18 @@
+#!/usr/bin/env sh
+# Runs ESLint + Prettier on staged files only — fast, and needs no extra
+# dependency (no husky, no lint-staged): just git plumbing + the tools
+# already in devDependencies.
+set -e
+
+lint_targets=$(git diff --cached --name-only --diff-filter=ACM -- '*.ts' '*.tsx' '*.js' '*.jsx')
+if [ -n "$lint_targets" ]; then
+  echo "Linting staged files..."
+  echo "$lint_targets" | tr '\n' '\0' | xargs -0 pnpm exec eslint --fix
+fi
+
+format_targets=$(git diff --cached --name-only --diff-filter=ACM -- '*.ts' '*.tsx' '*.js' '*.jsx' '*.json' '*.css' '*.md' '*.mdx')
+if [ -n "$format_targets" ]; then
+  echo "Formatting staged files..."
+  echo "$format_targets" | tr '\n' '\0' | xargs -0 pnpm exec prettier --write
+  echo "$format_targets" | tr '\n' '\0' | xargs -0 git add
+fi
