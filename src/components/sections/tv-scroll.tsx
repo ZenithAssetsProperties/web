@@ -19,7 +19,11 @@ interface FeaturedProperty {
 // reason (see PropertyTile below).
 const featuredProperties: FeaturedProperty[] = [
   { name: "Lekki Waterfront Residences", location: "Lekki, Lagos", price: "From ₦2.5M / share" },
-  { name: "Victoria Island Heights", location: "Victoria Island, Lagos", price: "From ₦4M / share" },
+  {
+    name: "Victoria Island Heights",
+    location: "Victoria Island, Lagos",
+    price: "From ₦4M / share",
+  },
   {
     name: "Abuja Central Business Suites",
     location: "Central Area, Abuja",
@@ -37,7 +41,7 @@ const featuredProperties: FeaturedProperty[] = [
 function PropertyTile({ property }: { property: FeaturedProperty }) {
   return (
     <Card className="w-72 shrink-0 overflow-hidden p-0 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg sm:w-80">
-      <div className="relative flex h-40 items-center justify-center bg-gradient-to-br from-brand-600 to-brand-900">
+      <div className="from-brand-600 to-brand-900 relative flex h-40 items-center justify-center bg-gradient-to-br">
         <Building2 className="size-10 text-white/30" aria-hidden="true" />
         <Badge
           variant="outline"
@@ -52,7 +56,7 @@ function PropertyTile({ property }: { property: FeaturedProperty }) {
           <MapPin className="size-3.5 shrink-0" aria-hidden="true" />
           <span>{property.location}</span>
         </Stack>
-        <Text size="sm" className="font-semibold text-brand-600 dark:text-brand-400">
+        <Text size="sm" className="text-brand-600 dark:text-brand-400 font-semibold">
           {property.price}
         </Text>
       </Stack>
@@ -62,7 +66,7 @@ function PropertyTile({ property }: { property: FeaturedProperty }) {
 
 export function TvScroll() {
   return (
-    <Section id="tv-scroll" spacing="lg" border="bottom" className="overflow-hidden bg-muted/40">
+    <Section id="tv-scroll" spacing="lg" border="bottom" className="bg-muted/40 overflow-hidden">
       <Container size="xl">
         <Reveal>
           <Stack gap="sm" align="center" className="mx-auto max-w-2xl pb-12 text-center">

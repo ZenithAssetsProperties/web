@@ -35,13 +35,13 @@ export function Marquee({
 
   return (
     <div
-      className={cn("group relative flex w-full overflow-hidden fade-edges", className)}
+      className={cn("group fade-edges relative flex w-full overflow-hidden", className)}
       style={{ "--gap": gapValues[gap], gap: "var(--gap)", ...style } as CSSProperties}
       {...props}
     >
       <div
         className={cn(
-          "flex w-max shrink-0 animate-marquee",
+          "animate-marquee flex w-max shrink-0",
           reverse && "[animation-direction:reverse]",
           pauseOnHover && "group-hover:[animation-play-state:paused]",
         )}
@@ -52,7 +52,7 @@ export function Marquee({
       <div
         aria-hidden="true"
         className={cn(
-          "flex w-max shrink-0 animate-marquee",
+          "animate-marquee flex w-max shrink-0",
           reverse && "[animation-direction:reverse]",
           pauseOnHover && "group-hover:[animation-play-state:paused]",
         )}

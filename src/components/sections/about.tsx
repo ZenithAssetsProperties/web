@@ -35,7 +35,7 @@ export function About() {
               <Text
                 as="span"
                 size="sm"
-                className="font-semibold tracking-wider text-brand-600 uppercase dark:text-brand-400"
+                className="text-brand-600 dark:text-brand-400 font-semibold tracking-wider uppercase"
               >
                 About Zenith Asset Group
               </Text>
@@ -55,9 +55,9 @@ export function About() {
               <Text>
                 Our platform, Partners by Zenith Asset Group, brings this online with verified
                 listings, virtual inspections, secure investing, and portfolio tracking in one
-                dashboard. We simplify real estate investing and build long-term wealth for
-                everyday people, the diaspora, and institutions alike — backed by careful due
-                diligence and full transparency on fees and returns.
+                dashboard. We simplify real estate investing and build long-term wealth for everyday
+                people, the diaspora, and institutions alike — backed by careful due diligence and
+                full transparency on fees and returns.
               </Text>
             </Stack>
           </Reveal>
@@ -68,7 +68,7 @@ export function About() {
                 <Badge
                   key={value}
                   variant="outline"
-                  className="transition-colors hover:border-brand-600 hover:text-brand-600 dark:hover:border-brand-400 dark:hover:text-brand-400"
+                  className="hover:border-brand-600 hover:text-brand-600 dark:hover:border-brand-400 dark:hover:text-brand-400 transition-colors"
                 >
                   {value}
                 </Badge>
@@ -85,11 +85,11 @@ export function About() {
                 <ul className="space-y-2">
                   {vision.map((point) => (
                     <li key={point} className="group flex gap-2.5">
-                      <span className="mt-2 size-1.5 shrink-0 rounded-full bg-brand-600 transition-transform group-hover:scale-125 dark:bg-brand-400" />
+                      <span className="bg-brand-600 dark:bg-brand-400 mt-2 size-1.5 shrink-0 rounded-full transition-transform group-hover:scale-125" />
                       <Text
                         as="span"
                         size="sm"
-                        className="text-muted-foreground transition-colors group-hover:text-foreground"
+                        className="text-muted-foreground group-hover:text-foreground transition-colors"
                       >
                         {point}
                       </Text>
@@ -97,7 +97,7 @@ export function About() {
                   ))}
                 </ul>
               </Stack>
-              <Stack gap="sm" className="sm:border-l sm:border-border sm:pl-8">
+              <Stack gap="sm" className="sm:border-border sm:border-l sm:pl-8">
                 <Heading as="h3" level="h4">
                   Mission
                 </Heading>

@@ -167,13 +167,7 @@
      so items fade out instead of hard-clipping at the container bounds. */
   .fade-edges {
     mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
-    -webkit-mask-image: linear-gradient(
-      to right,
-      transparent,
-      black 8%,
-      black 92%,
-      transparent
-    );
+    -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
   }
 }
 

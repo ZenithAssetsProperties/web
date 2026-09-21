@@ -9,7 +9,7 @@ export function Hero() {
     <section className="relative -mt-16 flex h-screen min-h-[640px] items-center justify-center overflow-hidden">
       <div className="absolute inset-0">
         <video
-          className="size-full animate-ken-burns object-cover"
+          className="animate-ken-burns size-full object-cover"
           poster="/videos/hero-poster.jpg"
           autoPlay
           muted
@@ -21,8 +21,8 @@ export function Hero() {
           <source src="/videos/hero-skyline.webm" type="video/webm" />
           <source src="/videos/hero-skyline.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-brand-950/55" />
-        <div className="absolute inset-0 bg-gradient-to-t from-brand-950/85 via-transparent to-brand-950/40" />
+        <div className="bg-brand-950/55 absolute inset-0" />
+        <div className="from-brand-950/85 to-brand-950/40 absolute inset-0 bg-gradient-to-t via-transparent" />
       </div>
 
       <Container className="relative z-10">
