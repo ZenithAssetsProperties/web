@@ -21,19 +21,19 @@ interface ErrorBoundaryState {
  * isolating one component inside an otherwise-healthy page.
  */
 export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
-  state: ErrorBoundaryState = { error: null };
+  override state: ErrorBoundaryState = { error: null };
 
   static getDerivedStateFromError(error: Error): ErrorBoundaryState {
     return { error };
   }
 
-  componentDidCatch(error: Error, info: React.ErrorInfo) {
+  override componentDidCatch(error: Error, info: React.ErrorInfo) {
     console.error("ErrorBoundary caught an error", error, info);
   }
 
   reset = () => this.setState({ error: null });
 
-  render() {
+  override render() {
     const { error } = this.state;
 
     if (error) {

@@ -56,6 +56,9 @@ export function Dialog({ open, onClose, title, description, children, className 
       const first = focusable[0];
       const last = focusable[focusable.length - 1];
 
+      // Guard against undefined (TypeScript strict mode)
+      if (!first || !last) return;
+
       if (event.shiftKey && document.activeElement === first) {
         event.preventDefault();
         last.focus();
@@ -79,7 +82,7 @@ export function Dialog({ open, onClose, title, description, children, className 
   return createPortal(
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
       <div
-        className="absolute inset-0 animate-fade-in bg-brand-950/60 backdrop-blur-sm"
+        className="animate-fade-in bg-brand-950/60 absolute inset-0 backdrop-blur-sm"
         onClick={onClose}
         aria-hidden="true"
       />
@@ -91,7 +94,7 @@ export function Dialog({ open, onClose, title, description, children, className 
         aria-describedby={description ? descriptionId : undefined}
         tabIndex={-1}
         className={cn(
-          "relative z-10 max-h-[90vh] w-full max-w-md animate-dialog-in overflow-y-auto rounded-xl border border-border bg-background p-6 shadow-2xl focus:outline-none",
+          "animate-dialog-in border-border bg-background relative z-10 max-h-[90vh] w-full max-w-md overflow-y-auto rounded-xl border p-6 shadow-2xl focus:outline-none",
           className,
         )}
       >
@@ -99,7 +102,7 @@ export function Dialog({ open, onClose, title, description, children, className 
           type="button"
           onClick={onClose}
           aria-label="Close"
-          className="absolute top-4 right-4 rounded-md p-1 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+          className="text-muted-foreground hover:bg-muted hover:text-foreground absolute top-4 right-4 rounded-md p-1 transition-colors"
         >
           <X className="size-4" aria-hidden="true" />
         </button>
@@ -107,12 +110,12 @@ export function Dialog({ open, onClose, title, description, children, className 
         <div className="space-y-1.5 pr-8">
           <h2
             id={titleId}
-            className="font-heading text-xl font-bold tracking-tight text-foreground"
+            className="font-heading text-foreground text-xl font-bold tracking-tight"
           >
             {title}
           </h2>
           {description && (
-            <p id={descriptionId} className="text-sm text-muted-foreground">
+            <p id={descriptionId} className="text-muted-foreground text-sm">
               {description}
             </p>
           )}
