@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Building2 } from "lucide-react";
+import { ArrowRight, Building2 } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { EmptyState } from "@/components/ui/empty-state";
 import { Section } from "@/components/ui/section";
@@ -21,7 +21,12 @@ export default function ListingsPage() {
             icon={Building2}
             title="Listings aren't live yet"
             description="Verified properties will appear here once the platform launches. Join the waitlist to be notified the moment they do."
-            action={<WaitlistTrigger>Join our waitlist</WaitlistTrigger>}
+            action={
+              <WaitlistTrigger>
+                Join our waitlist
+                <ArrowRight className="size-4" aria-hidden="true" />
+              </WaitlistTrigger>
+            }
           />
         </Container>
       </Section>

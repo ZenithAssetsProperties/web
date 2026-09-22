@@ -4,7 +4,7 @@ import { useEffect, useRef, useState, type MouseEvent } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
+import { ArrowRight, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { siteConfig } from "@/lib/site-config";
@@ -118,7 +118,10 @@ export function SiteHeader() {
         <div className="flex items-center gap-2">
           <ThemeToggle className={cn(!solid && "text-white hover:bg-white/10")} />
           <Button asChild size={solid ? "sm" : "md"} className="hidden md:inline-flex">
-            <Link href="/contact">Get in touch</Link>
+            <Link href="/contact">
+              Get in touch
+              <ArrowRight className="size-4" aria-hidden="true" />
+            </Link>
           </Button>
           <Button
             variant="ghost"
@@ -156,7 +159,10 @@ export function SiteHeader() {
               </Link>
             ))}
             <Button asChild className="mt-2">
-              <Link href="/contact">Get in touch</Link>
+              <Link href="/contact">
+                Get in touch
+                <ArrowRight className="size-4" aria-hidden="true" />
+              </Link>
             </Button>
           </div>
         </nav>

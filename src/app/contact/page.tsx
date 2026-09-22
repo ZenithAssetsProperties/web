@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Globe, Mail } from "lucide-react";
+import { ArrowRight, Globe, Mail } from "lucide-react";
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
 import { Grid } from "@/components/ui/grid";
@@ -55,6 +55,7 @@ export default function ContactPage() {
 
           <WaitlistTrigger size="lg" className="mt-10 w-fit">
             Join our waitlist
+            <ArrowRight className="size-4" aria-hidden="true" />
           </WaitlistTrigger>
         </Container>
       </Section>
