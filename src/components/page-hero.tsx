@@ -19,7 +19,7 @@ export function PageHero({ eyebrow, title, description }: PageHeroProps) {
       <div className="absolute inset-0">
         <div
           className="animate-ken-burns absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url(/videos/hero-poster.jpg)" }}
+          style={{ backgroundImage: "url(/videos/hero-lagos-poster.jpg)" }}
         />
         <div className="bg-brand-950/60 absolute inset-0" />
         <div className="from-brand-950/90 to-brand-950/50 absolute inset-0 bg-gradient-to-t via-transparent" />
