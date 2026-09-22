@@ -1,3 +1,5 @@
+"use client";
+
 import * as React from "react";
 import { cn } from "@/lib/utils";
 
@@ -10,6 +12,13 @@ type SlotProps = React.HTMLAttributes<HTMLElement> & {
  * given to <Slot> directly onto its single child element instead of
  * rendering a wrapper. This is what lets `<Button asChild><Link .../></Button>`
  * apply button styling to the rendered <a> without an extra DOM node.
+ *
+ * Must stay "use client": it attaches a merged `ref` via cloneElement, and a
+ * Server Component can never hand a `ref` prop to a Client Component
+ * invocation (e.g. next/link's `Link`) — Next fails the build with "Refs
+ * cannot be used in Server Components, nor passed to Client Components" if
+ * this runs server-side (see Button, which is "use client" for the same
+ * reason whenever it renders this).
  */
 export const Slot = React.forwardRef<HTMLElement, SlotProps>(
   ({ children, className, style, ...props }, ref) => {

@@ -1,3 +1,5 @@
+"use client";
+
 import * as React from "react";
 import { Slot } from "@/components/ui/slot";
 import { cva, type VariantProps } from "class-variance-authority";
@@ -35,6 +37,8 @@ export interface ButtonProps
   asChild?: boolean;
 }
 
+// "use client" (above) is required because of forwardRef + Slot, not
+// because Button itself needs interactivity — see slot.tsx for why.
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, asChild = false, ...props }, ref) => {
     const Comp = asChild ? Slot : "button";
