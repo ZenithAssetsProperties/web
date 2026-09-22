@@ -5,57 +5,63 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
-import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 
 /**
- * Fixed overlay header: transparent over the homepage hero (which bleeds up
- * behind it), solid/blurred once the page scrolls. Every other route has no
- * dark hero to sit on top of, so it's always solid there regardless of
- * scroll position.
+ * Fixed overlay header: a full-bleed transparent bar over each page's hero,
+ * which *transforms* — not just recolors — into a floating rounded pill,
+ * inset from the edges with a shadow, once the page scrolls. Every route
+ * opens on the same dark hero treatment (see Hero/PageHero), so this
+ * behaves identically everywhere.
  */
 export function SiteHeader() {
   const pathname = usePathname();
-  const isHome = pathname === "/";
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    if (!isHome) return;
-    const onScroll = () => setScrolled(window.scrollY > 8);
+    const onScroll = () => setScrolled(window.scrollY > 24);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, [isHome]);
+  }, [pathname]);
 
   useEffect(() => {
     setMenuOpen(false);
   }, [scrolled, pathname]);
 
-  const solid = !isHome || scrolled || menuOpen;
+  const solid = scrolled || menuOpen;
 
   return (
-    <header
-      className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-colors duration-300",
-        solid
-          ? "border-border bg-background/85 border-b backdrop-blur-md"
-          : "border-b border-transparent bg-transparent",
-      )}
-    >
-      <Container className="flex h-16 items-center justify-between">
+    <div className="fixed inset-x-0 top-0 z-50 flex justify-center px-0 sm:px-4">
+      <header
+        className={cn(
+          "flex w-full items-center justify-between border transition-all duration-500 ease-out",
+          solid
+            ? "border-border bg-background/90 shadow-brand-950/10 mt-3 max-w-4xl rounded-full px-5 py-2.5 shadow-xl backdrop-blur-xl"
+            : "max-w-none rounded-none border-transparent bg-transparent px-6 py-5 sm:px-8",
+        )}
+      >
         <Link href="/" className="flex items-center gap-2.5">
-          <Image src="/brand/icon.png" alt="" width={32} height={32} priority className="size-8" />
+          <Image
+            src="/brand/icon.png"
+            alt=""
+            width={32}
+            height={32}
+            priority
+            className={cn("shrink-0 transition-all duration-500", solid ? "size-7" : "size-8")}
+          />
           <span
             className={cn(
-              "font-heading text-lg font-bold tracking-tight transition-colors",
+              "font-heading flex flex-col leading-[1.15] font-semibold tracking-[0.08em] uppercase transition-colors",
               solid ? "text-foreground" : "text-white",
             )}
           >
-            {siteConfig.name}
+            <span className="text-[11px]">Zenith Asset</span>
+            <span className="text-[11px]">Group</span>
           </span>
         </Link>
 
@@ -64,6 +70,7 @@ export function SiteHeader() {
             <Link
               key={item.href}
               href={item.href}
+              data-cursor="View"
               className={cn(
                 "text-sm font-medium transition-colors",
                 solid
@@ -78,7 +85,7 @@ export function SiteHeader() {
 
         <div className="flex items-center gap-2">
           <ThemeToggle className={cn(!solid && "text-white hover:bg-white/10")} />
-          <Button asChild className="hidden md:inline-flex">
+          <Button asChild size={solid ? "sm" : "md"} className="hidden md:inline-flex">
             <Link href="/contact">Get in touch</Link>
           </Button>
           <Button
@@ -92,11 +99,15 @@ export function SiteHeader() {
             {menuOpen ? <X /> : <Menu />}
           </Button>
         </div>
-      </Container>
+      </header>
 
       {menuOpen && (
-        <nav className="border-border bg-background border-t md:hidden">
-          <Container className="flex flex-col gap-1 py-3">
+        <nav
+          className={cn(
+            "border-border bg-background absolute inset-x-4 top-full mt-2 rounded-2xl border shadow-xl md:hidden",
+          )}
+        >
+          <div className="flex flex-col gap-1 p-3">
             {siteConfig.nav.map((item) => (
               <Link
                 key={item.href}
@@ -110,9 +121,9 @@ export function SiteHeader() {
             <Button asChild className="mt-2">
               <Link href="/contact">Get in touch</Link>
             </Button>
-          </Container>
+          </div>
         </nav>
       )}
-    </header>
+    </div>
   );
 }

@@ -169,6 +169,14 @@
     mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
     -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
   }
+
+  /* Applied to <html> by Cursor once it's confirmed running (fine pointer,
+     JS hydrated) — hiding the native cursor unconditionally in CSS would
+     leave users with no cursor at all if JS fails to load. */
+  .custom-cursor,
+  .custom-cursor * {
+    cursor: none !important;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

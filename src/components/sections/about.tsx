@@ -31,21 +31,6 @@ export function About() {
       <Container size="md">
         <Stack gap="lg">
           <Reveal>
-            <Stack gap="sm" className="max-w-2xl">
-              <Text
-                as="span"
-                size="sm"
-                className="text-brand-600 dark:text-brand-400 font-semibold tracking-wider uppercase"
-              >
-                About Zenith Asset Group
-              </Text>
-              <Heading as="h2" level="h1">
-                Real estate investing, simplified.
-              </Heading>
-            </Stack>
-          </Reveal>
-
-          <Reveal delay={100}>
             <Stack gap="md" className="max-w-3xl">
               <Text size="lead">
                 Zenith Asset Group is a Nigerian real estate investment company making property

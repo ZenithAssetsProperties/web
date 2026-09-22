@@ -1,6 +1,5 @@
-import { Building2, MapPin } from "lucide-react";
+import { ArrowRight, MapPin } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { Card, CardTitle } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
 import { Marquee } from "@/components/ui/marquee";
 import { Reveal } from "@/components/ui/reveal";
@@ -40,27 +39,52 @@ const featuredProperties: FeaturedProperty[] = [
 
 function PropertyTile({ property }: { property: FeaturedProperty }) {
   return (
-    <Card className="w-72 shrink-0 overflow-hidden p-0 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg sm:w-80">
-      <div className="from-brand-600 to-brand-900 relative flex h-40 items-center justify-center bg-gradient-to-br">
-        <Building2 className="size-10 text-white/30" aria-hidden="true" />
-        <Badge
-          variant="outline"
-          className="absolute top-3 left-3 border-white/25 bg-white/10 text-white backdrop-blur-sm"
-        >
+    <div className="group relative w-64 shrink-0 sm:w-72" data-cursor="View">
+      <div className="relative aspect-[4/5] overflow-hidden rounded-2xl">
+        {/* Base — brand gradient, not a stock photo */}
+        <div className="from-brand-700 via-brand-900 to-brand-950 absolute inset-0 bg-gradient-to-br transition-transform duration-500 ease-out group-hover:scale-105" />
+
+        {/* Real brand texture — the interlocking-Z motif from the guideline's
+            Pattern Design page, tiled at low opacity, not a generic icon. */}
+        <div
+          className="absolute inset-0 opacity-[0.14] transition-transform duration-500 ease-out group-hover:scale-105"
+          style={{
+            backgroundImage: "url(/brand/pattern-tile.png)",
+            backgroundSize: "72px 75px",
+            backgroundRepeat: "repeat",
+          }}
+          aria-hidden="true"
+        />
+
+        {/* Scrim so the overlaid text stays legible */}
+        <div className="from-brand-950/95 via-brand-950/10 absolute inset-0 bg-gradient-to-t to-transparent" />
+
+        <span className="absolute top-3.5 left-4 text-[10px] font-semibold tracking-[0.15em] text-white/60 uppercase">
           Preview
-        </Badge>
-      </div>
-      <Stack gap="sm" className="p-5">
-        <CardTitle className="text-base">{property.name}</CardTitle>
-        <Stack direction="row" align="center" gap="sm" className="text-muted-foreground text-sm">
-          <MapPin className="size-3.5 shrink-0" aria-hidden="true" />
-          <span>{property.location}</span>
-        </Stack>
-        <Text size="sm" className="text-brand-600 dark:text-brand-400 font-semibold">
+        </span>
+
+        <span className="absolute top-3.5 right-4 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold text-white backdrop-blur-md">
           {property.price}
-        </Text>
-      </Stack>
-    </Card>
+        </span>
+
+        <div className="absolute inset-x-0 bottom-0 p-5">
+          <p className="flex items-center gap-1.5 text-xs font-medium text-white/70">
+            <MapPin className="size-3.5 shrink-0" aria-hidden="true" />
+            {property.location}
+          </p>
+          <h3 className="font-heading mt-1 text-lg leading-snug font-bold text-white">
+            {property.name}
+          </h3>
+          <span className="mt-3 inline-flex items-center gap-1 text-xs font-medium text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+            View details
+            <ArrowRight
+              className="size-3.5 transition-transform duration-300 group-hover:translate-x-1"
+              aria-hidden="true"
+            />
+          </span>
+        </div>
+      </div>
+    </div>
   );
 }
 

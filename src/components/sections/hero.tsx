@@ -3,10 +3,11 @@ import { Badge } from "@/components/ui/badge";
 import { Container } from "@/components/ui/container";
 import { Stack } from "@/components/ui/stack";
 import { Heading } from "@/components/ui/typography";
+import { WaitlistTrigger } from "@/components/waitlist-trigger";
 
 export function Hero() {
   return (
-    <section className="relative -mt-16 flex h-screen min-h-[640px] items-center justify-center overflow-hidden">
+    <section className="relative -mt-20 flex h-screen min-h-[640px] items-center justify-center overflow-hidden">
       <div className="absolute inset-0">
         <video
           className="animate-ken-burns size-full object-cover"
@@ -48,6 +49,15 @@ export function Hero() {
             >
               Watch this space.
             </span>
+          </div>
+
+          <div className="animate-fade-up pt-2 [animation-delay:300ms]">
+            <WaitlistTrigger
+              size="lg"
+              className="border border-white/25 bg-white/10 text-white backdrop-blur-sm hover:bg-white/20"
+            >
+              Join our waitlist
+            </WaitlistTrigger>
           </div>
         </Stack>
       </Container>

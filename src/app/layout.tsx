@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Cursor } from "@/components/cursor";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { ThemeProvider } from "@/components/theme/theme-provider";
@@ -36,11 +37,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     >
       <body className="flex min-h-screen flex-col font-sans">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <Cursor />
           <SiteHeader />
-          {/* pt-16 clears the fixed header for normal content; a hero that
-              wants to bleed full-bleed under the transparent header cancels
-              this with -mt-16 on its own root element. */}
-          <main className="flex-1 pt-16">{children}</main>
+          {/* pt-20 clears the fixed header's full-bleed (not-scrolled) height
+              for normal content; a hero that wants to bleed full-bleed under
+              the transparent header cancels this with -mt-20 on its own root
+              element. */}
+          <main className="flex-1 pt-20">{children}</main>
           <SiteFooter />
         </ThemeProvider>
       </body>
