@@ -10,7 +10,7 @@ const badgeVariants = cva(
         default: "bg-brand-100 text-brand-700 dark:bg-brand-900 dark:text-brand-300",
         success: "bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300",
         warning: "bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300",
-        destructive: "bg-red-100 text-red-700 dark:bg-red-900/40 dark:text-red-300",
+        destructive: "bg-accent-100 text-accent-700 dark:bg-accent-900/40 dark:text-accent-300",
         outline: "border border-border text-foreground",
       },
     },
@@ -19,8 +19,7 @@ const badgeVariants = cva(
 );
 
 export interface BadgeProps
-  extends HTMLAttributes<HTMLSpanElement>,
-    VariantProps<typeof badgeVariants> {
+  extends HTMLAttributes<HTMLSpanElement>, VariantProps<typeof badgeVariants> {
   /** Shows a pulsing status dot in front of the label — e.g. "In development". */
   dot?: boolean;
 }
@@ -29,9 +28,12 @@ export function Badge({ className, variant, dot, children, ...props }: BadgeProp
   return (
     <span className={cn(badgeVariants({ variant }), className)} {...props}>
       {dot && (
+        // Always the brand's accent red regardless of badge color — the
+        // guideline's own "sharp accent for action/urgency," and the one
+        // place on the site that consistently pairs it with the primary teal.
         <span className="relative flex size-1.5">
-          <span className="absolute inline-flex size-full animate-ping rounded-full bg-current opacity-75" />
-          <span className="relative inline-flex size-1.5 rounded-full bg-current" />
+          <span className="bg-accent-500 absolute inline-flex size-full animate-ping rounded-full opacity-75" />
+          <span className="bg-accent-600 dark:bg-accent-500 relative inline-flex size-1.5 rounded-full" />
         </span>
       )}
       {children}

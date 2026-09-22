@@ -12,7 +12,7 @@ const alertVariants = cva("relative flex gap-3 rounded-lg border p-4 text-sm", {
       warning:
         "border-amber-200 bg-amber-50 text-amber-900 dark:border-amber-900 dark:bg-amber-950 dark:text-amber-200",
       destructive:
-        "border-red-200 bg-red-50 text-red-900 dark:border-red-900 dark:bg-red-950 dark:text-red-200",
+        "border-accent-200 bg-accent-50 text-accent-900 dark:border-accent-900 dark:bg-accent-950 dark:text-accent-200",
     },
   },
   defaultVariants: { variant: "info" },

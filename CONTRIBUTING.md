@@ -50,8 +50,9 @@ Rules for a new section:
    primitive already does the job. If the primitive is missing a variant you need, extend the
    primitive itself rather than overriding it with one-off classes.
 2. Use semantic color classes only (`bg-background`, `text-muted-foreground`, `border-border`,
-   `bg-brand-600`, …), never a raw hex value or an arbitrary `dark:` override — the whole point of
-   the token layer in `src/app/globals.css` is that theming is a one-file change.
+   `bg-brand-600` for the primary teal, `bg-accent-600` for the red action/urgency accent), never a
+   raw hex value or an arbitrary `dark:` override. These map to the official brand guideline (see
+   the README's Brand section) — don't introduce a new ad hoc color, even a close one.
 3. Server Component by default. Only add `"use client"` when the section actually needs
    interactivity, state, or an effect — `hero.tsx` doesn't need it even though it's animated,
    because its entrance animation is pure CSS (`animate-fade-up` in `globals.css`).
@@ -66,19 +67,19 @@ Adding a new route (e.g. `/listings`) follows normal Next.js App Router conventi
 Hooks live in [`.githooks/`](./.githooks), are tracked in the repo, and run automatically — no
 package to install, nothing that can fail during `pnpm install`:
 
-| Hook         | Runs                                                                     | Why                                                                |
-| ------------ | ------------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `pre-commit` | ESLint + Prettier on staged files only (via `git diff --cached`)          | Fast — keeps every commit clean without slowing you down.           |
-| `pre-push`   | `pnpm verify` (lint + typecheck + format check + full production build) | The full gate — nothing that fails to build can reach the remote.   |
+| Hook         | Runs                                                                    | Why                                                               |
+| ------------ | ----------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| `pre-commit` | ESLint + Prettier on staged files only (via `git diff --cached`)        | Fast — keeps every commit clean without slowing you down.         |
+| `pre-push`   | `pnpm verify` (lint + typecheck + format check + full production build) | The full gate — nothing that fails to build can reach the remote. |
 
 If `pre-push` fails, fix the reported error — don't bypass it with `--no-verify`. CI runs the same
 checks again on the PR regardless, so skipping the hook only delays the failure.
 
 ## Scripts
 
-| Script          | Description                                          |
-| ---------------- | ----------------------------------------------------- |
-| `pnpm dev`        | Start the dev server                                   |
-| `pnpm verify`      | Run the full local gate (same checks as `pre-push`/CI) |
-| `pnpm lint:fix`    | Auto-fix lint issues                                    |
-| `pnpm format`      | Auto-format with Prettier                               |
+| Script          | Description                                            |
+| --------------- | ------------------------------------------------------ |
+| `pnpm dev`      | Start the dev server                                   |
+| `pnpm verify`   | Run the full local gate (same checks as `pre-push`/CI) |
+| `pnpm lint:fix` | Auto-fix lint issues                                   |
+| `pnpm format`   | Auto-format with Prettier                              |

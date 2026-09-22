@@ -1,5 +1,5 @@
 {
-  "name": "zenith-assets-properties-web",
+  "name": "zenith-asset-group-web",
   "version": "0.1.0",
   "private": true,
   "packageManager": "pnpm@9.15.0",
@@ -20,7 +20,6 @@
     "prepare": "git config core.hooksPath .githooks"
   },
   "dependencies": {
-    "@radix-ui/react-slot": "^1.1.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.469.0",

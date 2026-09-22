@@ -8,6 +8,10 @@ export interface EmptyStateProps extends HTMLAttributes<HTMLDivElement> {
   title: string;
   description?: string;
   action?: ReactNode;
+  /** Semantic heading level — defaults to h2 since this usually sits below
+   * a page's own h1 (e.g. PageHero). Pass "h1" when it's the only heading
+   * on the page. */
+  titleAs?: "h1" | "h2" | "h3";
 }
 
 /**
@@ -19,6 +23,7 @@ export function EmptyState({
   title,
   description,
   action,
+  titleAs = "h2",
   className,
   ...props
 }: EmptyStateProps) {
@@ -29,7 +34,7 @@ export function EmptyState({
           <Icon className="text-muted-foreground size-6" aria-hidden="true" />
         </div>
       )}
-      <Heading as="h1" level="h3">
+      <Heading as={titleAs} level="h3">
         {title}
       </Heading>
       {description && (
