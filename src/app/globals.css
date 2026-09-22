@@ -160,6 +160,13 @@
   body {
     @apply bg-background text-foreground antialiased;
   }
+
+  /* Selecting text is one of the few moments a bold accent color reads as
+     premium rather than loud — the logo's second color, used deliberately. */
+  ::selection {
+    background-color: var(--color-accent-600);
+    color: white;
+  }
 }
 
 @layer utilities {

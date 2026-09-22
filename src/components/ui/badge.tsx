@@ -28,9 +28,12 @@ export function Badge({ className, variant, dot, children, ...props }: BadgeProp
   return (
     <span className={cn(badgeVariants({ variant }), className)} {...props}>
       {dot && (
+        // Always the brand's accent red regardless of badge color — the
+        // guideline's own "sharp accent for action/urgency," and the one
+        // place on the site that consistently pairs it with the primary teal.
         <span className="relative flex size-1.5">
-          <span className="absolute inline-flex size-full animate-ping rounded-full bg-current opacity-75" />
-          <span className="relative inline-flex size-1.5 rounded-full bg-current" />
+          <span className="bg-accent-500 absolute inline-flex size-full animate-ping rounded-full opacity-75" />
+          <span className="bg-accent-600 dark:bg-accent-500 relative inline-flex size-1.5 rounded-full" />
         </span>
       )}
       {children}
