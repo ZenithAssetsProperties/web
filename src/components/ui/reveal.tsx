@@ -39,6 +39,7 @@ export function Reveal({ children, delay = 0, className, style, ...props }: Reve
   return (
     <div
       ref={ref}
+      data-visible={visible}
       className={cn(
         "transition-all duration-700 ease-out motion-reduce:translate-y-0 motion-reduce:opacity-100 motion-reduce:transition-none",
         visible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0",

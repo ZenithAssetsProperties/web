@@ -83,8 +83,8 @@ export function SiteHeader() {
           <Link
             href="/properties"
             className={cn(
-              "group relative hidden items-center gap-3 py-2 text-[11px] font-medium tracking-[0.04em] transition-colors duration-500 after:absolute after:right-0 after:bottom-0 after:left-0 after:h-px after:origin-left after:scale-x-0 after:bg-current after:transition-transform after:duration-500 hover:after:scale-x-100 md:inline-flex",
-              solid ? "text-foreground" : "text-white",
+              "group hidden items-center gap-3 border border-transparent px-3 py-2 text-[11px] font-medium tracking-[0.04em] transition-[background-color,border-color,color] duration-500 md:inline-flex",
+              solid ? "text-foreground hover:border-border hover:bg-muted" : "text-white hover:border-white/25 hover:bg-white/10",
             )}
           >
             Explore properties

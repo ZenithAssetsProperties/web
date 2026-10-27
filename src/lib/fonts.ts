@@ -1,4 +1,4 @@
-import { DM_Sans, DM_Serif_Display } from "next/font/google";
+import { DM_Sans, Instrument_Serif } from "next/font/google";
 
 // Confident editorial display face with a clear, modern interface sans.
 export const dmSans = DM_Sans({
@@ -8,10 +8,10 @@ export const dmSans = DM_Sans({
   display: "swap",
 });
 
-export const dmSerifDisplay = DM_Serif_Display({
+export const instrumentSerif = Instrument_Serif({
   subsets: ["latin"],
   weight: "400",
   style: ["normal", "italic"],
-  variable: "--font-dm-serif-display",
+  variable: "--font-instrument-serif",
   display: "swap",
 });

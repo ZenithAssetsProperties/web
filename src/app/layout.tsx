@@ -3,7 +3,7 @@ import { TawkChat } from "@/components/tawk-chat";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { ThemeProvider } from "@/components/theme/theme-provider";
-import { dmSans, dmSerifDisplay } from "@/lib/fonts";
+import { dmSans, instrumentSerif } from "@/lib/fonts";
 import { siteConfig } from "@/lib/site-config";
 import "./globals.css";
 
@@ -32,7 +32,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className={`${dmSans.variable} ${dmSerifDisplay.variable}`}
+      className={`${dmSans.variable} ${instrumentSerif.variable}`}
       suppressHydrationWarning
     >
       <body className="flex min-h-screen flex-col font-sans">
