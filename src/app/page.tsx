@@ -1,12 +1,20 @@
 import { Faq } from "@/components/sections/faq";
+import { CustomerJourney } from "@/components/sections/customer-journey";
+import { FeaturedProperties } from "@/components/sections/featured-properties";
 import { Hero } from "@/components/sections/hero";
-import { TvScroll } from "@/components/sections/tv-scroll";
+import { HomeSearch } from "@/components/sections/home-search";
+import { PropertyCategories } from "@/components/sections/property-categories";
+import { PropertyPrinciples } from "@/components/sections/property-principles";
 
 export default function HomePage() {
   return (
     <>
       <Hero />
-      <TvScroll />
+      <HomeSearch />
+      <PropertyCategories />
+      <FeaturedProperties />
+      <CustomerJourney />
+      <PropertyPrinciples />
       <Faq />
     </>
   );

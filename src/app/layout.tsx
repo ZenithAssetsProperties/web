@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Cursor } from "@/components/cursor";
 import { TawkChat } from "@/components/tawk-chat";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
@@ -38,7 +37,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     >
       <body className="flex min-h-screen flex-col font-sans">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <Cursor />
           <TawkChat />
           <SiteHeader />
           {/* pt-20 clears the fixed header's full-bleed (not-scrolled) height

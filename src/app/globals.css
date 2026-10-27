@@ -57,7 +57,6 @@
   --animate-ken-burns: ken-burns 24s ease-in-out infinite alternate;
   --animate-fade-in: fade-in 0.2s ease-out both;
   --animate-dialog-in: dialog-in 0.2s ease-out both;
-  --animate-marquee: marquee var(--marquee-duration, 40s) linear infinite;
 }
 
 @keyframes shimmer {
@@ -112,18 +111,6 @@
   }
 }
 
-/* Each marquee track slides exactly its own width + trailing gap, so the
-   duplicate track immediately behind it lands in the vacated spot — seamless
-   loop with any number of items, no JS re-sync needed. */
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(calc(-100% - var(--gap, 1.5rem)));
-  }
-}
-
 /* Light mode: pale sage background with deep-teal foreground — the exact duo the
    guideline itself uses for its own light panels. */
 :root {
@@ -170,20 +157,6 @@
 }
 
 @layer utilities {
-  /* Feathers the left/right edges of a horizontally-scrolling strip (marquee)
-     so items fade out instead of hard-clipping at the container bounds. */
-  .fade-edges {
-    mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
-    -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
-  }
-
-  /* Applied to <html> by Cursor once it's confirmed running (fine pointer,
-     JS hydrated) — hiding the native cursor unconditionally in CSS would
-     leave users with no cursor at all if JS fails to load. */
-  .custom-cursor,
-  .custom-cursor * {
-    cursor: none !important;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -191,7 +164,6 @@
     scroll-behavior: auto;
   }
 
-  .animate-marquee,
   .animate-ken-burns,
   .animate-shimmer {
     animation: none;
