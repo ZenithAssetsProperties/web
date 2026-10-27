@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
-      <PageHero eyebrow="About Zenith Asset Group" title="Real estate investing, simplified." />
+      <PageHero eyebrow="About Zenith Asset Group" title="A clearer way to navigate property." />
       <About />
     </>
   );

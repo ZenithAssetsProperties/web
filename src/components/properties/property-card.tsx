@@ -1,7 +1,5 @@
 import Link from "next/link";
 import { ArrowUpRight, BedDouble, Maximize2, MapPin } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
-import { Card } from "@/components/ui/card";
 import { DemoPropertyVisual } from "@/components/properties/demo-property-visual";
 import { formatNgn, type Property } from "@/lib/properties";
 
@@ -11,55 +9,75 @@ const availabilityLabel = {
   sold: "Sold · demo",
 } as const;
 
-export function PropertyCard({ property }: { property: Property }) {
+export function PropertyCard({
+  property,
+  variant = "standard",
+}: {
+  property: Property;
+  variant?: "standard" | "feature";
+}) {
   const sizeLabel = `${new Intl.NumberFormat("en-NG").format(property.size.value)} ${property.size.unit}`;
+  const feature = variant === "feature";
 
   return (
-    <Card className="group overflow-hidden rounded-2xl p-0 transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-xl">
-      <Link
-        href={`/properties/${property.slug}`}
-        className="block rounded-xl focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none"
-      >
-        <div className="relative">
-          <DemoPropertyVisual property={property} compact />
-          <Badge className="absolute top-4 right-4 border border-white/15 bg-brand-950/65 text-white backdrop-blur-md">
-            {availabilityLabel[property.availability]}
-          </Badge>
-        </div>
-        <div className="p-5 sm:p-6">
-          <div className="flex items-start justify-between gap-4">
-            <div>
-              <p className="text-muted-foreground text-xs font-semibold tracking-[0.12em] uppercase">
-                {property.type}
-              </p>
-              <h2 className="font-heading mt-2 text-xl font-bold tracking-tight sm:text-2xl">
+    <article className="group overflow-hidden rounded-[1.4rem] border border-foreground/10 bg-background shadow-[0_12px_40px_-28px_rgba(4,16,19,0.38)] transition-[transform,box-shadow,border-color] duration-500 ease-out hover:-translate-y-1 hover:border-brand-600/20 hover:shadow-[0_26px_70px_-36px_rgba(4,16,19,0.48)] motion-reduce:transform-none">
+      <div className="relative">
+        <DemoPropertyVisual property={property} compact />
+        <span className="absolute right-4 top-4 rounded-full border border-white/20 bg-brand-950/65 px-3 py-1.5 text-[10px] font-medium tracking-wide text-white backdrop-blur-md sm:right-5 sm:top-5">
+          {availabilityLabel[property.availability]}
+        </span>
+      </div>
+
+      <div className={`p-5 sm:p-6 ${feature ? "sm:p-7" : ""}`}>
+        <div className="flex items-start justify-between gap-4">
+          <div className="min-w-0">
+            <p className="text-brand-600 dark:text-brand-300 text-[10px] font-semibold tracking-[0.16em] uppercase">
+              {property.type}
+            </p>
+            <h3 className={`font-heading mt-2 font-bold tracking-tight ${feature ? "text-2xl sm:text-3xl" : "text-xl"}`}>
+              <Link
+                href={`/properties/${property.slug}`}
+                className="rounded-sm decoration-brand-600/50 underline-offset-4 transition-[text-decoration-color] hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-600"
+              >
                 {property.title}
-              </h2>
-            </div>
-            <ArrowUpRight className="text-muted-foreground mt-1 size-5 shrink-0 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
+              </Link>
+            </h3>
           </div>
-          <p className="text-muted-foreground mt-3 flex items-center gap-1.5 text-sm">
-            <MapPin className="size-4 shrink-0" aria-hidden="true" />
-            {property.location.area}, {property.location.city}
-          </p>
-          <div className="border-border mt-5 flex items-end justify-between gap-4 border-t pt-4">
-            <div>
-              <p className="text-muted-foreground text-xs">Illustrative price</p>
-              <p className="font-heading mt-1 text-lg font-bold">{formatNgn(property.priceNgn)}</p>
-            </div>
-            <div className="text-muted-foreground flex items-center gap-3 text-xs">
-              {property.bedrooms !== undefined && (
-                <span className="inline-flex items-center gap-1">
-                  <BedDouble className="size-3.5" aria-hidden="true" /> {property.bedrooms}
-                </span>
-              )}
-              <span className="inline-flex items-center gap-1">
-                <Maximize2 className="size-3.5" aria-hidden="true" /> {sizeLabel}
+          <Link
+            href={`/properties/${property.slug}`}
+            aria-label={`View ${property.title}`}
+            className="focus-visible:ring-ring flex size-10 shrink-0 items-center justify-center rounded-full border border-border transition-[background-color,color,transform] duration-300 group-hover:-rotate-45 group-hover:bg-brand-600 group-hover:text-white focus-visible:ring-2 focus-visible:outline-none"
+          >
+            <ArrowUpRight className="size-4" aria-hidden="true" />
+          </Link>
+        </div>
+
+        <p className="text-muted-foreground mt-3 flex items-center gap-1.5 text-sm">
+          <MapPin className="text-brand-600 dark:text-brand-300 size-4 shrink-0" aria-hidden="true" />
+          {property.location.area}, {property.location.city}
+        </p>
+
+        <div className="mt-5 flex items-end justify-between gap-4 border-t border-border/80 pt-4">
+          <div>
+            <p className="text-muted-foreground text-[10px] font-medium tracking-[0.12em] uppercase">
+              Illustrative price
+            </p>
+            <p className={`font-heading mt-1 font-bold tracking-tight ${feature ? "text-2xl" : "text-xl"}`}>
+              {formatNgn(property.priceNgn)}
+            </p>
+          </div>
+          <div className="text-muted-foreground flex items-center gap-3 text-xs">
+            {property.bedrooms !== undefined && (
+              <span className="inline-flex items-center gap-1.5">
+                <BedDouble className="size-3.5" aria-hidden="true" /> {property.bedrooms}
               </span>
-            </div>
+            )}
+            <span className="inline-flex items-center gap-1.5">
+              <Maximize2 className="size-3.5" aria-hidden="true" /> {sizeLabel}
+            </span>
           </div>
         </div>
-      </Link>
-    </Card>
+      </div>
+    </article>
   );
 }

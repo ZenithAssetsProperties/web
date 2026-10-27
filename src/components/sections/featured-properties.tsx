@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { PropertyCard } from "@/components/properties/property-card";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Grid } from "@/components/ui/grid";
@@ -17,29 +16,35 @@ export async function FeaturedProperties() {
     <Section id="featured-properties" spacing="lg" className="bg-muted/40">
       <Container size="xl">
         <Reveal>
-          <div className="mb-10 flex flex-col justify-between gap-5 lg:flex-row lg:items-end">
+          <div className="mb-10 flex flex-col justify-between gap-5 lg:mb-12 lg:flex-row lg:items-end">
             <div className="max-w-2xl">
-              <Badge variant="outline">Illustrative preview · not active listings</Badge>
-              <Heading as="h2" level="h1" className="mt-4">
-                A closer look at the marketplace.
+              <p className="text-brand-600 dark:text-brand-300 text-[10px] font-semibold tracking-[0.18em] uppercase">
+                The collection · Preview
+              </p>
+              <Heading as="h2" level="h1" className="mt-3">
+                Property, presented with more care.
               </Heading>
-              <Text className="text-muted-foreground mt-4 max-w-xl">
-                These fictional examples show how property details may be presented. Names, prices,
-                features, and availability are not real offers.
+              <Text className="text-muted-foreground mt-3 max-w-xl">
+                Explore the listing experience with sample properties, clear details, and imagery
+                that is explicitly illustrative.
               </Text>
             </div>
             <Button asChild variant="secondary" className="w-fit">
               <Link href="/properties">
-                Browse all examples <ArrowRight aria-hidden="true" />
+                Explore the collection <ArrowRight aria-hidden="true" />
               </Link>
             </Button>
           </div>
         </Reveal>
 
-        <Grid cols={3} gap="md">
+        <Grid cols={2} gap="md">
           {featuredProperties.map((property, index) => (
-            <Reveal key={property.id} delay={index * 70}>
-              <PropertyCard property={property} />
+            <Reveal
+              key={property.id}
+              delay={index * 90}
+              className={index === 0 ? "sm:col-span-2" : ""}
+            >
+              <PropertyCard property={property} variant={index === 0 ? "feature" : "standard"} />
             </Reveal>
           ))}
         </Grid>

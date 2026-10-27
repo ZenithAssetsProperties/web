@@ -22,7 +22,7 @@ The apps may share brand tokens and genuinely common UI primitives through a pri
 The current repo provides a useful foundation:
 
 - Next.js App Router, TypeScript, Tailwind CSS v4, reusable branded UI primitives, and light/dark themes.
-- Home, About, Listings, and Contact routes; shared header and footer; home hero, concept property marquee, and FAQ.
+- Home, About, Listings, and Contact routes; shared header and footer; home hero, property search, category paths, featured demo properties, customer journey, transparency principles, and FAQ.
 - Brand icon/pattern assets and hero video/poster.
 - Metadata, robots/sitemap, loading/error/404 screens, basic security headers, and CI gates for lint/typecheck/format/build.
 
@@ -37,10 +37,10 @@ Last updated: 27 October 2026. Status is recorded per phase so the team can see 
 | Phase | Status | Evidence / remaining work |
 |---|---|---|
 | 0 — Product and content decisions | PRD scope adopted; content approval pending | This build follows the PRD's brokerage/property discovery model. Demo content is explicitly fictional; live inventory, verification policy, prices, and transaction terms still need approval. |
-| 1 — Public-site architecture/design foundation | In progress | Public navigation, asynchronous typed catalogue adapter, shared property card/visual/search components, and public route foundations are in the repo. Responsive, accessibility, and code-quality review remains. |
-| 2 — Public property discovery | In progress | URL-driven demo filters cover text, category, location, min/max price, bedrooms, availability, and price sorting. Detail pages show facts and document states. A virtual-tour route has an explicit missing-media preview state. Approved inventory, real media, PRD field coverage, and final review remain. |
+| 1 — Public-site architecture/design foundation | In progress | Public navigation, asynchronous typed catalogue adapter, shared property card/visual/search components, and responsive homepage composition are in the repo. The landing page and property cards now use a restrained editorial direction, photo-led category tiles, image treatments, and reduced-motion-aware transitions. Native pointer is preserved and the carousel marquee is removed. Device, accessibility, visual, and code-quality review remains. |
+| 2 — Public property discovery | In progress | URL-driven demo filters cover text, category, location, min/max price, bedrooms, availability, and price sorting. Detail pages show facts and document states. A virtual-tour route has an explicit missing-media preview state. Unsplash concept photography is labeled and credited in the UI; replace all concept imagery with Zenith-approved property media before launch. Approved inventory, PRD field coverage, and final review remain. |
 | 3 — Public conversion flows | In progress | Property detail includes an inspection-request interaction that requires fictional details and explicitly confirms that nothing is sent or stored. Contact/callback, document-request, and seller/request flows remain. |
-| 4 — Public content and launch quality | In progress | Home/About/FAQ copy now follows the PRD scope and the non-persisting waitlist path is removed. Final content approval, production metadata/sitemap, accessibility, performance, and responsive review remain. |
+| 4 — Public content and launch quality | In progress | Home/About/FAQ copy follows the PRD scope; the non-persisting waitlist path is removed. Home hero uses a static optimized poster instead of autoplay video. Final content approval, production metadata/sitemap, accessibility, performance, and responsive review remain. |
 
 The customer portal, admin portal, and backend are separately scoped projects; none is being implemented in this repo.
 
@@ -132,7 +132,7 @@ Suggested integration order: public catalog → public enquiry/inspection → cu
 3. Keep mock fixtures in a dedicated module; production UI must not import fixture records directly.
 4. Build mobile-first, with deliberate patterns for filters, dense tables, touch controls, and reachable primary actions.
 5. Handle loading, empty, error, validation, unavailable, and permission-denied states as first-class designs.
-6. Meet keyboard, screen-reader, focus, contrast, alt-text, and reduced-motion expectations. Audit the current rotating hero text and marquee/reveal animations for reduced-motion behavior.
+6. Meet keyboard, screen-reader, focus, contrast, alt-text, and reduced-motion expectations. Keep native pointer affordances, avoid continuous promotional carousels, and audit the remaining reveal/hero motion for reduced-motion behavior.
 7. Optimize responsive listing media and keep interactive JavaScript scoped to the pages/components that need it.
 8. Preserve lint, typecheck, formatting, and production build gates. Add automated route/interaction checks as the public workflows are implemented; a successful build alone does not prove a journey works.
 9. No portal code, portal route, portal-specific navigation, or admin dashboard should be added to this `web` repo.

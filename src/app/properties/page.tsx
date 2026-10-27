@@ -3,7 +3,6 @@ import Link from "next/link";
 import { ArrowRight, SlidersHorizontal } from "lucide-react";
 import { PropertyCard } from "@/components/properties/property-card";
 import { PropertySearchForm, type PropertySearchValues } from "@/components/properties/property-search-form";
-import { Badge } from "@/components/ui/badge";
 import { Container } from "@/components/ui/container";
 import { EmptyState } from "@/components/ui/empty-state";
 import { Grid } from "@/components/ui/grid";
@@ -82,46 +81,45 @@ export default async function PropertiesPage({
 
   return (
     <>
-      <section className="bg-brand-950 relative overflow-hidden pb-12 pt-32 text-white sm:pb-16 sm:pt-40">
+      <section className="bg-brand-950 relative isolate overflow-hidden pb-16 pt-36 text-white sm:pb-24 sm:pt-44">
         <div
-          className="absolute inset-0 opacity-10"
-          style={{
-            backgroundImage: "url(/brand/pattern-tile.png)",
-            backgroundSize: "112px 117px",
-            backgroundRepeat: "repeat",
-          }}
+          className="absolute inset-0 -z-20 bg-cover bg-[center_42%] opacity-40"
+          style={{ backgroundImage: "url(/videos/hero-lagos-poster.jpg)" }}
           aria-hidden="true"
         />
-        <Container className="relative">
-          <Stack gap="md" className="max-w-3xl">
-            <Badge className="border border-white/20 bg-white/10 text-white">Marketplace preview</Badge>
+        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-brand-950 via-brand-950/85 to-brand-950/55" />
+        <Container size="xl" className="relative">
+          <Stack gap="md" className="max-w-4xl">
+            <p className="text-[10px] font-semibold tracking-[0.2em] text-brand-200 uppercase">
+              Zenith Asset Group <span className="px-2 text-white/40">/</span> Property preview
+            </p>
             <Heading as="h1" level="display" className="text-white">
-              Find a place to begin.
+              The collection.
             </Heading>
-            <Text size="lead" className="max-w-2xl text-white/70">
-              Explore the property discovery experience. The listings and values on this page are
-              fictional demo data, not active offers.
+            <Text size="lead" className="max-w-2xl text-white/75">
+              Explore residential, land, and commercial property examples. Every listing, price,
+              availability status, and image on this page is illustrative.
             </Text>
           </Stack>
         </Container>
       </section>
 
-      <Section spacing="md" className="relative -mt-1">
+      <Section spacing="md" className="relative -mt-9 pt-0 sm:-mt-12">
         <Container>
           <PropertySearchForm values={values} />
         </Container>
       </Section>
 
       <Section spacing="md" className="pt-4 sm:pt-8">
-        <Container>
-          <div className="mb-8 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+        <Container size="xl">
+          <div className="mb-8 flex flex-col justify-between gap-4 sm:mb-10 sm:flex-row sm:items-end">
             <div>
               <div className="text-muted-foreground mb-2 flex items-center gap-2 text-sm">
                 <SlidersHorizontal className="size-4" aria-hidden="true" />
                 {hasFilters ? "Filtered demo results" : "Explore the collection"}
               </div>
-              <Heading as="h2" level="h2">
-                {properties.length} demo {properties.length === 1 ? "property" : "properties"}
+              <Heading as="h2" level="h2" className="font-medium">
+                {properties.length.toString().padStart(2, "0")} {properties.length === 1 ? "property" : "properties"} to explore
               </Heading>
             </div>
             {hasFilters && (

@@ -10,6 +10,12 @@ export interface Property {
   id: string;
   slug: string;
   title: string;
+  image: {
+    src: string;
+    alt: string;
+    photographer: string;
+    creditUrl: string;
+  };
   category: PropertyCategory;
   type: string;
   location: {
@@ -39,6 +45,12 @@ export const demoProperties: Property[] = [
     id: "demo-property-01",
     slug: "demo-detached-home-lekki",
     title: "Demo Detached Home",
+    image: {
+      src: "https://images.unsplash.com/photo-1766603636483-84b2a2b8ee89?auto=format&fit=crop&w=1800&q=85",
+      alt: "Contemporary home with a timber facade and landscaped garden, used as concept imagery",
+      photographer: "Alef Morais",
+      creditUrl: "https://unsplash.com/photos/modern-house-with-wooden-facade-and-green-lawn-p9jDz1AbLig",
+    },
     category: "residential",
     type: "Detached duplex",
     location: { area: "Lekki", city: "Lagos", state: "Lagos" },
@@ -61,6 +73,12 @@ export const demoProperties: Property[] = [
     id: "demo-property-02",
     slug: "demo-apartment-lekki",
     title: "Demo City Apartment",
+    image: {
+      src: "https://images.unsplash.com/photo-1774199679021-db3b421867c3?auto=format&fit=crop&w=1400&q=85",
+      alt: "Bright contemporary living room, used as concept imagery",
+      photographer: "Clay Banks",
+      creditUrl: "https://unsplash.com/photos/modern-living-room-with-large-windows-overlooking-trees-A9DmoCgM5iw",
+    },
     category: "residential",
     type: "Apartment",
     location: { area: "Lekki", city: "Lagos", state: "Lagos" },
@@ -80,6 +98,12 @@ export const demoProperties: Property[] = [
     id: "demo-property-03",
     slug: "demo-land-abuja",
     title: "Demo Residential Plot",
+    image: {
+      src: "https://images.unsplash.com/photo-1596768368272-b1b3a8fe9632?auto=format&fit=crop&w=1400&q=85",
+      alt: "Open green field used as concept imagery for a fictional land listing",
+      photographer: "Muhammad Ma'ruf",
+      creditUrl: "https://unsplash.com/photos/green-grass-field-under-white-sky-during-daytime-3x65TvaOLKQ",
+    },
     category: "land",
     type: "Residential land",
     location: { area: "Central Area", city: "Abuja", state: "Federal Capital Territory" },
@@ -96,6 +120,12 @@ export const demoProperties: Property[] = [
     id: "demo-property-04",
     slug: "demo-commercial-suite-vi",
     title: "Demo Commercial Suite",
+    image: {
+      src: "https://images.unsplash.com/photo-1785966431797-4d37f79366e5?auto=format&fit=crop&w=1400&q=85",
+      alt: "Contemporary office building exterior, used as concept imagery",
+      photographer: "Aliaksei Liohenki",
+      creditUrl: "https://unsplash.com/photos/office-building-with-grid-facade-YWhnVSj7bBE",
+    },
     category: "commercial",
     type: "Commercial property",
     location: { area: "Victoria Island", city: "Lagos", state: "Lagos" },
