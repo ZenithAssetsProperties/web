@@ -43,7 +43,8 @@ export function Marquee({
         className={cn(
           "animate-marquee flex w-max shrink-0",
           reverse && "[animation-direction:reverse]",
-          pauseOnHover && "group-hover:[animation-play-state:paused]",
+          pauseOnHover &&
+            "group-hover:[animation-play-state:paused] group-focus-within:[animation-play-state:paused]",
         )}
         style={trackStyle}
       >
@@ -54,7 +55,8 @@ export function Marquee({
         className={cn(
           "animate-marquee flex w-max shrink-0",
           reverse && "[animation-direction:reverse]",
-          pauseOnHover && "group-hover:[animation-play-state:paused]",
+          pauseOnHover &&
+            "group-hover:[animation-play-state:paused] group-focus-within:[animation-play-state:paused]",
         )}
         style={trackStyle}
       >

@@ -53,7 +53,7 @@ export function SiteHeader() {
         className={cn(
           "flex w-full items-center justify-between border transition-all duration-500 ease-out",
           solid
-            ? "border-border bg-background/90 shadow-brand-950/10 mt-3 max-w-4xl rounded-full px-5 py-2.5 shadow-xl backdrop-blur-xl"
+            ? "border-border bg-background/90 shadow-brand-950/10 mt-3 max-w-6xl rounded-full px-5 py-2.5 shadow-xl backdrop-blur-xl"
             : "max-w-none rounded-none border-transparent bg-transparent px-6 py-5 sm:px-8",
         )}
       >
@@ -80,7 +80,7 @@ export function SiteHeader() {
         <nav
           ref={navRef}
           onMouseLeave={() => setHoverRect(null)}
-          className="relative hidden items-center gap-1 md:flex"
+          className="relative hidden items-center gap-1 xl:flex"
         >
           <span
             aria-hidden="true"
@@ -92,7 +92,10 @@ export function SiteHeader() {
             style={hoverRect ? { left: hoverRect.left, width: hoverRect.width } : undefined}
           />
           {siteConfig.nav.map((item) => {
-            const active = pathname === item.href;
+            const active =
+              item.href === "/"
+                ? pathname === "/"
+                : pathname === item.href || pathname.startsWith(`${item.href}/`);
             return (
               <Link
                 key={item.href}
@@ -118,15 +121,15 @@ export function SiteHeader() {
         <div className="flex items-center gap-2">
           <ThemeToggle className={cn(!solid && "text-white hover:bg-white/10")} />
           <Button asChild size={solid ? "sm" : "md"} className="hidden md:inline-flex">
-            <Link href="/contact">
-              Get in touch
+            <Link href="/properties">
+              Explore properties
               <ArrowRight className="size-4" aria-hidden="true" />
             </Link>
           </Button>
           <Button
             variant="ghost"
             size="icon"
-            className={cn("md:hidden", !solid && "text-white hover:bg-white/10")}
+            className={cn("xl:hidden", !solid && "text-white hover:bg-white/10")}
             aria-label={menuOpen ? "Close menu" : "Open menu"}
             aria-expanded={menuOpen}
             onClick={() => setMenuOpen((v) => !v)}
@@ -139,7 +142,7 @@ export function SiteHeader() {
       {menuOpen && (
         <nav
           className={cn(
-            "border-border bg-background absolute inset-x-4 top-full mt-2 rounded-2xl border shadow-xl md:hidden",
+            "border-border bg-background absolute inset-x-4 top-full mt-2 rounded-2xl border shadow-xl xl:hidden",
           )}
         >
           <div className="flex flex-col gap-1 p-3">
@@ -159,8 +162,8 @@ export function SiteHeader() {
               </Link>
             ))}
             <Button asChild className="mt-2">
-              <Link href="/contact">
-                Get in touch
+              <Link href="/properties">
+                Explore properties
                 <ArrowRight className="size-4" aria-hidden="true" />
               </Link>
             </Button>

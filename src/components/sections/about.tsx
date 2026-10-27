@@ -1,13 +1,4 @@
-import {
-  Award,
-  BadgeCheck,
-  Compass,
-  Eye,
-  Lightbulb,
-  ShieldCheck,
-  Target,
-  TrendingUp,
-} from "lucide-react";
+import { Award, BadgeCheck, Eye, Compass, Lightbulb, ShieldCheck, Target, TrendingUp } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Grid } from "@/components/ui/grid";
 import { Reveal } from "@/components/ui/reveal";
@@ -21,18 +12,18 @@ const coreValues = [
   { label: "Excellence", icon: Award },
   { label: "Innovation", icon: Lightbulb },
   { label: "Accountability", icon: BadgeCheck },
-  { label: "Long-Term Value Creation", icon: TrendingUp },
+  { label: "Long-Term Value", icon: TrendingUp },
 ];
 
 const vision = [
-  "To become Africa's leading real estate investment platform",
-  "Empowering individuals, families, and institutions to build generational wealth",
-  "Making property investment accessible, free from the limits of geography, capital, or complexity",
-  "Opening real estate ownership to anyone ready to invest in their future",
+  "Make property discovery simple and convenient",
+  "Help buyers review property information with greater transparency",
+  "Support remote and in-person inspection journeys",
+  "Give customers a clear view of their transaction progress",
 ];
 
 const mission =
-  "To simplify real estate investing by offering secure, transparent, and profitable investment opportunities backed by carefully selected assets and professional management. We are committed to breaking down the traditional barriers of real estate ownership — whether that's high capital requirements, distance for diaspora investors, or the complexity of managing property — so that every investor can participate with confidence and clarity at every step of the journey.";
+  "To make property discovery and transactions easier to understand by bringing property information, documentation status, inspection options, and customer support into a more connected digital journey.";
 
 export function About() {
   return (
@@ -42,28 +33,21 @@ export function About() {
           <Reveal>
             <Stack gap="md" className="max-w-3xl">
               <Text size="lead">
-                Zenith Asset Group is a Nigerian real estate investment company making property
-                ownership accessible through fractional investing — letting people own shares of
-                income-generating properties without needing millions upfront.
+                Zenith Asset Group is building a digital property experience to help customers discover
+                properties, review available information, and understand the next steps.
               </Text>
               <Text>
-                Our platform, Partners by Zenith Asset Group, brings this online with verified
-                listings, virtual inspections, secure investing, and portfolio tracking in one
-                dashboard. We simplify real estate investing and build long-term wealth for everyday
-                people, the diaspora, and institutions alike — backed by careful due diligence and
-                full transparency on fees and returns.
+                The planned journey brings property details, documentation information, virtual and
+                physical inspection options, and access to Zenith&apos;s team into one connected
+                experience. This website is a frontend preview; listing availability and transaction
+                services will be communicated when they are ready.
               </Text>
             </Stack>
           </Reveal>
 
-          {/* Core values as blueprint-style spec panels — numbered like drawing
-              annotations, oversized thin-line icons, square registration-mark
-              corners. Not another rounded icon-in-a-circle feature grid. */}
-          <Reveal delay={200}>
+          <Reveal delay={150}>
             <Stack gap="sm">
-              <Heading as="h3" level="h4">
-                Core values
-              </Heading>
+              <Heading as="h2" level="h3">Core values</Heading>
               <Grid cols={3} gap="md">
                 {coreValues.map(({ label, icon: Icon }, index) => (
                   <div
@@ -72,17 +56,14 @@ export function About() {
                   >
                     <span className="border-border group-hover:border-brand-600 dark:group-hover:border-brand-400 absolute -top-px -left-px size-3 border-t-2 border-l-2 transition-colors" />
                     <span className="border-border group-hover:border-brand-600 dark:group-hover:border-brand-400 absolute -right-px -bottom-px size-3 border-r-2 border-b-2 transition-colors" />
-
                     <span className="text-muted-foreground/60 font-mono text-xs">
                       {String(index + 1).padStart(2, "0")}
                     </span>
-
                     <Icon
                       strokeWidth={1.25}
                       className="text-brand-600/70 group-hover:text-brand-600 dark:text-brand-400/70 dark:group-hover:text-brand-400 mt-5 size-10 transition-all duration-300 group-hover:scale-110"
                       aria-hidden="true"
                     />
-
                     <Text as="span" size="sm" className="text-foreground mt-4 block font-semibold">
                       {label}
                     </Text>
@@ -100,18 +81,12 @@ export function About() {
                   className="text-brand-600/70 dark:text-brand-400/70 size-8"
                   aria-hidden="true"
                 />
-                <Heading as="h3" level="h4">
-                  Vision
-                </Heading>
+                <Heading as="h2" level="h4">Vision</Heading>
                 <ul className="space-y-2">
                   {vision.map((point) => (
                     <li key={point} className="group flex gap-2.5">
                       <span className="bg-brand-600 dark:bg-brand-400 mt-2 size-1.5 shrink-0 rounded-full transition-transform group-hover:scale-125" />
-                      <Text
-                        as="span"
-                        size="sm"
-                        className="text-muted-foreground group-hover:text-foreground transition-colors"
-                      >
+                      <Text as="span" size="sm" className="text-muted-foreground group-hover:text-foreground transition-colors">
                         {point}
                       </Text>
                     </li>
@@ -124,9 +99,7 @@ export function About() {
                   className="text-brand-600/70 dark:text-brand-400/70 size-8"
                   aria-hidden="true"
                 />
-                <Heading as="h3" level="h4">
-                  Mission
-                </Heading>
+                <Heading as="h2" level="h4">Mission</Heading>
                 <Text size="muted">{mission}</Text>
               </Stack>
             </Grid>

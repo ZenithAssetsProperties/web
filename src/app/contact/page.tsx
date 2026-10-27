@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { ArrowRight, Globe, Mail } from "lucide-react";
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Grid } from "@/components/ui/grid";
 import { Section } from "@/components/ui/section";
 import { PageHero } from "@/components/page-hero";
-import { WaitlistTrigger } from "@/components/waitlist-trigger";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -18,7 +18,7 @@ export default function ContactPage() {
       <PageHero
         eyebrow="Contact"
         title="Get in touch"
-        description="Have a question, or want early access when we launch? Reach out directly, or join the waitlist to hear from us first."
+        description="Have a question about Zenith Asset Group or the property marketplace preview? Reach out directly."
       />
       <Section spacing="lg">
         <Container size="md">
@@ -53,10 +53,12 @@ export default function ContactPage() {
             </Card>
           </Grid>
 
-          <WaitlistTrigger size="lg" className="mt-10 w-fit">
-            Join our waitlist
-            <ArrowRight className="size-4" aria-hidden="true" />
-          </WaitlistTrigger>
+          <Button asChild size="lg" className="mt-10 w-fit">
+            <a href="mailto:hello@zenithassetgroup.com">
+              Email Zenith Asset Group
+              <ArrowRight className="size-4" aria-hidden="true" />
+            </a>
+          </Button>
         </Container>
       </Section>
     </>

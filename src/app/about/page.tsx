@@ -5,7 +5,7 @@ import { PageHero } from "@/components/page-hero";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Zenith Asset Group is a Nigerian real estate investment company making property ownership accessible through fractional investing.",
+    "Learn about Zenith Asset Group and its planned digital property experience.",
 };
 
 export default function AboutPage() {
