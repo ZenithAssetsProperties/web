@@ -51,7 +51,8 @@ export default async function PropertiesPage({ searchParams }: { searchParams: S
   const bedrooms = firstValue(params.bedrooms) ?? "";
   const availability = validAvailability(firstValue(params.availability));
   const rawSort = firstValue(params.sort);
-  const sort = rawSort === "price-asc" || rawSort === "price-desc" ? rawSort : "";
+  const sort: PropertySearchValues["sort"] =
+    rawSort === "price-asc" || rawSort === "price-desc" ? rawSort : "";
   const filters = {
     query,
     category,

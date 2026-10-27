@@ -57,7 +57,7 @@ export function Hero() {
         </div>
 
         <div className="mt-14 flex w-full flex-col items-start gap-3 border-t border-white/25 pt-4 text-white/65 sm:mt-16 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-[9px] tracking-[0.18em] uppercase sm:text-[10px]">Lagos, Nigeria <span className="px-2 text-white/35">/</span> Property &amp; investment</p>
+          <p className="text-[9px] tracking-[0.18em] uppercase sm:text-[10px]">Residential <span className="px-2 text-white/35">/</span> Commercial <span className="px-2 text-white/35">/</span> Land</p>
           <a href="#home-search" className="group inline-flex items-center gap-2 border border-transparent px-3 py-1.5 text-[9px] tracking-[0.16em] uppercase transition-[background-color,border-color,color] duration-500 hover:border-white/30 hover:bg-white/10 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white sm:text-[10px]">
             Begin exploring <ArrowDown className="size-3 transition-transform duration-500 ease-out group-hover:translate-y-1" aria-hidden="true" />
           </a>

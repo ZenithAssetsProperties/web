@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowUpRight, Bath, BedDouble, CarFront, FileText, Maximize2 } from "lucide-react";
 import { DemoPropertyVisual } from "@/components/properties/demo-property-visual";
-import { InspectionRequestPreview } from "@/components/properties/inspection-request-preview";
+import { PropertyInterestPreview } from "@/components/properties/property-interest-preview";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -84,8 +84,8 @@ export default async function PropertyDetailPage({ params }: PageProps) {
                 </p>
                 <div className="mt-6 grid gap-3">
                   <Button asChild>
-                    <Link href="#inspection-request">
-                      Preview inspection request <ArrowUpRight aria-hidden="true" />
+                    <Link href="#property-interest">
+                      Express interest <ArrowUpRight aria-hidden="true" />
                     </Link>
                   </Button>
                   <Button asChild variant="secondary">
@@ -165,7 +165,7 @@ export default async function PropertyDetailPage({ params }: PageProps) {
 
       <Section spacing="md" border="top">
         <Container size="md">
-          <InspectionRequestPreview property={property} />
+          <PropertyInterestPreview propertyTitle={property.title} propertyHref={`/properties/${property.slug}`} />
         </Container>
       </Section>
 

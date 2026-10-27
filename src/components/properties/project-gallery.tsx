@@ -6,7 +6,8 @@ import type { ResidenceVisual } from "@/lib/seventh-residence";
 
 export function ProjectGallery({ visuals }: { visuals: ResidenceVisual[] }) {
   const [activeIndex, setActiveIndex] = useState(0);
-  const active = visuals[activeIndex];
+  const active = visuals[activeIndex] ?? visuals[0];
+  if (!active) return null;
 
   return (
     <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_200px] lg:gap-8">

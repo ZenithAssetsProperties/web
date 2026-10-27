@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowDown, ArrowRight } from "lucide-react";
 import { ProjectGallery } from "@/components/properties/project-gallery";
+import { PropertyInterestPreview } from "@/components/properties/property-interest-preview";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Grid } from "@/components/ui/grid";
@@ -164,19 +165,28 @@ export default function SeventhResidencePage() {
           <div className="flex flex-col justify-between gap-6 border-t border-border pt-8 sm:flex-row sm:items-end">
             <div className="max-w-xl">
               <p className="text-brand-600 dark:text-brand-300 text-[10px] font-semibold tracking-[0.2em] uppercase">
-                Need confirmed information?
+                Interested in this project?
               </p>
-              <Heading as="h2" level="h2" className="mt-3">Speak with Zenith.</Heading>
+              <Heading as="h2" level="h2" className="mt-3">Choose your next step.</Heading>
               <Text size="sm" className="text-muted-foreground mt-2">
-                Contact the team for the latest approved project information.
+                Ask for approved information, discuss a viewing, or understand the purchase journey for this project.
               </Text>
             </div>
             <Button asChild size="sm" variant="secondary" className="w-fit rounded-sm px-4">
-              <Link href="/contact">
-                Contact Zenith <ArrowRight aria-hidden="true" />
+              <Link href="#property-interest">
+                Express project interest <ArrowRight aria-hidden="true" />
               </Link>
             </Button>
           </div>
+        </Container>
+      </Section>
+
+      <Section spacing="lg" border="top" className="bg-muted/30">
+        <Container size="xl">
+          <PropertyInterestPreview
+            propertyTitle="The Seventh Residence"
+            propertyHref="/properties/the-seventh-residence"
+          />
         </Container>
       </Section>
     </>

@@ -96,7 +96,7 @@ export default async function VirtualTourPage({ params }: PageProps) {
                 </p>
               </div>
               <Button asChild>
-                <Link href={`/properties/${property.slug}#inspection-request`}>
+                <Link href={`/properties/${property.slug}#property-interest`}>
                   Preview inspection request <ArrowRight aria-hidden="true" />
                 </Link>
               </Button>
