@@ -141,6 +141,29 @@
   filter: blur(0);
 }
 
+.project-feature-image,
+.sample-listing-image {
+  clip-path: inset(0 100% 0 0);
+  opacity: 0.7;
+  transition:
+    clip-path 1200ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 700ms ease-out;
+}
+
+[data-visible="true"] .project-feature-image,
+[data-visible="true"] .sample-listing-image {
+  clip-path: inset(0);
+  opacity: 1;
+}
+
+.project-feature-reveal[data-visible="true"] figure > div:nth-child(2) .project-feature-image {
+  transition-delay: 100ms;
+}
+
+.project-feature-reveal[data-visible="true"] figure > div:nth-child(3) .project-feature-image {
+  transition-delay: 200ms;
+}
+
 @keyframes dialog-in {
   from {
     opacity: 0;
@@ -213,6 +236,13 @@
     transform: none;
     opacity: 1;
     filter: none;
+    transition: none;
+  }
+
+  .project-feature-image,
+  .sample-listing-image {
+    clip-path: none;
+    opacity: 1;
     transition: none;
   }
 }

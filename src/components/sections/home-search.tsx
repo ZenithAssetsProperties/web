@@ -8,7 +8,7 @@ import { Heading, Text } from "@/components/ui/typography";
 
 export function HomeSearch() {
   return (
-    <section id="home-search" className="relative z-20 -mt-10 pb-4 sm:-mt-14">
+    <section id="home-search" className="relative z-20 -mt-10 scroll-mt-24 pb-4 sm:-mt-14">
       <Container>
         <Reveal delay={100}>
           <form
