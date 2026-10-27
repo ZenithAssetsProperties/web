@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, SlidersHorizontal } from "lucide-react";
+import { ArrowRight, ChevronRight, SlidersHorizontal } from "lucide-react";
 import { PropertyCard } from "@/components/properties/property-card";
 import { PropertySearchForm, type PropertySearchValues } from "@/components/properties/property-search-form";
 import { ResidenceListing } from "@/components/properties/residence-listing";
 import { Container } from "@/components/ui/container";
 import { EmptyState } from "@/components/ui/empty-state";
 import { Grid } from "@/components/ui/grid";
+import { Reveal } from "@/components/ui/reveal";
 import { Section } from "@/components/ui/section";
-import { Stack } from "@/components/ui/stack";
 import { Heading, Text } from "@/components/ui/typography";
 import {
   propertyCatalogue,
@@ -18,7 +18,7 @@ import {
 
 export const metadata: Metadata = {
   title: "Explore properties",
-  description: "Preview the property discovery experience for Zenith Asset Group.",
+  description: "Explore the Zenith Asset Group property catalogue preview.",
   robots: { index: false, follow: false },
 };
 
@@ -41,11 +41,7 @@ function parsePositiveNumber(value: string) {
   return value && Number.isFinite(parsed) && parsed > 0 ? parsed : undefined;
 }
 
-export default async function PropertiesPage({
-  searchParams,
-}: {
-  searchParams: SearchParams;
-}) {
+export default async function PropertiesPage({ searchParams }: { searchParams: SearchParams }) {
   const params = await searchParams;
   const query = firstValue(params.q) ?? "";
   const category = validCategory(firstValue(params.category));
@@ -82,87 +78,89 @@ export default async function PropertiesPage({
 
   return (
     <>
-      <section className="bg-brand-950 relative isolate overflow-hidden pb-16 pt-36 text-white sm:pb-24 sm:pt-44">
+      <section className="bg-brand-950 relative isolate overflow-hidden pb-12 pt-32 text-white sm:pb-16 sm:pt-36">
         <div
-          className="absolute inset-0 -z-20 bg-cover bg-[center_42%] opacity-40"
-          style={{ backgroundImage: "url(/videos/hero-lagos-poster.jpg)" }}
+          className="absolute inset-0 -z-20 bg-cover bg-center opacity-35"
+          style={{ backgroundImage: "url(/videos/hero-modern-villa-poster.jpg)" }}
           aria-hidden="true"
         />
         <div className="absolute inset-0 -z-10 bg-gradient-to-r from-brand-950 via-brand-950/85 to-brand-950/55" />
         <Container size="xl" className="relative">
-          <Stack gap="md" className="max-w-4xl">
+          <Reveal>
+            <nav aria-label="Breadcrumb" className="mb-7 flex items-center gap-2 text-[10px] text-white/60">
+              <Link href="/" className="transition-colors hover:text-white">Home</Link>
+              <ChevronRight className="size-3" aria-hidden="true" />
+              <span className="text-white/90" aria-current="page">Properties</span>
+            </nav>
             <p className="text-[10px] font-semibold tracking-[0.2em] text-brand-200 uppercase">
-              Zenith Asset Group <span className="px-2 text-white/40">/</span> Property preview
+              Zenith Asset Group <span className="px-2 text-white/40">/</span> Catalogue preview
             </p>
-            <Heading as="h1" level="display" className="text-white">
-              The collection.
+            <Heading as="h1" level="display" className="mt-3 text-white sm:text-6xl">
+              Explore properties.
             </Heading>
-            <Text size="lead" className="max-w-2xl text-white/75">
-              Explore residential, land, and commercial property examples. Every listing, price,
-              availability status, and image on this page is illustrative.
+            <Text size="lead" className="mt-4 max-w-2xl text-sm leading-6 text-white/75 sm:text-base sm:leading-7">
+              Search residential, land, and commercial examples. All catalogue listings, images, prices, and availability are illustrative.
             </Text>
-          </Stack>
+          </Reveal>
         </Container>
       </section>
 
-      <Section spacing="md" className="relative -mt-9 pt-0 sm:-mt-12">
+      <Section spacing="sm" className="relative z-10 -mt-4 pt-0 sm:-mt-6">
         <Container size="xl">
-          <PropertySearchForm values={values} />
+          <Reveal delay={100}>
+            <PropertySearchForm values={values} />
+          </Reveal>
         </Container>
       </Section>
 
-      {!hasFilters && (
-        <Section spacing="sm" className="pt-4 sm:pt-8">
-          <Container size="xl">
-            <div className="mb-6">
-              <p className="text-brand-600 dark:text-brand-300 text-[10px] font-semibold tracking-[0.18em] uppercase">
-                Featured project <span className="px-2 text-foreground/30">/</span> visual preview
-              </p>
-            </div>
-            <ResidenceListing />
-          </Container>
-        </Section>
-      )}
-
       <Section spacing="md" className="pt-4 sm:pt-8">
         <Container size="xl">
-          <div className="mb-8 flex flex-col justify-between gap-4 sm:mb-10 sm:flex-row sm:items-end">
-            <div>
-              <div className="text-muted-foreground mb-2 flex items-center gap-2 text-sm">
-                <SlidersHorizontal className="size-4" aria-hidden="true" />
-                {hasFilters ? "Filtered demo results" : "Catalogue UI examples · fictional data"}
-              </div>
-              <Heading as="h2" level="h2" className="font-medium">
-                {properties.length.toString().padStart(2, "0")} {properties.length === 1 ? "property" : "properties"} to explore
+          <div className="mb-7 flex flex-col justify-between gap-5 border-b border-border/80 pb-6 sm:mb-9 sm:flex-row sm:items-end">
+            <Reveal>
+              <p className="text-brand-600 text-[10px] font-semibold tracking-[0.18em] uppercase">
+                {hasFilters ? "Search results" : "Illustrative catalogue"}
+              </p>
+              <Heading as="h2" level="h2" className="mt-2">
+                {properties.length} {properties.length === 1 ? "property" : "properties"} to explore
               </Heading>
-            </div>
+              <Text size="sm" className="text-muted-foreground mt-2">
+                {hasFilters
+                  ? "Filtered sample listings. Availability and details are examples only."
+                  : "Sample listings shown for interface preview; no live inventory is connected."}
+              </Text>
+            </Reveal>
+
             {hasFilters && (
-              <Link
-                href="/properties"
-                className="text-brand-600 dark:text-brand-300 inline-flex items-center gap-2 text-sm font-semibold underline-offset-4 hover:underline"
-              >
-                Clear filters <ArrowRight className="size-4" aria-hidden="true" />
-              </Link>
+              <Reveal delay={100}>
+                <Link
+                  href="/properties"
+                  className="group inline-flex h-10 items-center gap-2 border border-border px-4 text-xs font-medium text-foreground transition-[background-color,border-color] duration-500 hover:border-brand-600/40 hover:bg-brand-50 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-600"
+                >
+                  Clear filters <ArrowRight className="size-3.5 transition-transform duration-500 group-hover:translate-x-1" aria-hidden="true" />
+                </Link>
+              </Reveal>
             )}
           </div>
 
           {properties.length > 0 ? (
             <Grid cols={3} gap="md">
-              {properties.map((property) => (
-                <PropertyCard key={property.id} property={property} />
+              {properties.map((property, index) => (
+                <Reveal key={property.id} delay={index * 90}>
+                  <PropertyCard property={property} />
+                </Reveal>
               ))}
             </Grid>
           ) : (
             <EmptyState
               icon={SlidersHorizontal}
-              title="No demo properties match those filters"
-              description="Try another location, property type, or maximum price. The catalogue currently uses illustrative records only."
+              title="No sample properties match those filters"
+              description="Try another location, property type, or maximum price. This catalogue currently uses illustrative records only."
               action={
                 <Link
                   href="/properties"
-                  className="text-brand-600 dark:text-brand-300 inline-flex items-center gap-2 text-sm font-semibold underline-offset-4 hover:underline"
+                  className="group inline-flex h-10 items-center gap-2 border border-border px-4 text-xs font-medium text-foreground transition-[background-color,border-color] duration-500 hover:border-brand-600/40 hover:bg-brand-50 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-600"
                 >
-                  Clear filters <ArrowRight className="size-4" aria-hidden="true" />
+                  Clear filters <ArrowRight className="size-3.5 transition-transform duration-500 group-hover:translate-x-1" aria-hidden="true" />
                 </Link>
               }
             />
@@ -170,11 +168,24 @@ export default async function PropertiesPage({
         </Container>
       </Section>
 
-      <Section spacing="sm" border="top" className="bg-muted/40">
-        <Container>
-          <p className="text-muted-foreground text-center text-xs leading-5">
-            Prototype only. All property names, availability, features, and prices shown here are
-            fictional. This page does not accept enquiries or reservations.
+      {!hasFilters && (
+        <Section spacing="lg" className="bg-muted/35">
+          <Container size="xl">
+            <div className="mb-6">
+              <p className="text-brand-600 text-[10px] font-semibold tracking-[0.18em] uppercase">
+                Project spotlight <span className="px-2 text-foreground/30">/</span> Supplied visuals
+              </p>
+              <Heading as="h2" level="h3" className="mt-2">The Seventh Residence</Heading>
+            </div>
+            <ResidenceListing />
+          </Container>
+        </Section>
+      )}
+
+      <Section spacing="sm" border="top" className="bg-background">
+        <Container size="xl">
+          <p className="text-muted-foreground text-xs leading-5">
+            Prototype only. Property names, locations, availability, specifications, and prices are fictional examples. This page does not accept enquiries or reservations.
           </p>
         </Container>
       </Section>

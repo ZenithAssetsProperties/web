@@ -115,26 +115,33 @@ export function FeaturedProperties() {
   return (
     <Section id="featured-properties" spacing="lg" className="bg-[linear-gradient(180deg,#ffffff_0%,#f8faf9_100%)]">
       <Container size="xl">
-        <div className="mb-9 grid gap-6 border-b border-border/80 pb-6 sm:mb-11 sm:pb-8 lg:grid-cols-[1fr_0.65fr] lg:items-end">
+        <div className="mb-9 grid gap-6 border-b border-border/80 pb-7 sm:mb-11 sm:pb-9 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
           <Reveal>
-            <p className="text-brand-600 text-[10px] font-semibold tracking-[0.2em] uppercase">
-              Property collection <span className="px-2 text-foreground/30">/</span> In focus
+            <p className="flex items-center gap-3 text-[10px] font-semibold tracking-[0.2em] text-brand-600 uppercase">
+              <span className="h-px w-7 bg-brand-600/60" aria-hidden="true" />
+              The Zenith selection <span className="text-foreground/35">01 / In focus</span>
             </p>
-            <Heading as="h2" level="h1" className="mt-3 max-w-2xl text-4xl leading-[1.02] sm:text-5xl">
-              A collection with <span className="font-normal italic">character.</span>
+            <Heading as="h2" level="h1" className="mt-4 max-w-2xl text-4xl leading-[1.04] sm:text-5xl lg:text-[3.5rem]">
+              Places with a <span className="font-normal italic">point of view.</span>
             </Heading>
+            <Text className="mt-4 max-w-xl text-sm leading-6 text-muted-foreground sm:text-[15px] sm:leading-7">
+              A first look at the spaces and projects shaping the Zenith collection.
+            </Text>
           </Reveal>
 
           <Reveal delay={140}>
-            <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-end sm:justify-between lg:justify-end">
-              <Text className="max-w-md text-[13px] leading-6 text-muted-foreground lg:max-w-[300px]">
-                One supplied project preview and two sample catalogue listings. Sample details are illustrative, not confirmed inventory.
-              </Text>
+            <div className="flex flex-col items-start gap-5 sm:flex-row sm:items-end sm:justify-between lg:justify-end">
+              <div className="max-w-xs border-l border-brand-600/35 pl-4">
+                <p className="text-[10px] font-semibold tracking-[0.15em] text-foreground uppercase">A considered first look</p>
+                <Text size="sm" className="mt-2 leading-5 text-muted-foreground">
+                  One supplied project preview and two sample listings. Catalogue details are illustrative, not confirmed inventory.
+                </Text>
+              </div>
               <Link
                 href="/properties"
-                className="group inline-flex h-9 shrink-0 items-center gap-2 border border-border px-3 text-[11px] font-medium text-foreground transition-[background-color,border-color] duration-500 hover:border-brand-600/40 hover:bg-brand-50 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-600"
+                className="group inline-flex h-10 shrink-0 items-center gap-2 border border-foreground/20 px-4 text-[11px] font-medium text-foreground transition-[background-color,border-color,color] duration-500 hover:border-brand-950 hover:bg-brand-950 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-600"
               >
-                View catalogue
+                Explore the catalogue
                 <ArrowUpRight className="size-3.5 transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true" />
               </Link>
             </div>
