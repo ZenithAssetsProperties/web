@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowUpRight, ClipboardList, Compass, FileText, MapPin } from "lucide-react";
+import { ArrowRight, ArrowUpRight, ClipboardList, Compass, FileText, MapPin } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
 import { Section } from "@/components/ui/section";
