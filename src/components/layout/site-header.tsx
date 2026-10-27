@@ -1,112 +1,120 @@
 "use client";
 
-import { useEffect, useRef, useState, type MouseEvent } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ArrowRight, Menu, X } from "lucide-react";
+import { ArrowUpRight, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 
-/**
- * Fixed overlay header: a full-bleed transparent bar over each page's hero,
- * which transforms into a floating rounded pill once the page scrolls. The
- * nav itself tracks the pointer — a soft pill slides and resizes to match
- * whichever link is hovered (measured via getBoundingClientRect, no
- * animation library), and the current route stays subtly marked even when
- * nothing is hovered.
- */
+const primaryNav = siteConfig.nav.filter((item) => item.href !== "/");
+
+/** Editorial navigation, tuned to the cinematic home opening. */
 export function SiteHeader() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const navRef = useRef<HTMLDivElement>(null);
-  const [hoverRect, setHoverRect] = useState<{ left: number; width: number } | null>(null);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    const onScroll = () => setScrolled(window.scrollY > 32);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, [pathname]);
 
-  useEffect(() => {
-    setMenuOpen(false);
-    setHoverRect(null);
-  }, [scrolled, pathname]);
+  useEffect(() => setMenuOpen(false), [pathname]);
 
   const solid = scrolled || menuOpen;
 
-  const handleNavEnter = (event: MouseEvent<HTMLAnchorElement>) => {
-    const nav = navRef.current;
-    if (!nav) return;
-    const linkBox = event.currentTarget.getBoundingClientRect();
-    const navBox = nav.getBoundingClientRect();
-    setHoverRect({ left: linkBox.left - navBox.left, width: linkBox.width });
-  };
-
   return (
-    <div className="fixed inset-x-0 top-0 z-50 flex justify-center px-0 sm:px-4">
+    <div className="fixed inset-x-0 top-0 z-50">
+      <div
+        aria-hidden="true"
+        className={cn(
+          "border-border/80 bg-background/94 pointer-events-none absolute inset-x-0 top-0 h-full origin-top border-b opacity-0 backdrop-blur-2xl transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none",
+          solid ? "scale-y-100 opacity-100" : "scale-y-[0.92] opacity-0",
+        )}
+      />
+      <div
+        aria-hidden="true"
+        className={cn(
+          "from-brand-600 via-brand-300/70 pointer-events-none absolute inset-x-0 bottom-0 h-px origin-left bg-gradient-to-r to-transparent transition-transform duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none",
+          solid ? "scale-x-100" : "scale-x-0",
+        )}
+      />
       <header
         className={cn(
-          "flex w-full items-center justify-between border transition-all duration-500 ease-out",
-          solid
-            ? "border-border bg-background/90 shadow-brand-950/10 mt-3 max-w-4xl rounded-full px-5 py-2.5 shadow-xl backdrop-blur-xl"
-            : "max-w-none rounded-none border-transparent bg-transparent px-6 py-5 sm:px-8",
+          "relative mx-auto grid w-full max-w-[1600px] grid-cols-[1fr_auto] items-center px-5 transition-[padding] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] sm:px-8 lg:grid-cols-[1fr_auto_1fr] lg:px-12",
+          solid ? "py-3" : "py-4 sm:py-5",
         )}
       >
-        <Link href="/" className="flex items-center gap-2.5">
+        <Link
+          href="/"
+          aria-label="Zenith Asset Group home"
+          className="group flex w-fit items-center gap-3"
+        >
           <Image
             src="/brand/icon.png"
             alt=""
-            width={32}
-            height={32}
+            width={38}
+            height={38}
             priority
-            className={cn("shrink-0 transition-all duration-500", solid ? "size-7" : "size-8")}
+            className={cn(
+              "shrink-0 transition-[width,height] duration-500 ease-out",
+              solid ? "size-8" : "size-9",
+            )}
           />
           <span
             className={cn(
-              "font-heading flex flex-col leading-[1.15] font-semibold tracking-[0.08em] uppercase transition-colors",
+              "flex flex-col leading-none transition-colors",
               solid ? "text-foreground" : "text-white",
             )}
           >
-            <span className="text-[11px]">Zenith Asset</span>
-            <span className="text-[11px]">Group</span>
+            <span
+              className={cn(
+                "font-heading tracking-[-0.04em] transition-[font-size] duration-500",
+                solid ? "text-[21px]" : "text-[23px]",
+              )}
+            >
+              Zenith
+            </span>
+            <span className="mt-1.5 text-[8px] font-semibold tracking-[0.26em]">ASSET GROUP</span>
+          </span>
+          <span
+            className={cn("ml-2 hidden h-8 w-px sm:block", solid ? "bg-border" : "bg-white/30")}
+          />
+          <span
+            className={cn(
+              "hidden text-[9px] leading-[1.5] tracking-[0.12em] uppercase sm:block",
+              solid ? "text-muted-foreground" : "text-white/65",
+            )}
+          >
+            Property
+            <br />
+            &amp; investment
           </span>
         </Link>
 
-        <nav
-          ref={navRef}
-          onMouseLeave={() => setHoverRect(null)}
-          className="relative hidden items-center gap-1 md:flex"
-        >
-          <span
-            aria-hidden="true"
-            className={cn(
-              "absolute inset-y-0.5 rounded-full transition-[left,width,opacity] duration-300 ease-out",
-              solid ? "bg-brand-600/10 dark:bg-brand-400/10" : "bg-white/10",
-              hoverRect ? "opacity-100" : "opacity-0",
-            )}
-            style={hoverRect ? { left: hoverRect.left, width: hoverRect.width } : undefined}
-          />
-          {siteConfig.nav.map((item) => {
-            const active = pathname === item.href;
+        <nav aria-label="Main navigation" className="hidden items-center gap-5 lg:flex xl:gap-8">
+          {primaryNav.map((item) => {
+            const active = pathname === item.href || pathname.startsWith(`${item.href}/`);
             return (
               <Link
                 key={item.href}
                 href={item.href}
-                onMouseEnter={handleNavEnter}
+                aria-current={active ? "page" : undefined}
                 className={cn(
-                  "relative z-10 rounded-full px-3.5 py-1.5 text-sm font-medium transition-colors",
-                  solid
-                    ? active
-                      ? "text-foreground"
-                      : "text-muted-foreground hover:text-foreground"
-                    : active
-                      ? "text-white"
-                      : "text-white/80 hover:text-white",
+                  "group relative flex items-baseline gap-1.5 py-2 text-[12px] tracking-[0.02em] transition-colors duration-500 after:absolute after:right-0 after:bottom-0 after:left-0 after:h-px after:origin-left after:scale-x-0 after:bg-current after:transition-transform after:duration-500 hover:after:scale-x-100 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current",
+                  solid ? "after:bg-foreground" : "after:bg-white",
+                  active
+                    ? solid
+                      ? "text-foreground after:scale-x-100"
+                      : "text-white after:scale-x-100"
+                    : solid
+                      ? "text-muted-foreground hover:text-foreground"
+                      : "text-white/75 hover:text-white",
                 )}
               >
                 {item.label}
@@ -115,21 +123,29 @@ export function SiteHeader() {
           })}
         </nav>
 
-        <div className="flex items-center gap-2">
-          <ThemeToggle className={cn(!solid && "text-white hover:bg-white/10")} />
-          <Button asChild size={solid ? "sm" : "md"} className="hidden md:inline-flex">
-            <Link href="/contact">
-              Get in touch
-              <ArrowRight className="size-4" aria-hidden="true" />
-            </Link>
-          </Button>
+        <div className="flex items-center justify-end gap-3">
+          <Link
+            href="/properties"
+            className={cn(
+              "group hidden items-center gap-3 border border-transparent px-3 py-2 text-[11px] font-medium tracking-[0.04em] transition-[background-color,border-color,color] duration-500 md:inline-flex",
+              solid
+                ? "text-foreground hover:border-border hover:bg-muted"
+                : "text-white hover:border-white/25 hover:bg-white/10",
+            )}
+          >
+            Explore properties
+            <ArrowUpRight
+              className="size-3.5 transition-transform duration-500 ease-out group-hover:translate-x-1 group-hover:-translate-y-1"
+              aria-hidden="true"
+            />
+          </Link>
           <Button
             variant="ghost"
             size="icon"
-            className={cn("md:hidden", !solid && "text-white hover:bg-white/10")}
+            className={cn("lg:hidden", !solid && "text-white hover:bg-white/10 hover:text-white")}
             aria-label={menuOpen ? "Close menu" : "Open menu"}
             aria-expanded={menuOpen}
-            onClick={() => setMenuOpen((v) => !v)}
+            onClick={() => setMenuOpen((open) => !open)}
           >
             {menuOpen ? <X /> : <Menu />}
           </Button>
@@ -138,32 +154,35 @@ export function SiteHeader() {
 
       {menuOpen && (
         <nav
-          className={cn(
-            "border-border bg-background absolute inset-x-4 top-full mt-2 rounded-2xl border shadow-xl md:hidden",
-          )}
+          aria-label="Mobile navigation"
+          className="animate-fade-in border-border bg-background absolute inset-x-4 top-full mx-auto mt-2 max-w-[480px] border motion-reduce:animate-none lg:hidden"
         >
-          <div className="flex flex-col gap-1 p-3">
-            {siteConfig.nav.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={cn(
-                  "rounded-md px-3 py-2.5 text-sm font-medium",
-                  pathname === item.href
-                    ? "bg-muted text-foreground"
-                    : "text-foreground hover:bg-muted",
-                )}
-                onClick={() => setMenuOpen(false)}
-              >
-                {item.label}
-              </Link>
-            ))}
-            <Button asChild className="mt-2">
-              <Link href="/contact">
-                Get in touch
-                <ArrowRight className="size-4" aria-hidden="true" />
-              </Link>
-            </Button>
+          <div className="flex flex-col p-3">
+            {siteConfig.nav.map((item) => {
+              const active =
+                pathname === item.href ||
+                (item.href !== "/" && pathname.startsWith(`${item.href}/`));
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  aria-current={active ? "page" : undefined}
+                  className={cn(
+                    "border-border/70 hover:bg-muted flex items-center gap-3 border-b px-3 py-3 text-sm transition-[background-color,color,padding] duration-300 hover:pl-4",
+                    active ? "text-foreground" : "text-muted-foreground",
+                  )}
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
+            <Link
+              href="/properties"
+              className="group bg-brand-700 hover:bg-brand-800 mt-3 flex items-center justify-between px-4 py-3 text-sm font-medium text-white transition-colors"
+            >
+              Explore properties <ArrowUpRight className="size-4" aria-hidden="true" />
+            </Link>
           </div>
         </nav>
       )}

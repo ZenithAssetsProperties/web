@@ -5,38 +5,35 @@ import { Section } from "@/components/ui/section";
 import { Stack } from "@/components/ui/stack";
 import { Heading, Text } from "@/components/ui/typography";
 
-// Grounded in the brand guideline's own description of the company and
-// platform — no invented fees, minimums, or figures that don't exist yet.
 const faqs: AccordionItemData[] = [
   {
     question: "What is Zenith Asset Group?",
     answer:
-      "A Nigerian real estate investment company making property ownership accessible through fractional investing — letting people own shares of income-generating properties without needing millions upfront.",
+      "Zenith Asset Group is developing an online property experience to help customers discover properties, review available information, arrange inspections, and connect with the team.",
   },
   {
-    question: "What is fractional investing?",
+    question: "Are the properties shown on this website available to buy?",
     answer:
-      "Instead of buying a property outright, you buy a share of it alongside other investors — a proportional stake in its income and value, at a fraction of the capital a full purchase would take.",
+      "Availability changes by property. Contact Zenith to confirm current options before making a decision.",
   },
   {
-    question: "What is Partners by Zenith Asset Group?",
+    question: "What does property verification mean?",
     answer:
-      "Our platform for investing online: verified listings, virtual inspections, secure investing, and portfolio tracking, all in one dashboard.",
+      "Zenith should explain its review criteria and supporting information for each property. Ask the team to clarify any documentation or verification status that is not shown.",
   },
   {
-    question: "Who can invest?",
-    answer:
-      "Everyday individuals, the diaspora, and institutions alike — we're building for anyone ready to invest in property, regardless of geography or capital size.",
+    question: "Can I arrange an inspection?",
+    answer: "Contact Zenith to discuss viewing options for a specific property.",
   },
   {
-    question: "How are properties vetted?",
+    question: "Can I reserve or pay for a property online?",
     answer:
-      "Every listing goes through careful due diligence before it reaches the platform, with full transparency on fees and returns.",
+      "Online reservation and payment are not offered through this website. Contact Zenith to confirm the approved next steps and payment arrangements.",
   },
   {
-    question: "When can I start investing?",
+    question: "Can customers outside Nigeria use the platform?",
     answer:
-      "The platform hasn't launched yet. Join the waitlist and we'll email you the moment listings go live.",
+      "The product requirements include diaspora customers in the intended audience. Zenith will share confirmed service and inspection options through its team.",
   },
 ];
 

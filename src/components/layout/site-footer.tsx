@@ -1,10 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Globe, Mail } from "lucide-react";
+import { ArrowRight, Globe, Mail } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Stack } from "@/components/ui/stack";
 import { Heading, Text } from "@/components/ui/typography";
-import { NewsletterForm } from "@/components/newsletter-form";
 import { siteConfig } from "@/lib/site-config";
 
 export function SiteFooter() {
@@ -31,23 +31,27 @@ export function SiteFooter() {
               size="sm"
               className="text-brand-400 font-semibold tracking-wider uppercase"
             >
-              Newsletter
+              Start exploring
             </Text>
             <Heading as="h2" level="h3" className="text-white">
-              Stay in the loop
+              Find your next property.
             </Heading>
             <Text size="sm" className="text-white/60">
-              Product updates and market insights, straight to your inbox.
+              Explore properties, learn about Zenith, and find a clear next step.
             </Text>
           </Stack>
-          <NewsletterForm />
+          <Button asChild>
+            <Link href="/properties">
+              Explore properties <ArrowRight aria-hidden="true" />
+            </Link>
+          </Button>
         </div>
 
         <div className="grid gap-12 pt-12 md:grid-cols-[2fr_1fr_1fr]">
           <div className="max-w-sm space-y-4">
             <Link href="/" className="flex items-center gap-2.5">
               <Image src="/brand/icon.png" alt="" width={28} height={28} className="size-7" />
-              <span className="font-heading text-base font-bold tracking-tight text-white">
+              <span className="font-heading text-base font-normal tracking-tight text-white">
                 {siteConfig.name}
               </span>
             </Link>

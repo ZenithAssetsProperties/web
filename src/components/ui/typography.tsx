@@ -3,7 +3,7 @@ import { Slot } from "@/components/ui/slot";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
-const headingVariants = cva("font-heading font-bold text-foreground", {
+const headingVariants = cva("font-heading font-normal text-foreground", {
   variants: {
     level: {
       display: "text-5xl tracking-tight sm:text-6xl lg:text-7xl",

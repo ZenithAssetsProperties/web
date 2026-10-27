@@ -1,0 +1,68 @@
+"use client";
+
+import Image from "next/image";
+import { useEffect, useState } from "react";
+
+export function HeroBackdrop() {
+  const [videoEnabled, setVideoEnabled] = useState(false);
+  const [videoReady, setVideoReady] = useState(false);
+
+  useEffect(() => {
+    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const smallScreen = window.matchMedia("(max-width: 767px)");
+    const connection = (navigator as Navigator & { connection?: { saveData?: boolean } })
+      .connection;
+
+    const updatePlayback = () => {
+      setVideoEnabled(!motion.matches && !smallScreen.matches && !connection?.saveData);
+      if (motion.matches || smallScreen.matches || connection?.saveData) setVideoReady(false);
+    };
+
+    updatePlayback();
+    motion.addEventListener("change", updatePlayback);
+    smallScreen.addEventListener("change", updatePlayback);
+
+    return () => {
+      motion.removeEventListener("change", updatePlayback);
+      smallScreen.removeEventListener("change", updatePlayback);
+    };
+  }, []);
+
+  return (
+    <div className="bg-brand-950 absolute inset-0 overflow-hidden" aria-hidden="true">
+      {/* Softly extend the same frame behind the uncropped 16:9 video on wide screens. */}
+      <div
+        className="absolute -inset-8 scale-110 bg-cover bg-center opacity-55 blur-2xl"
+        style={{ backgroundImage: "url('/videos/hero-modern-villa-poster.jpg')" }}
+      />
+      <Image
+        src="/videos/hero-modern-villa-poster.jpg"
+        alt=""
+        fill
+        priority
+        sizes="100vw"
+        className={`object-cover object-center brightness-[0.78] saturate-[0.82] transition-opacity duration-700 md:object-contain ${videoReady ? "opacity-0" : "opacity-100"}`}
+      />
+      {videoEnabled && (
+        <video
+          className={`absolute inset-0 size-full object-cover object-center brightness-[0.78] saturate-[0.82] transition-opacity duration-1000 md:object-contain ${videoReady ? "opacity-100" : "opacity-0"}`}
+          src="/videos/hero-modern-villa-4k.mp4"
+          poster="/videos/hero-modern-villa-poster.jpg"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          onLoadedMetadata={(event) => {
+            event.currentTarget.playbackRate = 0.68;
+          }}
+          onPlaying={() => setVideoReady(true)}
+          onError={() => setVideoReady(false)}
+        />
+      )}
+      <div className="from-brand-950/85 via-brand-950/50 to-brand-950/10 absolute inset-0 bg-gradient-to-r" />
+      <div className="from-brand-950/65 via-brand-950/10 to-brand-950/50 absolute inset-0 bg-gradient-to-t" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_42%,transparent_12%,rgba(4,16,19,0.2)_100%)]" />
+    </div>
+  );
+}
