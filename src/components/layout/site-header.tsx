@@ -1,138 +1,94 @@
 "use client";
 
-import { useEffect, useRef, useState, type MouseEvent } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ArrowRight, Menu, X } from "lucide-react";
+import { ArrowUpRight, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 
-/**
- * Fixed overlay header: a full-bleed transparent bar over each page's hero,
- * which transforms into a floating rounded pill once the page scrolls. The
- * nav itself tracks the pointer — a soft pill slides and resizes to match
- * whichever link is hovered (measured via getBoundingClientRect, no
- * animation library), and the current route stays subtly marked even when
- * nothing is hovered.
- */
+const primaryNav = siteConfig.nav.filter((item) => item.href !== "/");
+
+/** Numbered editorial navigation, tuned to the cinematic home opening. */
 export function SiteHeader() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const navRef = useRef<HTMLDivElement>(null);
-  const [hoverRect, setHoverRect] = useState<{ left: number; width: number } | null>(null);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    const onScroll = () => setScrolled(window.scrollY > 32);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, [pathname]);
 
-  useEffect(() => {
-    setMenuOpen(false);
-    setHoverRect(null);
-  }, [scrolled, pathname]);
+  useEffect(() => setMenuOpen(false), [pathname]);
 
   const solid = scrolled || menuOpen;
 
-  const handleNavEnter = (event: MouseEvent<HTMLAnchorElement>) => {
-    const nav = navRef.current;
-    if (!nav) return;
-    const linkBox = event.currentTarget.getBoundingClientRect();
-    const navBox = nav.getBoundingClientRect();
-    setHoverRect({ left: linkBox.left - navBox.left, width: linkBox.width });
-  };
-
   return (
-    <div className="fixed inset-x-0 top-0 z-50 flex justify-center px-0 sm:px-4">
-      <header
-        className={cn(
-          "flex w-full items-center justify-between border transition-all duration-500 ease-out",
-          solid
-            ? "border-border bg-background/90 shadow-brand-950/10 mt-3 max-w-6xl rounded-full px-5 py-2.5 shadow-xl backdrop-blur-xl"
-            : "max-w-none rounded-none border-transparent bg-transparent px-6 py-5 sm:px-8",
-        )}
-      >
-        <Link href="/" className="flex items-center gap-2.5">
-          <Image
-            src="/brand/icon.png"
-            alt=""
-            width={32}
-            height={32}
-            priority
-            className={cn("shrink-0 transition-all duration-500", solid ? "size-7" : "size-8")}
-          />
-          <span
-            className={cn(
-              "font-heading flex flex-col leading-[1.15] font-semibold tracking-[0.08em] uppercase transition-colors",
-              solid ? "text-foreground" : "text-white",
-            )}
-          >
-            <span className="text-[11px]">Zenith Asset</span>
-            <span className="text-[11px]">Group</span>
+    <div
+      className={cn(
+        "fixed inset-x-0 top-0 z-50 border-b transition-[background-color,border-color,backdrop-filter] duration-500 ease-out",
+        solid ? "border-border/80 bg-background/95 backdrop-blur-xl" : "border-white/15 bg-gradient-to-b from-black/20 to-transparent",
+      )}
+    >
+      <header className="mx-auto grid w-full max-w-[1600px] grid-cols-[1fr_auto] items-center px-5 py-4 sm:px-8 lg:grid-cols-[1fr_auto_1fr] lg:px-12 lg:py-5">
+        <Link href="/" aria-label="Zenith Asset Group home" className="group flex w-fit items-center gap-3">
+          <Image src="/brand/icon.png" alt="" width={38} height={38} priority className="size-9 shrink-0" />
+          <span className={cn("flex flex-col leading-none transition-colors", solid ? "text-foreground" : "text-white")}>
+            <span className="font-heading text-[23px] tracking-[-0.04em]">Zenith</span>
+            <span className="mt-1.5 text-[8px] font-semibold tracking-[0.26em]">ASSET GROUP</span>
+          </span>
+          <span className={cn("ml-2 hidden h-8 w-px sm:block", solid ? "bg-border" : "bg-white/30")} />
+          <span className={cn("hidden text-[9px] leading-[1.5] tracking-[0.12em] uppercase sm:block", solid ? "text-muted-foreground" : "text-white/65")}>
+            Property<br />&amp; investment
           </span>
         </Link>
 
-        <nav
-          ref={navRef}
-          onMouseLeave={() => setHoverRect(null)}
-          className="relative hidden items-center gap-1 xl:flex"
-        >
-          <span
-            aria-hidden="true"
-            className={cn(
-              "absolute inset-y-0.5 rounded-full transition-[left,width,opacity] duration-300 ease-out",
-              solid ? "bg-brand-600/10 dark:bg-brand-400/10" : "bg-white/10",
-              hoverRect ? "opacity-100" : "opacity-0",
-            )}
-            style={hoverRect ? { left: hoverRect.left, width: hoverRect.width } : undefined}
-          />
-          {siteConfig.nav.map((item) => {
-            const active =
-              item.href === "/"
-                ? pathname === "/"
-                : pathname === item.href || pathname.startsWith(`${item.href}/`);
+        <nav aria-label="Main navigation" className="hidden items-center gap-5 lg:flex xl:gap-8">
+          {primaryNav.map((item, index) => {
+            const active = pathname === item.href || pathname.startsWith(`${item.href}/`);
             return (
               <Link
                 key={item.href}
                 href={item.href}
-                onMouseEnter={handleNavEnter}
+                aria-current={active ? "page" : undefined}
                 className={cn(
-                  "relative z-10 rounded-full px-3.5 py-1.5 text-sm font-medium transition-colors",
-                  solid
-                    ? active
-                      ? "text-foreground"
-                      : "text-muted-foreground hover:text-foreground"
-                    : active
-                      ? "text-white"
-                      : "text-white/80 hover:text-white",
+                  "group relative flex items-baseline gap-1.5 py-2 text-[12px] tracking-[0.02em] transition-colors after:absolute after:right-0 after:bottom-0 after:left-0 after:h-px after:origin-left after:scale-x-0 after:transition-transform after:duration-300 hover:after:scale-x-100 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current",
+                  solid ? "after:bg-foreground" : "after:bg-white",
+                  active
+                    ? solid ? "text-foreground after:scale-x-100" : "text-white after:scale-x-100"
+                    : solid ? "text-muted-foreground hover:text-foreground" : "text-white/75 hover:text-white",
                 )}
               >
+                <span className="relative -top-1 font-mono text-[8px] opacity-45">0{index + 1}</span>
                 {item.label}
               </Link>
             );
           })}
         </nav>
 
-        <div className="flex items-center gap-2">
-          <ThemeToggle className={cn(!solid && "text-white hover:bg-white/10")} />
-          <Button asChild size={solid ? "sm" : "md"} className="hidden md:inline-flex">
-            <Link href="/properties">
-              Explore properties
-              <ArrowRight className="size-4" aria-hidden="true" />
-            </Link>
-          </Button>
+        <div className="flex items-center justify-end gap-3">
+          <Link
+            href="/properties"
+            className={cn(
+              "group hidden items-center gap-3 border-b pb-1.5 text-[11px] font-medium tracking-[0.04em] transition-colors md:inline-flex",
+              solid ? "border-foreground/30 text-foreground hover:border-brand-600" : "border-white/45 text-white hover:border-white",
+            )}
+          >
+            Explore properties
+            <ArrowUpRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true" />
+          </Link>
           <Button
             variant="ghost"
             size="icon"
-            className={cn("xl:hidden", !solid && "text-white hover:bg-white/10")}
+            className={cn("lg:hidden", !solid && "text-white hover:bg-white/10 hover:text-white")}
             aria-label={menuOpen ? "Close menu" : "Open menu"}
             aria-expanded={menuOpen}
-            onClick={() => setMenuOpen((v) => !v)}
+            onClick={() => setMenuOpen((open) => !open)}
           >
             {menuOpen ? <X /> : <Menu />}
           </Button>
@@ -140,33 +96,26 @@ export function SiteHeader() {
       </header>
 
       {menuOpen && (
-        <nav
-          className={cn(
-            "border-border bg-background absolute inset-x-4 top-full mt-2 rounded-2xl border shadow-xl xl:hidden",
-          )}
-        >
-          <div className="flex flex-col gap-1 p-3">
-            {siteConfig.nav.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={cn(
-                  "rounded-md px-3 py-2.5 text-sm font-medium",
-                  pathname === item.href
-                    ? "bg-muted text-foreground"
-                    : "text-foreground hover:bg-muted",
-                )}
-                onClick={() => setMenuOpen(false)}
-              >
-                {item.label}
-              </Link>
-            ))}
-            <Button asChild className="mt-2">
-              <Link href="/properties">
-                Explore properties
-                <ArrowRight className="size-4" aria-hidden="true" />
-              </Link>
-            </Button>
+        <nav aria-label="Mobile navigation" className="absolute inset-x-4 top-full mx-auto mt-2 max-w-[480px] animate-fade-in border border-border bg-background motion-reduce:animate-none lg:hidden">
+          <div className="flex flex-col p-3">
+            {siteConfig.nav.map((item, index) => {
+              const active = pathname === item.href || (item.href !== "/" && pathname.startsWith(`${item.href}/`));
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  aria-current={active ? "page" : undefined}
+                  className={cn("flex items-center gap-3 border-b border-border/70 px-3 py-3 text-sm", active ? "text-foreground" : "text-muted-foreground")}
+                  onClick={() => setMenuOpen(false)}
+                >
+                  <span className="font-mono text-[9px] text-brand-600">0{index + 1}</span>
+                  {item.label}
+                </Link>
+              );
+            })}
+            <Link href="/properties" className="mt-3 flex items-center justify-between bg-brand-700 px-4 py-3 text-sm font-medium text-white">
+              Explore properties <ArrowUpRight className="size-4" aria-hidden="true" />
+            </Link>
           </div>
         </nav>
       )}

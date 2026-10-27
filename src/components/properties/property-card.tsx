@@ -20,21 +20,21 @@ export function PropertyCard({
   const feature = variant === "feature";
 
   return (
-    <article className="group overflow-hidden rounded-[1.4rem] border border-foreground/10 bg-background shadow-[0_12px_40px_-28px_rgba(4,16,19,0.38)] transition-[transform,box-shadow,border-color] duration-500 ease-out hover:-translate-y-1 hover:border-brand-600/20 hover:shadow-[0_26px_70px_-36px_rgba(4,16,19,0.48)] motion-reduce:transform-none">
+    <article className="group overflow-hidden border-b border-border/90 bg-transparent pb-2 transition-colors duration-300 hover:border-brand-600/40 motion-reduce:transform-none">
       <div className="relative">
-        <DemoPropertyVisual property={property} compact />
+        <DemoPropertyVisual property={property} compact={!feature} wide={feature} />
         <span className="absolute right-4 top-4 rounded-full border border-white/20 bg-brand-950/65 px-3 py-1.5 text-[10px] font-medium tracking-wide text-white backdrop-blur-md sm:right-5 sm:top-5">
           {availabilityLabel[property.availability]}
         </span>
       </div>
 
-      <div className={`p-5 sm:p-6 ${feature ? "sm:p-7" : ""}`}>
+      <div className={`px-1 pb-5 pt-5 sm:pb-6 ${feature ? "sm:pt-7" : ""}`}>
         <div className="flex items-start justify-between gap-4">
           <div className="min-w-0">
             <p className="text-brand-600 dark:text-brand-300 text-[10px] font-semibold tracking-[0.16em] uppercase">
               {property.type}
             </p>
-            <h3 className={`font-heading mt-2 font-bold tracking-tight ${feature ? "text-2xl sm:text-3xl" : "text-xl"}`}>
+            <h3 className={`font-heading mt-2 font-normal tracking-tight ${feature ? "text-2xl sm:text-3xl" : "text-xl"}`}>
               <Link
                 href={`/properties/${property.slug}`}
                 className="rounded-sm decoration-brand-600/50 underline-offset-4 transition-[text-decoration-color] hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-600"
@@ -62,7 +62,7 @@ export function PropertyCard({
             <p className="text-muted-foreground text-[10px] font-medium tracking-[0.12em] uppercase">
               Illustrative price
             </p>
-            <p className={`font-heading mt-1 font-bold tracking-tight ${feature ? "text-2xl" : "text-xl"}`}>
+            <p className={`font-heading mt-1 font-normal tracking-tight ${feature ? "text-2xl" : "text-xl"}`}>
               {formatNgn(property.priceNgn)}
             </p>
           </div>

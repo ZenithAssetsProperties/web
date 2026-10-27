@@ -51,7 +51,7 @@ export function SiteFooter() {
           <div className="max-w-sm space-y-4">
             <Link href="/" className="flex items-center gap-2.5">
               <Image src="/brand/icon.png" alt="" width={28} height={28} className="size-7" />
-              <span className="font-heading text-base font-bold tracking-tight text-white">
+              <span className="font-heading text-base font-normal tracking-tight text-white">
                 {siteConfig.name}
               </span>
             </Link>

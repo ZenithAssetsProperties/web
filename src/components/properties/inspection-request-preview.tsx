@@ -26,7 +26,7 @@ export function InspectionRequestPreview({ property }: { property: Property }) {
           <p className="text-brand-600 dark:text-brand-300 text-xs font-semibold tracking-[0.14em] uppercase">
             Prototype interaction
           </p>
-          <h2 className="font-heading mt-1 text-2xl font-bold tracking-tight">Preview an inspection request</h2>
+          <h2 className="font-heading mt-1 text-2xl font-normal tracking-tight">Preview an inspection request</h2>
           <Text size="sm" className="text-muted-foreground mt-2">
             Demo property: {property.title}. Use fictional details only. Nothing is saved or sent.
           </Text>

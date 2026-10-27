@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight, SlidersHorizontal } from "lucide-react";
 import { PropertyCard } from "@/components/properties/property-card";
 import { PropertySearchForm, type PropertySearchValues } from "@/components/properties/property-search-form";
+import { ResidenceListing } from "@/components/properties/residence-listing";
 import { Container } from "@/components/ui/container";
 import { EmptyState } from "@/components/ui/empty-state";
 import { Grid } from "@/components/ui/grid";
@@ -105,10 +106,23 @@ export default async function PropertiesPage({
       </section>
 
       <Section spacing="md" className="relative -mt-9 pt-0 sm:-mt-12">
-        <Container>
+        <Container size="xl">
           <PropertySearchForm values={values} />
         </Container>
       </Section>
+
+      {!hasFilters && (
+        <Section spacing="sm" className="pt-4 sm:pt-8">
+          <Container size="xl">
+            <div className="mb-6">
+              <p className="text-brand-600 dark:text-brand-300 text-[10px] font-semibold tracking-[0.18em] uppercase">
+                Featured project <span className="px-2 text-foreground/30">/</span> visual preview
+              </p>
+            </div>
+            <ResidenceListing />
+          </Container>
+        </Section>
+      )}
 
       <Section spacing="md" className="pt-4 sm:pt-8">
         <Container size="xl">
@@ -116,7 +130,7 @@ export default async function PropertiesPage({
             <div>
               <div className="text-muted-foreground mb-2 flex items-center gap-2 text-sm">
                 <SlidersHorizontal className="size-4" aria-hidden="true" />
-                {hasFilters ? "Filtered demo results" : "Explore the collection"}
+                {hasFilters ? "Filtered demo results" : "Catalogue UI examples · fictional data"}
               </div>
               <Heading as="h2" level="h2" className="font-medium">
                 {properties.length.toString().padStart(2, "0")} {properties.length === 1 ? "property" : "properties"} to explore

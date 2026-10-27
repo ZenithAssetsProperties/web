@@ -76,7 +76,7 @@ export default async function PropertyDetailPage({ params }: PageProps) {
 
               <Card className="rounded-2xl p-5 sm:p-6">
                 <p className="text-muted-foreground text-sm">Illustrative price</p>
-                <p className="font-heading mt-1 text-3xl font-bold tracking-tight">
+                <p className="font-heading mt-1 text-3xl font-normal tracking-tight">
                   {formatNgn(property.priceNgn)}
                 </p>
                 <p className="text-muted-foreground mt-2 text-xs">

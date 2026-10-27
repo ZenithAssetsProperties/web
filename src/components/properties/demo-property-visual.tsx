@@ -5,13 +5,15 @@ import type { Property } from "@/lib/properties";
 export function DemoPropertyVisual({
   property,
   compact = false,
+  wide = false,
 }: {
   property: Property;
   compact?: boolean;
+  wide?: boolean;
 }) {
   return (
     <figure
-      className={`group/photo relative isolate overflow-hidden bg-brand-900 ${compact ? "aspect-[1.28]" : "aspect-[1.48] min-h-[360px] sm:min-h-[520px]"}`}
+      className={`group/photo relative isolate overflow-hidden bg-brand-900 ${wide ? "aspect-[1.9]" : compact ? "aspect-[1.32]" : "aspect-[1.48] min-h-[360px] sm:min-h-[520px]"}`}
     >
       <Image
         src={property.image.src}
@@ -22,12 +24,9 @@ export function DemoPropertyVisual({
       />
       <div className="absolute inset-0 bg-gradient-to-t from-brand-950/75 via-brand-950/5 to-brand-950/15" />
 
-      <div className="absolute top-4 left-4 flex flex-wrap gap-2 sm:top-5 sm:left-5">
-        <span className="rounded-full border border-white/25 bg-brand-950/55 px-3 py-1.5 text-[10px] font-semibold tracking-[0.16em] text-white uppercase backdrop-blur-md">
-          Demo listing
-        </span>
-        <span className="rounded-full border border-white/20 bg-white/15 px-3 py-1.5 text-[10px] font-medium tracking-wide text-white backdrop-blur-md">
-          Concept image
+      <div className="absolute top-4 left-4 sm:top-5 sm:left-5">
+        <span className="rounded-full border border-white/25 bg-brand-950/55 px-3 py-1.5 text-[9px] font-semibold tracking-[0.14em] text-white uppercase backdrop-blur-md">
+          Preview listing <span className="px-1 text-white/50">/</span> concept image
         </span>
       </div>
 

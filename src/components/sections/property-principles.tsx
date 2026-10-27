@@ -48,7 +48,7 @@ export function PropertyPrinciples() {
             <Reveal key={title} delay={index * 70}>
               <article className="border-white/15 h-full border-t py-6 sm:py-7">
                 <Icon className="text-brand-300 size-5" strokeWidth={1.6} aria-hidden="true" />
-                <h3 className="font-heading mt-7 text-xl font-bold tracking-tight">{title}</h3>
+                <h3 className="font-heading mt-7 text-xl font-normal tracking-tight">{title}</h3>
                 <p className="mt-3 text-sm leading-6 text-white/65">{body}</p>
               </article>
             </Reveal>

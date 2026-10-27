@@ -78,7 +78,7 @@ export default async function VirtualTourPage({ params }: PageProps) {
                 <p className="mt-5 text-xs font-semibold tracking-[0.16em] text-white/60 uppercase">
                   Tour media not supplied
                 </p>
-                <h2 className="font-heading mt-2 text-2xl font-bold sm:text-3xl">
+                <h2 className="font-heading mt-2 text-2xl font-normal sm:text-3xl">
                   This is the virtual inspection preview.
                 </h2>
                 <p className="mt-3 text-sm leading-6 text-white/70">

@@ -20,7 +20,7 @@ export function PropertySearchForm({ values }: { values: PropertySearchValues })
     <form
       action="/properties"
       method="get"
-      className="border-border bg-background grid gap-4 rounded-2xl border p-4 shadow-sm sm:grid-cols-2 sm:p-5 xl:grid-cols-4"
+      className="border-border bg-background grid gap-4 rounded-lg border p-4 sm:grid-cols-2 sm:p-5 xl:grid-cols-4"
     >
       <div className="space-y-2">
         <Label htmlFor="property-query">Search</Label>
@@ -30,6 +30,7 @@ export function PropertySearchForm({ values }: { values: PropertySearchValues })
           type="search"
           defaultValue={values.query}
           placeholder="Name, type or area"
+          className="h-10"
         />
       </div>
       <div className="space-y-2">
@@ -38,7 +39,7 @@ export function PropertySearchForm({ values }: { values: PropertySearchValues })
           id="property-category"
           name="category"
           defaultValue={values.category}
-          className="border-border bg-background text-foreground focus-visible:ring-ring focus-visible:ring-offset-background h-11 w-full rounded-md border px-3.5 text-sm focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
+          className="border-border bg-background text-foreground focus-visible:ring-ring focus-visible:ring-offset-background h-10 w-full rounded-md border px-3.5 text-sm focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
         >
           <option value="">All types</option>
           <option value="land">Land</option>
@@ -54,6 +55,7 @@ export function PropertySearchForm({ values }: { values: PropertySearchValues })
           type="search"
           defaultValue={values.location}
           placeholder="City, state or area"
+          className="h-10"
         />
       </div>
       <div className="space-y-2">
@@ -66,6 +68,7 @@ export function PropertySearchForm({ values }: { values: PropertySearchValues })
           inputMode="numeric"
           defaultValue={values.minPrice}
           placeholder="No minimum"
+          className="h-10"
         />
       </div>
       <div className="space-y-2">
@@ -78,6 +81,7 @@ export function PropertySearchForm({ values }: { values: PropertySearchValues })
           inputMode="numeric"
           defaultValue={values.maxPrice}
           placeholder="No maximum"
+          className="h-10"
         />
       </div>
       <div className="space-y-2">
@@ -86,7 +90,7 @@ export function PropertySearchForm({ values }: { values: PropertySearchValues })
           id="property-bedrooms"
           name="bedrooms"
           defaultValue={values.bedrooms}
-          className="border-border bg-background text-foreground focus-visible:ring-ring focus-visible:ring-offset-background h-11 w-full rounded-md border px-3.5 text-sm focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
+          className="border-border bg-background text-foreground focus-visible:ring-ring focus-visible:ring-offset-background h-10 w-full rounded-md border px-3.5 text-sm focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
         >
           <option value="">Any number</option>
           <option value="1">1+</option>
@@ -102,7 +106,7 @@ export function PropertySearchForm({ values }: { values: PropertySearchValues })
           id="property-availability"
           name="availability"
           defaultValue={values.availability}
-          className="border-border bg-background text-foreground focus-visible:ring-ring focus-visible:ring-offset-background h-11 w-full rounded-md border px-3.5 text-sm focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
+          className="border-border bg-background text-foreground focus-visible:ring-ring focus-visible:ring-offset-background h-10 w-full rounded-md border px-3.5 text-sm focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
         >
           <option value="">Any status</option>
           <option value="available">Available</option>
@@ -116,7 +120,7 @@ export function PropertySearchForm({ values }: { values: PropertySearchValues })
           id="property-sort"
           name="sort"
           defaultValue={values.sort}
-          className="border-border bg-background text-foreground focus-visible:ring-ring focus-visible:ring-offset-background h-11 w-full rounded-md border px-3.5 text-sm focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
+          className="border-border bg-background text-foreground focus-visible:ring-ring focus-visible:ring-offset-background h-10 w-full rounded-md border px-3.5 text-sm focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
         >
           <option value="">Recommended</option>
           <option value="price-asc">Lowest first</option>
@@ -124,7 +128,7 @@ export function PropertySearchForm({ values }: { values: PropertySearchValues })
         </select>
       </div>
       <div className="flex items-end xl:col-span-4 xl:justify-end">
-        <Button type="submit" className="h-11 w-full xl:w-auto">
+        <Button type="submit" size="md" className="w-full xl:w-auto">
           <Search aria-hidden="true" />
           Search properties
         </Button>

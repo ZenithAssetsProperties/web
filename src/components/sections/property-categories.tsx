@@ -59,7 +59,7 @@ export function PropertyCategories() {
             <Reveal key={name} delay={index * 90} className={index === 0 ? "sm:col-span-2 lg:col-span-1" : ""}>
               <Link
                 href={href}
-                className="group relative isolate block aspect-[1.24] overflow-hidden rounded-[1.35rem] bg-brand-900 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-600 sm:aspect-[1.32] lg:aspect-[0.88]"
+                className="group relative isolate block aspect-[1.24] overflow-hidden rounded-sm bg-brand-900 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-600 sm:aspect-[1.32] lg:aspect-[0.88]"
               >
                 <Image
                   src={image}
@@ -77,7 +77,7 @@ export function PropertyCategories() {
                 </div>
                 <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-5 sm:p-6">
                   <div>
-                    <h3 className="font-heading text-3xl font-bold tracking-tight text-white sm:text-4xl">
+                    <h3 className="font-heading text-3xl font-normal tracking-tight text-white sm:text-4xl">
                       {name}
                     </h3>
                     <p className="mt-2 text-sm text-white/75">{description}</p>

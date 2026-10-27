@@ -58,7 +58,7 @@ export function CustomerJourney() {
                 <article className="grid gap-4 py-7 sm:grid-cols-[64px_1fr_auto] sm:items-start sm:gap-6 sm:py-9">
                   <span className="text-muted-foreground/60 font-mono text-xs">{number}</span>
                   <div>
-                    <h3 className="font-heading text-xl font-bold tracking-tight sm:text-2xl">
+                    <h3 className="font-heading text-xl font-normal tracking-tight sm:text-2xl">
                       {title}
                     </h3>
                     <p className="text-muted-foreground mt-2 max-w-lg text-sm leading-6">{text}</p>

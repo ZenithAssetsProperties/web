@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { inter } from "@/lib/fonts";
+import { dmSans, dmSerifDisplay } from "@/lib/fonts";
 import "./globals.css";
 
 /**
@@ -17,7 +17,7 @@ export default function GlobalError({
   reset: () => void;
 }) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={`${dmSans.variable} ${dmSerifDisplay.variable}`}>
       <body className="flex min-h-screen flex-col items-center justify-center gap-4 bg-white px-6 text-center font-sans text-neutral-950 antialiased dark:bg-neutral-950 dark:text-neutral-50">
         <h1 className="text-2xl font-semibold tracking-tight">Something went critically wrong</h1>
         <p className="max-w-sm text-sm text-neutral-600 dark:text-neutral-400">

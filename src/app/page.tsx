@@ -11,8 +11,8 @@ export default function HomePage() {
     <>
       <Hero />
       <HomeSearch />
-      <PropertyCategories />
       <FeaturedProperties />
+      <PropertyCategories />
       <CustomerJourney />
       <PropertyPrinciples />
       <Faq />

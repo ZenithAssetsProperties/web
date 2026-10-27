@@ -110,7 +110,7 @@ export default function HowItWorksPage() {
 
           <div className="bg-muted/50 mt-12 flex flex-col justify-between gap-5 rounded-2xl p-6 sm:flex-row sm:items-center sm:p-8">
             <div>
-              <p className="font-heading text-lg font-bold">This is a frontend preview</p>
+              <p className="font-heading text-lg font-normal">This is a frontend preview</p>
               <p className="text-muted-foreground mt-1 text-sm">
                 Demo listings and transaction actions are not live or connected to a backend.
               </p>

@@ -7,12 +7,12 @@ import { Heading, Text } from "@/components/ui/typography";
 
 export function HomeSearch() {
   return (
-    <section className="relative z-20 -mt-10 pb-4 sm:-mt-14">
+    <section id="home-search" className="relative z-20 -mt-10 pb-4 sm:-mt-14">
       <Container>
         <form
           action="/properties"
           method="get"
-          className="border-border/80 bg-background grid gap-5 rounded-[1.5rem] border p-5 shadow-[0_24px_70px_-35px_rgba(4,16,19,0.42)] sm:p-7 lg:grid-cols-[1.1fr_1.05fr_1fr_auto] lg:items-end lg:gap-6"
+          className="border-border/80 bg-background grid gap-5 rounded-lg border p-5 sm:p-7 lg:grid-cols-[1.1fr_1.05fr_1fr_auto] lg:items-end lg:gap-6"
         >
           <div className="lg:pb-1">
             <p className="text-brand-600 dark:text-brand-300 text-[10px] font-semibold tracking-[0.18em] uppercase">
@@ -25,7 +25,7 @@ export function HomeSearch() {
 
           <div className="space-y-2">
             <Label htmlFor="home-location">Location</Label>
-            <Input id="home-location" name="location" placeholder="City, state or area" />
+            <Input id="home-location" name="location" placeholder="City, state or area" className="h-10" />
           </div>
 
           <div className="space-y-2">
@@ -34,7 +34,7 @@ export function HomeSearch() {
               id="home-category"
               name="category"
               defaultValue=""
-              className="border-border bg-background text-foreground focus-visible:ring-ring focus-visible:ring-offset-background h-11 w-full rounded-lg border px-3.5 text-sm transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
+              className="border-border bg-background text-foreground focus-visible:ring-ring focus-visible:ring-offset-background h-10 w-full rounded-lg border px-3.5 text-sm transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
             >
               <option value="">All property types</option>
               <option value="land">Land</option>
@@ -43,7 +43,7 @@ export function HomeSearch() {
             </select>
           </div>
 
-          <Button type="submit" size="lg" className="group w-full rounded-full px-6 lg:w-auto">
+          <Button type="submit" size="md" className="group w-full rounded-sm px-4 lg:w-auto">
             <Search aria-hidden="true" />
             Search
             <ArrowRight className="hidden transition-transform duration-300 group-hover:translate-x-1 sm:inline" aria-hidden="true" />
