@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight, ClipboardList, Compass, FileText, MapPin } from "lucide-react";
+import { ArrowUpRight, ClipboardList, Compass, FileText, MapPin } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
 import { Section } from "@/components/ui/section";
@@ -85,16 +85,6 @@ export function CustomerJourney() {
           ))}
         </div>
 
-        <Reveal delay={350}>
-          <div className="mt-2 flex flex-col gap-3 border-t border-white/10 pt-5 sm:flex-row sm:items-center sm:justify-between">
-            <p className="text-[9px] leading-4 tracking-[0.08em] text-white/45 uppercase">
-              The current website is a preview. Availability, viewing options, and enquiry handling require Zenith confirmation.
-            </p>
-            <Link href="/properties" className="group inline-flex items-center gap-2 text-xs font-medium text-brand-200 transition-colors hover:text-white">
-              Begin exploring <ArrowRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
-            </Link>
-          </div>
-        </Reveal>
       </Container>
     </Section>
   );

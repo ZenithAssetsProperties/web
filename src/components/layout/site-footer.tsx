@@ -37,7 +37,7 @@ export function SiteFooter() {
               Find your next property.
             </Heading>
             <Text size="sm" className="text-white/60">
-              Browse the marketplace preview and see how the property journey is taking shape.
+              Explore properties, learn about Zenith, and find a clear next step.
             </Text>
           </Stack>
           <Button asChild>

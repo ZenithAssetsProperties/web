@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, ClipboardCheck, Compass, FileSearch, Headset, MapPinned, ScanSearch } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Grid } from "@/components/ui/grid";
@@ -11,7 +10,7 @@ import { Heading, Text } from "@/components/ui/typography";
 
 export const metadata: Metadata = {
   title: "How it works",
-  description: "A preview of the property discovery and inspection journey.",
+  description: "Explore the stages of a property search, from discovery through to a confident next step.",
   robots: { index: false, follow: false },
 };
 
@@ -69,7 +68,7 @@ export default function HowItWorksPage() {
         />
         <Container className="relative">
           <Stack gap="md" className="max-w-3xl">
-            <Badge className="border border-white/20 bg-white/10 text-white">Experience preview</Badge>
+            <p className="text-[10px] font-semibold tracking-[0.18em] text-brand-200 uppercase">The Zenith approach</p>
             <Heading as="h1" level="display" className="text-white">
               A clearer path to your next property.
             </Heading>
@@ -90,8 +89,7 @@ export default function HowItWorksPage() {
               From first search to a confident next step.
             </Heading>
             <Text className="text-muted-foreground mt-4">
-              The steps below describe the intended experience. Specific terms, availability, and transaction
-              services depend on the property and the information Zenith approves for publication.
+              A clear process helps you focus on the right questions at each stage. Availability, terms, and viewing options are confirmed for each property.
             </Text>
           </div>
 
@@ -110,14 +108,14 @@ export default function HowItWorksPage() {
 
           <div className="bg-muted/50 mt-12 flex flex-col justify-between gap-5 rounded-2xl p-6 sm:flex-row sm:items-center sm:p-8">
             <div>
-              <p className="font-heading text-lg font-normal">This is a frontend preview</p>
+              <p className="font-heading text-lg font-normal">Property-specific guidance</p>
               <p className="text-muted-foreground mt-1 text-sm">
-                Demo listings and transaction actions are not live or connected to a backend.
+                Confirm availability, documentation, viewing options, and applicable terms with Zenith.
               </p>
             </div>
             <Button asChild>
               <Link href="/properties">
-                Explore demo properties <ArrowRight aria-hidden="true" />
+                Explore properties <ArrowRight aria-hidden="true" />
               </Link>
             </Button>
           </div>

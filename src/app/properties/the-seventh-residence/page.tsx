@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowDown, ArrowRight } from "lucide-react";
 import { ProjectGallery } from "@/components/properties/project-gallery";
-import { PropertyInterestPreview } from "@/components/properties/property-interest-preview";
+import { PropertyInterestForm } from "@/components/properties/property-interest-form";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Grid } from "@/components/ui/grid";
@@ -13,8 +13,8 @@ import { Heading, Text } from "@/components/ui/typography";
 import { residenceAmenities, residenceGallery, residencePlans } from "@/lib/seventh-residence";
 
 export const metadata: Metadata = {
-  title: "The Seventh Residence · Project preview",
-  description: "A visual preview of The Seventh Residence project materials.",
+  title: "The Seventh Residence",
+  description: "Architecture and interior imagery for The Seventh Residence.",
   robots: { index: false, follow: false },
 };
 
@@ -34,14 +34,13 @@ export default function SeventhResidencePage() {
         <Container size="xl" className="relative z-10 pb-12 pt-36 sm:pb-16">
           <Reveal>
             <p className="text-[10px] font-semibold tracking-[0.2em] text-white/80 uppercase">
-              Project preview <span className="px-2 text-white/45">/</span> Residential
+              Residential <span className="px-2 text-white/45">/</span> Architecture &amp; interiors
             </p>
             <Heading as="h1" level="display" className="mt-4 max-w-4xl text-white sm:text-7xl lg:text-[5.5rem]">
               The Seventh <span className="font-normal italic">Residence</span>
             </Heading>
             <Text size="lead" className="mt-4 max-w-xl text-base leading-7 text-white/75 sm:text-lg">
-              A visual introduction to the project, built from the architectural and interior
-              renderings supplied for this preview.
+              Explore the architectural and interior renderings supplied for this project.
             </Text>
             <div className="mt-7 flex flex-wrap items-center gap-5">
               <Button asChild size="sm" className="rounded-sm px-4">
@@ -70,10 +69,9 @@ export default function SeventhResidencePage() {
             </Reveal>
             <Reveal delay={100}>
               <Text className="text-muted-foreground max-w-2xl leading-7">
-                The images on this page are project visuals supplied for the website preview. Zenith
-                has not yet approved the project location, unit mix, measurements, pricing,
-                documentation status, or availability for publication. This page does not present an
-                active offer or accept a reservation.
+                These visuals introduce the design. Project location, unit mix, measurements, pricing,
+                documentation status, and availability require confirmation. Contact Zenith for approved
+                information and next steps.
               </Text>
               <p className="mt-5 border-t border-border pt-4 text-[10px] font-medium tracking-[0.14em] text-brand-700 uppercase dark:text-brand-300">
                 Visual materials provided by the Zenith team
@@ -183,7 +181,7 @@ export default function SeventhResidencePage() {
 
       <Section spacing="lg" border="top" className="bg-muted/30">
         <Container size="xl">
-          <PropertyInterestPreview
+          <PropertyInterestForm
             propertyTitle="The Seventh Residence"
             propertyHref="/properties/the-seventh-residence"
           />

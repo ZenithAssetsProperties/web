@@ -39,8 +39,7 @@ export function About() {
               <Text>
                 The planned journey brings property details, documentation information, virtual and
                 physical inspection options, and access to Zenith&apos;s team into one connected
-                experience. This website is a frontend preview; listing availability and transaction
-                services will be communicated when they are ready.
+                experience. Property availability and transaction services are confirmed directly by Zenith.
               </Text>
             </Stack>
           </Reveal>

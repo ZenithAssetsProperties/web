@@ -18,7 +18,7 @@ import {
 
 export const metadata: Metadata = {
   title: "Explore properties",
-  description: "Explore the Zenith Asset Group property catalogue preview.",
+  description: "Explore residential, land, and commercial properties with Zenith Asset Group.",
   robots: { index: false, follow: false },
 };
 
@@ -94,13 +94,13 @@ export default async function PropertiesPage({ searchParams }: { searchParams: S
               <span className="text-white/90" aria-current="page">Properties</span>
             </nav>
             <p className="text-[10px] font-semibold tracking-[0.2em] text-brand-200 uppercase">
-              Zenith Asset Group <span className="px-2 text-white/40">/</span> Catalogue preview
+              Zenith Asset Group <span className="px-2 text-white/40">/</span> Property collection
             </p>
             <Heading as="h1" level="display" className="mt-3 text-white sm:text-6xl">
               Explore properties.
             </Heading>
             <Text size="lead" className="mt-4 max-w-2xl text-sm leading-6 text-white/75 sm:text-base sm:leading-7">
-              Search residential, land, and commercial examples. All catalogue listings, images, prices, and availability are illustrative.
+              Explore residential, land, and commercial property listings.
             </Text>
           </Reveal>
         </Container>
@@ -119,15 +119,15 @@ export default async function PropertiesPage({ searchParams }: { searchParams: S
           <div className="mb-7 flex flex-col justify-between gap-5 border-b border-border/80 pb-6 sm:mb-9 sm:flex-row sm:items-end">
             <Reveal>
               <p className="text-brand-600 text-[10px] font-semibold tracking-[0.18em] uppercase">
-                {hasFilters ? "Search results" : "Illustrative catalogue"}
+                {hasFilters ? "Search results" : "Property collection"}
               </p>
               <Heading as="h2" level="h2" className="mt-2">
                 {properties.length} {properties.length === 1 ? "property" : "properties"} to explore
               </Heading>
               <Text size="sm" className="text-muted-foreground mt-2">
                 {hasFilters
-                  ? "Filtered sample listings. Availability and details are examples only."
-                  : "Sample listings shown for interface preview; no live inventory is connected."}
+                  ? "Listing details and availability require confirmation with Zenith."
+                  : "Illustrative listing details. Confirm current properties and availability with Zenith."}
               </Text>
             </Reveal>
 
@@ -154,8 +154,8 @@ export default async function PropertiesPage({ searchParams }: { searchParams: S
           ) : (
             <EmptyState
               icon={SlidersHorizontal}
-              title="No sample properties match those filters"
-              description="Try another location, property type, or maximum price. This catalogue currently uses illustrative records only."
+              title="No properties match those filters"
+              description="Adjust your filters or contact Zenith for help finding the right property."
               action={
                 <Link
                   href="/properties"
@@ -186,7 +186,7 @@ export default async function PropertiesPage({ searchParams }: { searchParams: S
       <Section spacing="sm" border="top" className="bg-background">
         <Container size="xl">
           <p className="text-muted-foreground text-xs leading-5">
-            Prototype only. Property names, locations, availability, specifications, and prices are fictional examples. This page does not accept enquiries or reservations.
+            Illustrative listings are not offers. Confirm property details and availability with Zenith. Online reservations and payments are not available on this website.
           </p>
         </Container>
       </Section>

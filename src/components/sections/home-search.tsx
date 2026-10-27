@@ -4,7 +4,7 @@ import { Container } from "@/components/ui/container";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Reveal } from "@/components/ui/reveal";
-import { Heading, Text } from "@/components/ui/typography";
+import { Heading } from "@/components/ui/typography";
 
 export function HomeSearch() {
   return (
@@ -50,9 +50,6 @@ export function HomeSearch() {
               Search
               <ArrowRight className="hidden transition-transform duration-500 ease-out group-hover:translate-x-1 sm:inline" aria-hidden="true" />
             </Button>
-            <Text size="sm" className="text-muted-foreground text-xs lg:col-span-4">
-              Preview search uses fictional properties and illustrative imagery.
-            </Text>
           </form>
         </Reveal>
       </Container>

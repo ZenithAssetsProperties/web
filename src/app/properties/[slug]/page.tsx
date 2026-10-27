@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowUpRight, Bath, BedDouble, CarFront, FileText, Maximize2 } from "lucide-react";
 import { DemoPropertyVisual } from "@/components/properties/demo-property-visual";
-import { PropertyInterestPreview } from "@/components/properties/property-interest-preview";
+import { PropertyInterestForm } from "@/components/properties/property-interest-form";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   return {
     title: property.title,
-    description: "Illustrative demo property detail for the Zenith Asset Group website prototype.",
+    description: `Property details for ${property.title} from Zenith Asset Group.`,
     robots: { index: false, follow: false },
   };
 }
@@ -34,9 +34,9 @@ export default async function PropertyDetailPage({ params }: PageProps) {
   if (!property) notFound();
   const sizeLabel = `${new Intl.NumberFormat("en-NG").format(property.size.value)} ${property.size.unit}`;
   const availabilityLabel = {
-    available: "Demo status: available",
-    reserved: "Demo status: reserved",
-    sold: "Demo status: sold",
+    available: "Availability to confirm",
+    reserved: "Availability to confirm",
+    sold: "Availability to confirm",
   }[property.availability];
 
   return (
@@ -60,7 +60,7 @@ export default async function PropertyDetailPage({ params }: PageProps) {
             <Stack gap="lg" className="lg:sticky lg:top-28">
               <div>
                 <div className="mb-4 flex flex-wrap gap-2">
-                  <Badge>Illustrative demo listing</Badge>
+                  <Badge>Illustrative listing</Badge>
                   <Badge variant="outline">{availabilityLabel}</Badge>
                 </div>
                 <p className="text-muted-foreground text-xs font-semibold tracking-[0.14em] uppercase">
@@ -92,7 +92,7 @@ export default async function PropertyDetailPage({ params }: PageProps) {
                     <Link href="/how-it-works">See how the process works</Link>
                   </Button>
                   <Button asChild variant="ghost">
-                    <Link href={`/virtual-tours/${property.slug}`}>Preview virtual tour</Link>
+                    <Link href={`/virtual-tours/${property.slug}`}>View tour details</Link>
                   </Button>
                 </div>
               </Card>
@@ -142,9 +142,9 @@ export default async function PropertyDetailPage({ params }: PageProps) {
               <div className="flex items-start gap-3">
                 <FileText className="text-brand-600 dark:text-brand-300 mt-0.5 size-5 shrink-0" aria-hidden="true" />
                 <div>
-                  <Heading as="h2" level="h4">Documentation preview</Heading>
+                  <Heading as="h2" level="h4">Documentation status</Heading>
                   <Text size="sm" className="text-muted-foreground mt-2">
-                    These are illustrative interface states, not actual documents or verification results.
+                    Ask Zenith to confirm the current status and availability of each document.
                   </Text>
                 </div>
               </div>
@@ -153,7 +153,7 @@ export default async function PropertyDetailPage({ params }: PageProps) {
                   <li key={document.name} className="border-border flex items-center justify-between gap-3 border-t pt-3 text-sm">
                     <span>{document.name}</span>
                     <span className="text-muted-foreground text-right text-xs">
-                      {document.status === "available-for-review" ? "Demo: available for review" : "Demo: request access"}
+                      {document.status === "available-for-review" ? "Status to confirm" : "Request status to confirm"}
                     </span>
                   </li>
                 ))}
@@ -165,15 +165,14 @@ export default async function PropertyDetailPage({ params }: PageProps) {
 
       <Section spacing="md" border="top">
         <Container size="md">
-          <PropertyInterestPreview propertyTitle={property.title} propertyHref={`/properties/${property.slug}`} />
+          <PropertyInterestForm propertyTitle={property.title} propertyHref={`/properties/${property.slug}`} />
         </Container>
       </Section>
 
       <Section spacing="sm" border="top" className="bg-muted/40">
         <Container>
           <p className="text-muted-foreground text-center text-xs leading-5">
-            Prototype only. This fictional listing has no live availability, property documents, tour,
-            inspection booking, purchase, or reservation attached to it.
+            Illustrative listing. Confirm availability, documents, inspection arrangements, and transaction terms with Zenith.
           </p>
         </Container>
       </Section>

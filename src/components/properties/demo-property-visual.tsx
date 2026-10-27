@@ -26,7 +26,7 @@ export function DemoPropertyVisual({
 
       <div className="absolute top-4 left-4 sm:top-5 sm:left-5">
         <span className="rounded-full border border-white/25 bg-brand-950/55 px-3 py-1.5 text-[9px] font-semibold tracking-[0.14em] text-white uppercase backdrop-blur-md">
-          Preview listing <span className="px-1 text-white/50">/</span> concept image
+          Illustrative listing <span className="px-1 text-white/50">/</span> concept image
         </span>
       </div>
 

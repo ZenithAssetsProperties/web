@@ -14,22 +14,22 @@ const faqs: AccordionItemData[] = [
   {
     question: "Are the properties shown on this website available to buy?",
     answer:
-      "The current marketplace pages are a frontend preview and use fictional demo listings. They are not active offers or confirmed inventory.",
+      "Availability changes by property. Contact Zenith to confirm current options before making a decision.",
   },
   {
     question: "What does property verification mean?",
     answer:
-      "Verification should be explained using Zenith's approved criteria and supporting information for each property. The demo listings on this site do not represent real verification results.",
+      "Zenith should explain its review criteria and supporting information for each property. Ask the team to clarify any documentation or verification status that is not shown.",
   },
   {
     question: "Can I arrange an inspection?",
     answer:
-      "The planned platform supports virtual and physical inspection journeys. Inspection requests are not submitted from this frontend preview; use the Contact page to reach Zenith.",
+      "Contact Zenith to discuss viewing options for a specific property.",
   },
   {
     question: "Can I reserve or pay for a property online?",
     answer:
-      "No. Online reservation and payment are not connected in this website preview. Contact Zenith directly for current property and transaction information.",
+      "Online reservation and payment are not offered through this website. Contact Zenith to confirm the approved next steps and payment arrangements.",
   },
   {
     question: "Can customers outside Nigeria use the platform?",

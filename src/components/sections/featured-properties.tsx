@@ -19,7 +19,7 @@ function ProjectFeature() {
       <article className="group/project">
         <Link
           href="/properties/the-seventh-residence"
-          aria-label="Explore The Seventh Residence project preview"
+          aria-label="Explore The Seventh Residence project visuals"
           className="block focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-600"
         >
           <figure className="relative grid aspect-[1.18] grid-cols-[1.35fr_0.9fr] grid-rows-2 gap-1 overflow-hidden bg-brand-950 sm:aspect-[1.4]">
@@ -37,7 +37,7 @@ function ProjectFeature() {
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-brand-950/70 via-brand-950/5 to-brand-950/10 transition-colors duration-700 group-hover/project:from-brand-950/80" />
             <figcaption className="absolute inset-x-4 bottom-4 flex items-end justify-between gap-3 sm:inset-x-6 sm:bottom-6">
               <span className="border-l border-brand-300 pl-3 text-[9px] font-medium leading-5 tracking-[0.16em] text-white uppercase sm:text-[10px]">
-                Project preview<br />Supplied visual collection
+                Project visuals<br />Supplied renderings
               </span>
               <span className="flex size-10 shrink-0 items-center justify-center border border-white/55 text-white transition-[background-color,color,transform] duration-500 group-hover/project:-rotate-45 group-hover/project:bg-white group-hover/project:text-brand-950">
                 <ArrowUpRight className="size-4" aria-hidden="true" />
@@ -134,7 +134,7 @@ export function FeaturedProperties() {
               <div className="max-w-xs border-l border-brand-600/35 pl-4">
                 <p className="text-[10px] font-semibold tracking-[0.15em] text-foreground uppercase">A considered first look</p>
                 <Text size="sm" className="mt-2 leading-5 text-muted-foreground">
-                  One supplied project preview and two sample listings. Catalogue details are illustrative, not confirmed inventory.
+                  Explore the architecture of The Seventh Residence alongside selected property examples.
                 </Text>
               </div>
               <Link
@@ -156,7 +156,7 @@ export function FeaturedProperties() {
             ))}
             <Reveal delay={500} className="pt-1">
               <p className="max-w-sm border-l border-brand-600/35 pl-3 text-[10px] leading-5 text-muted-foreground">
-                Sample locations, prices, sizes, and specifications are for interface preview only. Approved listing details will replace them before publication.
+                Property details and availability are confirmed directly with Zenith.
               </p>
             </Reveal>
           </div>

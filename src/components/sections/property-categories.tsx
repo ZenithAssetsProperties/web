@@ -27,7 +27,7 @@ const categories = [
   },
   {
     name: "Commercial",
-    description: "A setting for ambitious work.",
+    description: "Space for business to take shape.",
     href: "/properties?category=commercial",
     image: "https://images.unsplash.com/photo-1785966431797-4d37f79366e5?auto=format&fit=crop&w=1100&q=88",
     alt: "Contemporary office building used as concept imagery",
@@ -46,11 +46,11 @@ function CategoryLink({
   const feature = category.format === "feature";
 
   return (
-    <Reveal delay={delay} className="min-w-0">
+    <Reveal delay={delay} className="h-full min-w-0">
       <Link
         href={category.href}
-        className={`group relative isolate flex overflow-hidden bg-brand-950 text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-600 ${
-          feature ? "min-h-[390px] sm:min-h-[470px] lg:min-h-[570px]" : "min-h-[230px] sm:min-h-[270px] lg:min-h-0"
+        className={`group relative isolate flex h-full overflow-hidden bg-brand-950 text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-600 ${
+          feature ? "min-h-[390px] sm:min-h-[470px] lg:min-h-[570px]" : "min-h-[230px] sm:min-h-[270px]"
         }`}
       >
         <Image
@@ -70,10 +70,7 @@ function CategoryLink({
         />
         <div className="relative flex w-full flex-col justify-between p-5 sm:p-7">
           <div className="flex items-start justify-between gap-4">
-            <span className="text-[9px] font-semibold tracking-[0.17em] text-white/75 uppercase">
-              {feature ? "A place to call your own" : "Explore the collection"}
-            </span>
-            <span className="font-mono text-[10px] text-white/70">{category.number}</span>
+            <span className="font-mono text-[10px] tracking-[0.12em] text-white/75">{category.number}</span>
           </div>
 
           <div className={`flex items-end justify-between gap-4 ${feature ? "sm:max-w-xl" : ""}`}>
@@ -97,40 +94,34 @@ function CategoryLink({
 
 export function PropertyCategories() {
   return (
-    <Section spacing="lg" className="bg-[#f7f7f4]">
+    <Section spacing="md" className="bg-[#f7f7f4]">
       <Container size="xl">
         <div className="mb-8 grid gap-6 border-b border-border/80 pb-7 sm:mb-10 sm:pb-9 lg:grid-cols-[1fr_0.55fr] lg:items-end">
           <Reveal>
             <p className="flex items-center gap-3 text-[10px] font-semibold tracking-[0.19em] text-brand-700 uppercase">
               <span className="h-px w-7 bg-brand-700/60" aria-hidden="true" />
-              Find your direction <span className="text-foreground/35">/ 03 paths</span>
+              Explore by property type
             </p>
             <Heading as="h2" level="h1" className="mt-4 max-w-2xl text-4xl leading-[1.04] sm:text-5xl lg:text-[3.5rem]">
-              Space for what <span className="font-normal italic">comes next.</span>
+              Find a space with <span className="font-normal italic">purpose.</span>
             </Heading>
           </Reveal>
           <Reveal delay={120}>
             <div className="border-l border-brand-700/35 pl-4 sm:pl-5">
               <Text size="sm" className="leading-6 text-muted-foreground">
-                Explore residential, land, and commercial opportunities. These paths currently lead to a marketplace preview with illustrative imagery and fictional listings.
+                A clear path through residential, land, and commercial property.
               </Text>
             </div>
           </Reveal>
         </div>
 
-        <div className="grid gap-3 sm:gap-4 lg:grid-cols-[1.15fr_0.85fr] lg:items-stretch">
+        <div className="grid items-stretch gap-3 sm:gap-4 lg:grid-cols-[1.15fr_0.85fr] lg:gap-4">
           <CategoryLink category={categories[0]} delay={0} />
-          <div className="grid gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-1">
+          <div className="grid items-stretch gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-1 lg:grid-rows-2">
             <CategoryLink category={categories[1]} delay={100} />
             <CategoryLink category={categories[2]} delay={200} />
           </div>
         </div>
-
-        <Reveal delay={240}>
-          <p className="mt-4 text-[9px] tracking-[0.1em] text-muted-foreground uppercase">
-            Concept imagery · no live inventory represented
-          </p>
-        </Reveal>
       </Container>
     </Section>
   );

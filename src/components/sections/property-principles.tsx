@@ -36,9 +36,7 @@ export function PropertyPrinciples() {
               Every property should tell its story.
             </Heading>
             <Text className="mt-4 max-w-2xl text-white/70">
-              The experience is being designed to make property information, documentation status,
-              inspection options, and next steps easy to find. This preview does not show verified
-              inventory or actual documents.
+              Property information, documentation status, viewing options, and next steps should be clear and easy to review.
             </Text>
           </div>
         </Reveal>

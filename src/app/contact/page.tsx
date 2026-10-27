@@ -18,7 +18,7 @@ export default function ContactPage() {
       <PageHero
         eyebrow="Contact"
         title="Get in touch"
-        description="Have a question about Zenith Asset Group or the property marketplace preview? Reach out directly."
+        description="Have a question about Zenith Asset Group or a property? Reach out to the team."
       />
       <Section spacing="lg">
         <Container size="md">
