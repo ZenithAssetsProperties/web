@@ -12,16 +12,21 @@ export function NewsletterSignup() {
   return (
     <Section spacing="md" className="bg-[#f7f7f4]">
       <Container size="xl">
-        <div className="grid gap-7 border-y border-brand-950/15 py-7 sm:py-9 lg:grid-cols-[1fr_auto] lg:items-center lg:gap-12">
+        <div className="border-brand-950/15 grid gap-7 border-y py-7 sm:py-9 lg:grid-cols-[1fr_auto] lg:items-center lg:gap-12">
           <Reveal>
-            <p className="flex items-center gap-3 text-[10px] font-semibold tracking-[0.19em] text-brand-700 uppercase">
-              <span className="h-px w-7 bg-brand-700/60" aria-hidden="true" />
+            <p className="text-brand-700 flex items-center gap-3 text-[10px] font-semibold tracking-[0.19em] uppercase">
+              <span className="bg-brand-700/60 h-px w-7" aria-hidden="true" />
               Newsletter <span className="text-foreground/35">/ The Zenith letter</span>
             </p>
-            <Heading as="h2" level="h2" className="mt-3 max-w-2xl text-3xl leading-[1.06] sm:text-4xl">
-              A little more perspective, <span className="font-normal italic">when it matters.</span>
+            <Heading
+              as="h2"
+              level="h2"
+              className="mt-3 max-w-2xl text-3xl leading-[1.06] sm:text-4xl"
+            >
+              A little more perspective,{" "}
+              <span className="font-normal italic">when it matters.</span>
             </Heading>
-            <Text size="sm" className="mt-3 max-w-xl leading-6 text-muted-foreground">
+            <Text size="sm" className="text-muted-foreground mt-3 max-w-xl leading-6">
               Occasional notes on property, new projects, and the details worth considering.
             </Text>
           </Reveal>
@@ -33,8 +38,9 @@ export function NewsletterSignup() {
                   Request to subscribe <ArrowUpRight aria-hidden="true" />
                 </a>
               </Button>
-              <p className="text-[10px] leading-4 text-muted-foreground">
-                Opens an email to Zenith. Subscription preferences are confirmed directly with the team.
+              <p className="text-muted-foreground text-[10px] leading-4">
+                Opens an email to Zenith. Subscription preferences are confirmed directly with the
+                team.
               </p>
             </div>
           </Reveal>

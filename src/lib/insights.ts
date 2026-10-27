@@ -15,7 +15,8 @@ export const insightArticles: InsightArticle[] = [
     slug: "questions-to-ask-before-a-property-viewing",
     category: "The viewing",
     title: "A more useful property viewing starts with better questions.",
-    excerpt: "A simple way to prepare for a visit, focus your attention, and leave with clearer next steps.",
+    excerpt:
+      "A simple way to prepare for a visit, focus your attention, and leave with clearer next steps.",
     readTime: "4 min read",
     image: "/properties/seventh-residence/living-room.jpg",
     imageAlt: "Interior rendering supplied for The Seventh Residence project preview",
@@ -47,7 +48,8 @@ export const insightArticles: InsightArticle[] = [
     slug: "how-to-review-a-property-listing",
     category: "The details",
     title: "How to read a property listing with a clearer point of view.",
-    excerpt: "Look beyond the first impression and make a note of the details that shape your next questions.",
+    excerpt:
+      "Look beyond the first impression and make a note of the details that shape your next questions.",
     readTime: "3 min read",
     image: "/properties/seventh-residence/exterior-visual.jpg",
     imageAlt: "Exterior rendering supplied for The Seventh Residence project preview",
@@ -78,7 +80,8 @@ export const insightArticles: InsightArticle[] = [
     slug: "a-considered-way-to-compare-property-options",
     category: "The search",
     title: "A considered way to compare property options.",
-    excerpt: "Build a simple comparison around your priorities, not just the details that are easiest to count.",
+    excerpt:
+      "Build a simple comparison around your priorities, not just the details that are easiest to count.",
     readTime: "4 min read",
     image: "/properties/seventh-residence/lounge.jpg",
     imageAlt: "Lounge rendering supplied for The Seventh Residence project preview",

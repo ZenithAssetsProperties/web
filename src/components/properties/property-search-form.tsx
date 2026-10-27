@@ -16,15 +16,20 @@ export interface PropertySearchValues {
 }
 
 export function PropertySearchForm({ values }: { values: PropertySearchValues }) {
-  const advancedFilterCount = [values.minPrice, values.maxPrice, values.bedrooms, values.availability, values.sort]
-    .filter(Boolean).length;
+  const advancedFilterCount = [
+    values.minPrice,
+    values.maxPrice,
+    values.bedrooms,
+    values.availability,
+    values.sort,
+  ].filter(Boolean).length;
   const advancedFiltersApplied = advancedFilterCount > 0;
 
   return (
     <form
       action="/properties"
       method="get"
-      className="grid gap-x-4 gap-y-5 border-y border-border/80 py-5 sm:grid-cols-2 lg:grid-cols-[1.2fr_1fr_1fr_auto] lg:items-end"
+      className="border-border/80 grid gap-x-4 gap-y-5 border-y py-5 sm:grid-cols-2 lg:grid-cols-[1.2fr_1fr_1fr_auto] lg:items-end"
     >
       <div className="space-y-2">
         <Label htmlFor="property-query">Search properties</Label>
@@ -70,24 +75,48 @@ export function PropertySearchForm({ values }: { values: PropertySearchValues })
         Search
       </Button>
 
-      <details open={advancedFiltersApplied} className="group col-span-full border-t border-border/70 pt-4">
-        <summary className="flex w-fit cursor-pointer list-none items-center gap-2 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-600 [&::-webkit-details-marker]:hidden">
+      <details
+        open={advancedFiltersApplied}
+        className="group border-border/70 col-span-full border-t pt-4"
+      >
+        <summary className="text-muted-foreground hover:text-foreground focus-visible:outline-brand-600 flex w-fit cursor-pointer list-none items-center gap-2 text-xs font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 [&::-webkit-details-marker]:hidden">
           <SlidersHorizontal className="size-3.5" aria-hidden="true" />
           More filters
           {advancedFiltersApplied && (
             <span className="text-brand-600">{advancedFilterCount} applied</span>
           )}
-          <ChevronDown className="size-3.5 transition-transform duration-300 group-open:rotate-180" aria-hidden="true" />
+          <ChevronDown
+            className="size-3.5 transition-transform duration-300 group-open:rotate-180"
+            aria-hidden="true"
+          />
         </summary>
 
-        <div className="mt-5 grid gap-4 border-l border-brand-600/25 pl-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="border-brand-600/25 mt-5 grid gap-4 border-l pl-4 sm:grid-cols-2 lg:grid-cols-4">
           <div className="space-y-2">
             <Label htmlFor="property-min-price">Minimum price (NGN)</Label>
-            <Input id="property-min-price" name="minPrice" type="number" min="0" inputMode="numeric" defaultValue={values.minPrice} placeholder="No minimum" className="h-10" />
+            <Input
+              id="property-min-price"
+              name="minPrice"
+              type="number"
+              min="0"
+              inputMode="numeric"
+              defaultValue={values.minPrice}
+              placeholder="No minimum"
+              className="h-10"
+            />
           </div>
           <div className="space-y-2">
             <Label htmlFor="property-max-price">Maximum price (NGN)</Label>
-            <Input id="property-max-price" name="maxPrice" type="number" min="0" inputMode="numeric" defaultValue={values.maxPrice} placeholder="No maximum" className="h-10" />
+            <Input
+              id="property-max-price"
+              name="maxPrice"
+              type="number"
+              min="0"
+              inputMode="numeric"
+              defaultValue={values.maxPrice}
+              placeholder="No maximum"
+              className="h-10"
+            />
           </div>
           <div className="space-y-2">
             <Label htmlFor="property-bedrooms">Bedrooms</Label>

@@ -1,6 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, ClipboardCheck, Compass, FileSearch, Headset, MapPinned, ScanSearch } from "lucide-react";
+import {
+  ArrowRight,
+  ClipboardCheck,
+  Compass,
+  FileSearch,
+  Headset,
+  MapPinned,
+  ScanSearch,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Grid } from "@/components/ui/grid";
@@ -10,7 +18,8 @@ import { Heading, Text } from "@/components/ui/typography";
 
 export const metadata: Metadata = {
   title: "How it works",
-  description: "Explore the stages of a property search, from discovery through to a confident next step.",
+  description:
+    "Explore the stages of a property search, from discovery through to a confident next step.",
   robots: { index: false, follow: false },
 };
 
@@ -24,13 +33,15 @@ const steps = [
   {
     number: "02",
     title: "Explore",
-    description: "Review the property description, available media, location context, and key facts.",
+    description:
+      "Review the property description, available media, location context, and key facts.",
     icon: ScanSearch,
   },
   {
     number: "03",
     title: "Review",
-    description: "Check what documentation information is available and ask for clarification when needed.",
+    description:
+      "Check what documentation information is available and ask for clarification when needed.",
     icon: FileSearch,
   },
   {
@@ -56,7 +67,7 @@ const steps = [
 export default function HowItWorksPage() {
   return (
     <>
-      <section className="bg-brand-950 relative overflow-hidden pb-14 pt-32 text-white sm:pb-20 sm:pt-40">
+      <section className="bg-brand-950 relative overflow-hidden pt-32 pb-14 text-white sm:pt-40 sm:pb-20">
         <div
           className="absolute inset-0 opacity-10"
           style={{
@@ -68,12 +79,15 @@ export default function HowItWorksPage() {
         />
         <Container className="relative">
           <Stack gap="md" className="max-w-3xl">
-            <p className="text-[10px] font-semibold tracking-[0.18em] text-brand-200 uppercase">The Zenith approach</p>
+            <p className="text-brand-200 text-[10px] font-semibold tracking-[0.18em] uppercase">
+              The Zenith approach
+            </p>
             <Heading as="h1" level="display" className="text-white">
               A clearer path to your next property.
             </Heading>
             <Text size="lead" className="max-w-2xl text-white/70">
-              Explore the stages of the property journey and understand what to review before you proceed.
+              Explore the stages of the property journey and understand what to review before you
+              proceed.
             </Text>
           </Stack>
         </Container>
@@ -89,19 +103,30 @@ export default function HowItWorksPage() {
               From first search to a confident next step.
             </Heading>
             <Text className="text-muted-foreground mt-4">
-              A clear process helps you focus on the right questions at each stage. Availability, terms, and viewing options are confirmed for each property.
+              A clear process helps you focus on the right questions at each stage. Availability,
+              terms, and viewing options are confirmed for each property.
             </Text>
           </div>
 
           <Grid cols={3} gap="md">
             {steps.map(({ number, title, description, icon: Icon }) => (
-              <article key={number} className="border-border group relative border-t p-5 pt-6 sm:p-7 sm:pt-8">
+              <article
+                key={number}
+                className="border-border group relative border-t p-5 pt-6 sm:p-7 sm:pt-8"
+              >
                 <div className="flex items-start justify-between gap-4">
                   <span className="text-muted-foreground/60 font-mono text-xs">{number}</span>
-                  <Icon className="text-brand-600/70 dark:text-brand-300/70 size-6 transition-transform duration-300 group-hover:-translate-y-1" aria-hidden="true" />
+                  <Icon
+                    className="text-brand-600/70 dark:text-brand-300/70 size-6 transition-transform duration-300 group-hover:-translate-y-1"
+                    aria-hidden="true"
+                  />
                 </div>
-                <Heading as="h3" level="h3" className="mt-8">{title}</Heading>
-                <Text size="sm" className="text-muted-foreground mt-3 leading-6">{description}</Text>
+                <Heading as="h3" level="h3" className="mt-8">
+                  {title}
+                </Heading>
+                <Text size="sm" className="text-muted-foreground mt-3 leading-6">
+                  {description}
+                </Text>
               </article>
             ))}
           </Grid>
@@ -110,7 +135,8 @@ export default function HowItWorksPage() {
             <div>
               <p className="font-heading text-lg font-normal">Property-specific guidance</p>
               <p className="text-muted-foreground mt-1 text-sm">
-                Confirm availability, documentation, viewing options, and applicable terms with Zenith.
+                Confirm availability, documentation, viewing options, and applicable terms with
+                Zenith.
               </p>
             </div>
             <Button asChild>

@@ -1,7 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowUpRight, Bath, BedDouble, CarFront, FileText, Maximize2 } from "lucide-react";
+import {
+  ArrowLeft,
+  ArrowUpRight,
+  Bath,
+  BedDouble,
+  CarFront,
+  FileText,
+  Maximize2,
+} from "lucide-react";
 import { DemoPropertyVisual } from "@/components/properties/demo-property-visual";
 import { PropertyInterestForm } from "@/components/properties/property-interest-form";
 import { Badge } from "@/components/ui/badge";
@@ -41,7 +49,7 @@ export default async function PropertyDetailPage({ params }: PageProps) {
 
   return (
     <>
-      <Section spacing="sm" className="pb-4 pt-28 sm:pt-32">
+      <Section spacing="sm" className="pt-28 pb-4 sm:pt-32">
         <Container>
           <Link
             href="/properties"
@@ -104,7 +112,11 @@ export default async function PropertyDetailPage({ params }: PageProps) {
                 <div className="border-border grid grid-cols-2 gap-3 border-y py-4">
                   <DetailFact icon={Maximize2} label="Size" value={sizeLabel} />
                   {property.bedrooms !== undefined && (
-                    <DetailFact icon={BedDouble} label="Bedrooms" value={String(property.bedrooms)} />
+                    <DetailFact
+                      icon={BedDouble}
+                      label="Bedrooms"
+                      value={String(property.bedrooms)}
+                    />
                   )}
                   {property.bathrooms !== undefined && (
                     <DetailFact icon={Bath} label="Bathrooms" value={String(property.bathrooms)} />
@@ -123,15 +135,25 @@ export default async function PropertyDetailPage({ params }: PageProps) {
         <Container>
           <Grid cols={2} gap="lg">
             <div>
-              <Heading as="h2" level="h3">Overview</Heading>
+              <Heading as="h2" level="h3">
+                Overview
+              </Heading>
               <Text className="text-muted-foreground mt-4 max-w-2xl leading-7">
                 {property.description}
               </Text>
-              <Heading as="h3" level="h4" className="mt-8">Features</Heading>
+              <Heading as="h3" level="h4" className="mt-8">
+                Features
+              </Heading>
               <ul className="mt-4 grid gap-3 sm:grid-cols-2">
                 {property.features.map((feature) => (
-                  <li key={feature} className="border-border flex items-center gap-3 border-b pb-3 text-sm">
-                    <span className="bg-brand-600 size-1.5 shrink-0 rounded-full" aria-hidden="true" />
+                  <li
+                    key={feature}
+                    className="border-border flex items-center gap-3 border-b pb-3 text-sm"
+                  >
+                    <span
+                      className="bg-brand-600 size-1.5 shrink-0 rounded-full"
+                      aria-hidden="true"
+                    />
                     {feature}
                   </li>
                 ))}
@@ -140,9 +162,14 @@ export default async function PropertyDetailPage({ params }: PageProps) {
 
             <Card className="h-fit rounded-2xl p-5 sm:p-7">
               <div className="flex items-start gap-3">
-                <FileText className="text-brand-600 dark:text-brand-300 mt-0.5 size-5 shrink-0" aria-hidden="true" />
+                <FileText
+                  className="text-brand-600 dark:text-brand-300 mt-0.5 size-5 shrink-0"
+                  aria-hidden="true"
+                />
                 <div>
-                  <Heading as="h2" level="h4">Documentation status</Heading>
+                  <Heading as="h2" level="h4">
+                    Documentation status
+                  </Heading>
                   <Text size="sm" className="text-muted-foreground mt-2">
                     Ask Zenith to confirm the current status and availability of each document.
                   </Text>
@@ -150,10 +177,15 @@ export default async function PropertyDetailPage({ params }: PageProps) {
               </div>
               <ul className="mt-5 space-y-3">
                 {property.documents.map((document) => (
-                  <li key={document.name} className="border-border flex items-center justify-between gap-3 border-t pt-3 text-sm">
+                  <li
+                    key={document.name}
+                    className="border-border flex items-center justify-between gap-3 border-t pt-3 text-sm"
+                  >
                     <span>{document.name}</span>
                     <span className="text-muted-foreground text-right text-xs">
-                      {document.status === "available-for-review" ? "Status to confirm" : "Request status to confirm"}
+                      {document.status === "available-for-review"
+                        ? "Status to confirm"
+                        : "Request status to confirm"}
                     </span>
                   </li>
                 ))}
@@ -165,14 +197,18 @@ export default async function PropertyDetailPage({ params }: PageProps) {
 
       <Section spacing="md" border="top">
         <Container size="md">
-          <PropertyInterestForm propertyTitle={property.title} propertyHref={`/properties/${property.slug}`} />
+          <PropertyInterestForm
+            propertyTitle={property.title}
+            propertyHref={`/properties/${property.slug}`}
+          />
         </Container>
       </Section>
 
       <Section spacing="sm" border="top" className="bg-muted/40">
         <Container>
           <p className="text-muted-foreground text-center text-xs leading-5">
-            Illustrative listing. Confirm availability, documents, inspection arrangements, and transaction terms with Zenith.
+            Illustrative listing. Confirm availability, documents, inspection arrangements, and
+            transaction terms with Zenith.
           </p>
         </Container>
       </Section>

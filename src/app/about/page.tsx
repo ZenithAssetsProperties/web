@@ -4,8 +4,7 @@ import { PageHero } from "@/components/page-hero";
 
 export const metadata: Metadata = {
   title: "About",
-  description:
-    "Learn about Zenith Asset Group and its planned digital property experience.",
+  description: "Learn about Zenith Asset Group and its planned digital property experience.",
 };
 
 export default function AboutPage() {

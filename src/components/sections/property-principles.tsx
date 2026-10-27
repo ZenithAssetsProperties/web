@@ -36,7 +36,8 @@ export function PropertyPrinciples() {
               Every property should tell its story.
             </Heading>
             <Text className="mt-4 max-w-2xl text-white/70">
-              Property information, documentation status, viewing options, and next steps should be clear and easy to review.
+              Property information, documentation status, viewing options, and next steps should be
+              clear and easy to review.
             </Text>
           </div>
         </Reveal>
@@ -44,7 +45,7 @@ export function PropertyPrinciples() {
         <Grid cols={3} gap="md" className="mt-12">
           {principles.map(({ title, body, icon: Icon }, index) => (
             <Reveal key={title} delay={index * 70}>
-              <article className="border-white/15 h-full border-t py-6 sm:py-7">
+              <article className="h-full border-t border-white/15 py-6 sm:py-7">
                 <Icon className="text-brand-300 size-5" strokeWidth={1.6} aria-hidden="true" />
                 <h3 className="font-heading mt-7 text-xl font-normal tracking-tight">{title}</h3>
                 <p className="mt-3 text-sm leading-6 text-white/65">{body}</p>

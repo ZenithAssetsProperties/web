@@ -30,33 +30,58 @@ export default async function InsightArticlePage({ params }: PageProps) {
 
   return (
     <>
-      <PageHero eyebrow={`The journal / ${article.category}`} title={article.title} description={article.excerpt} />
+      <PageHero
+        eyebrow={`The journal / ${article.category}`}
+        title={article.title}
+        description={article.excerpt}
+      />
 
       <Section spacing="md">
         <Container size="md">
-          <Link href="/insights" className="inline-flex items-center gap-2 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-600">
+          <Link
+            href="/insights"
+            className="text-muted-foreground hover:text-foreground focus-visible:outline-brand-600 inline-flex items-center gap-2 text-xs font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-4"
+          >
             <ArrowLeft className="size-3.5" aria-hidden="true" /> Back to insights
           </Link>
-          <figure className="relative mt-6 aspect-[1.75] overflow-hidden bg-brand-950">
-            <Image src={article.image} alt={article.imageAlt} fill priority sizes="(max-width: 768px) 100vw, 768px" className="object-cover" />
+          <figure className="bg-brand-950 relative mt-6 aspect-[1.75] overflow-hidden">
+            <Image
+              src={article.image}
+              alt={article.imageAlt}
+              fill
+              priority
+              sizes="(max-width: 768px) 100vw, 768px"
+              className="object-cover"
+            />
           </figure>
-          <p className="mt-4 text-[9px] font-semibold tracking-[0.14em] text-brand-700 uppercase">{article.category} <span className="px-1 text-border">/</span> {article.readTime}</p>
+          <p className="text-brand-700 mt-4 text-[9px] font-semibold tracking-[0.14em] uppercase">
+            {article.category} <span className="text-border px-1">/</span> {article.readTime}
+          </p>
           <div className="mt-10 space-y-9 sm:mt-12">
             {article.sections.map(({ heading, paragraphs }) => (
               <section key={heading}>
-                <Heading as="h2" level="h3">{heading}</Heading>
+                <Heading as="h2" level="h3">
+                  {heading}
+                </Heading>
                 <div className="mt-4 space-y-4">
                   {paragraphs.map((paragraph) => (
-                    <Text key={paragraph} className="leading-7 text-muted-foreground">{paragraph}</Text>
+                    <Text key={paragraph} className="text-muted-foreground leading-7">
+                      {paragraph}
+                    </Text>
                   ))}
                 </div>
               </section>
             ))}
           </div>
-          <div className="mt-12 flex flex-col justify-between gap-4 border-t border-border/80 pt-6 sm:flex-row sm:items-center">
-            <p className="max-w-md text-[10px] leading-5 text-muted-foreground">General editorial perspective only. Confirm current property details and terms with Zenith.</p>
+          <div className="border-border/80 mt-12 flex flex-col justify-between gap-4 border-t pt-6 sm:flex-row sm:items-center">
+            <p className="text-muted-foreground max-w-md text-[10px] leading-5">
+              General editorial perspective only. Confirm current property details and terms with
+              Zenith.
+            </p>
             <Button asChild size="sm" variant="secondary">
-              <Link href="/properties">Explore properties <ArrowRight aria-hidden="true" /></Link>
+              <Link href="/properties">
+                Explore properties <ArrowRight aria-hidden="true" />
+              </Link>
             </Button>
           </div>
         </Container>

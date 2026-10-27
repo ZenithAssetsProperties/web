@@ -25,32 +25,57 @@ export default function InsightsPage() {
 
       <Section spacing="lg">
         <Container size="xl">
-          <div className="mb-8 border-b border-border/80 pb-5 sm:mb-10 sm:pb-7">
-            <p className="text-[10px] font-semibold tracking-[0.18em] text-brand-700 uppercase">Ideas to take with you</p>
-            <Heading as="h2" level="h2" className="mt-3">The latest perspectives.</Heading>
+          <div className="border-border/80 mb-8 border-b pb-5 sm:mb-10 sm:pb-7">
+            <p className="text-brand-700 text-[10px] font-semibold tracking-[0.18em] uppercase">
+              Ideas to take with you
+            </p>
+            <Heading as="h2" level="h2" className="mt-3">
+              The latest perspectives.
+            </Heading>
           </div>
 
           <div className="grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 lg:gap-y-12">
             {insightArticles.map((article, index) => (
               <Reveal key={article.slug} delay={index * 90}>
                 <article className="group/article">
-                  <Link href={`/insights/${article.slug}`} aria-label={`Read: ${article.title}`} className="relative block aspect-[1.35] overflow-hidden bg-brand-950 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-600">
-                    <Image src={article.image} alt={article.imageAlt} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover transition-transform duration-[1000ms] ease-out group-hover/article:scale-[1.04]" />
-                    <span className="absolute right-3 bottom-3 flex size-9 items-center justify-center border border-white/70 bg-brand-950/20 text-white transition-[background-color,color,transform] duration-500 group-hover/article:-rotate-45 group-hover/article:bg-white group-hover/article:text-brand-950">
+                  <Link
+                    href={`/insights/${article.slug}`}
+                    aria-label={`Read: ${article.title}`}
+                    className="bg-brand-950 focus-visible:outline-brand-600 relative block aspect-[1.35] overflow-hidden focus-visible:outline-2 focus-visible:outline-offset-4"
+                  >
+                    <Image
+                      src={article.image}
+                      alt={article.imageAlt}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover transition-transform duration-[1000ms] ease-out group-hover/article:scale-[1.04]"
+                    />
+                    <span className="bg-brand-950/20 group-hover/article:text-brand-950 absolute right-3 bottom-3 flex size-9 items-center justify-center border border-white/70 text-white transition-[background-color,color,transform] duration-500 group-hover/article:-rotate-45 group-hover/article:bg-white">
                       <ArrowUpRight className="size-4" aria-hidden="true" />
                     </span>
                   </Link>
-                  <p className="mt-4 text-[9px] font-semibold tracking-[0.14em] text-brand-700 uppercase">{article.category} <span className="px-1 text-border">/</span> {article.readTime}</p>
+                  <p className="text-brand-700 mt-4 text-[9px] font-semibold tracking-[0.14em] uppercase">
+                    {article.category} <span className="text-border px-1">/</span>{" "}
+                    {article.readTime}
+                  </p>
                   <h3 className="font-heading mt-2 text-2xl leading-tight font-normal tracking-tight">
-                    <Link href={`/insights/${article.slug}`} className="transition-colors hover:text-brand-700">{article.title}</Link>
+                    <Link
+                      href={`/insights/${article.slug}`}
+                      className="hover:text-brand-700 transition-colors"
+                    >
+                      {article.title}
+                    </Link>
                   </h3>
-                  <Text size="sm" className="mt-3 leading-6 text-muted-foreground">{article.excerpt}</Text>
+                  <Text size="sm" className="text-muted-foreground mt-3 leading-6">
+                    {article.excerpt}
+                  </Text>
                 </article>
               </Reveal>
             ))}
           </div>
-          <p className="mt-10 border-t border-border/80 pt-4 text-[10px] leading-5 text-muted-foreground">
-            These articles provide general perspective. Property details, availability, and applicable terms should be confirmed with Zenith.
+          <p className="border-border/80 text-muted-foreground mt-10 border-t pt-4 text-[10px] leading-5">
+            These articles provide general perspective. Property details, availability, and
+            applicable terms should be confirmed with Zenith.
           </p>
         </Container>
       </Section>

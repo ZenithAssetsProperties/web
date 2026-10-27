@@ -14,7 +14,7 @@ export function HomeSearch() {
           <form
             action="/properties"
             method="get"
-            className="border-border/80 bg-background/95 grid gap-5 rounded-lg border p-5 transition-[border-color,background-color] duration-500 focus-within:border-brand-600/40 sm:p-7 lg:grid-cols-[1.1fr_1.05fr_1fr_auto] lg:items-end lg:gap-6"
+            className="border-border/80 bg-background/95 focus-within:border-brand-600/40 grid gap-5 rounded-lg border p-5 transition-[border-color,background-color] duration-500 sm:p-7 lg:grid-cols-[1.1fr_1.05fr_1fr_auto] lg:items-end lg:gap-6"
           >
             <div className="lg:pb-1">
               <p className="text-brand-600 dark:text-brand-300 text-[10px] font-semibold tracking-[0.18em] uppercase">
@@ -27,7 +27,12 @@ export function HomeSearch() {
 
             <div className="space-y-2">
               <Label htmlFor="home-location">Location</Label>
-              <Input id="home-location" name="location" placeholder="City, state or area" className="h-10" />
+              <Input
+                id="home-location"
+                name="location"
+                placeholder="City, state or area"
+                className="h-10"
+              />
             </div>
 
             <div className="space-y-2">
@@ -48,7 +53,10 @@ export function HomeSearch() {
             <Button type="submit" size="md" className="group w-full rounded-sm px-4 lg:w-auto">
               <Search aria-hidden="true" />
               Search
-              <ArrowRight className="hidden transition-transform duration-500 ease-out group-hover:translate-x-1 sm:inline" aria-hidden="true" />
+              <ArrowRight
+                className="hidden transition-transform duration-500 ease-out group-hover:translate-x-1 sm:inline"
+                aria-hidden="true"
+              />
             </Button>
           </form>
         </Reveal>

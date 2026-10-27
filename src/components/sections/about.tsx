@@ -1,4 +1,13 @@
-import { Award, BadgeCheck, Eye, Compass, Lightbulb, ShieldCheck, Target, TrendingUp } from "lucide-react";
+import {
+  Award,
+  BadgeCheck,
+  Eye,
+  Compass,
+  Lightbulb,
+  ShieldCheck,
+  Target,
+  TrendingUp,
+} from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Grid } from "@/components/ui/grid";
 import { Reveal } from "@/components/ui/reveal";
@@ -33,20 +42,23 @@ export function About() {
           <Reveal>
             <Stack gap="md" className="max-w-3xl">
               <Text size="lead">
-                Zenith Asset Group is building a digital property experience to help customers discover
-                properties, review available information, and understand the next steps.
+                Zenith Asset Group is building a digital property experience to help customers
+                discover properties, review available information, and understand the next steps.
               </Text>
               <Text>
                 The planned journey brings property details, documentation information, virtual and
                 physical inspection options, and access to Zenith&apos;s team into one connected
-                experience. Property availability and transaction services are confirmed directly by Zenith.
+                experience. Property availability and transaction services are confirmed directly by
+                Zenith.
               </Text>
             </Stack>
           </Reveal>
 
           <Reveal delay={150}>
             <Stack gap="sm">
-              <Heading as="h2" level="h3">Core values</Heading>
+              <Heading as="h2" level="h3">
+                Core values
+              </Heading>
               <Grid cols={3} gap="md">
                 {coreValues.map(({ label, icon: Icon }, index) => (
                   <div
@@ -80,12 +92,18 @@ export function About() {
                   className="text-brand-600/70 dark:text-brand-400/70 size-8"
                   aria-hidden="true"
                 />
-                <Heading as="h2" level="h4">Vision</Heading>
+                <Heading as="h2" level="h4">
+                  Vision
+                </Heading>
                 <ul className="space-y-2">
                   {vision.map((point) => (
                     <li key={point} className="group flex gap-2.5">
                       <span className="bg-brand-600 dark:bg-brand-400 mt-2 size-1.5 shrink-0 rounded-full transition-transform group-hover:scale-125" />
-                      <Text as="span" size="sm" className="text-muted-foreground group-hover:text-foreground transition-colors">
+                      <Text
+                        as="span"
+                        size="sm"
+                        className="text-muted-foreground group-hover:text-foreground transition-colors"
+                      >
                         {point}
                       </Text>
                     </li>
@@ -98,7 +116,9 @@ export function About() {
                   className="text-brand-600/70 dark:text-brand-400/70 size-8"
                   aria-hidden="true"
                 />
-                <Heading as="h2" level="h4">Mission</Heading>
+                <Heading as="h2" level="h4">
+                  Mission
+                </Heading>
                 <Text size="muted">{mission}</Text>
               </Stack>
             </Grid>

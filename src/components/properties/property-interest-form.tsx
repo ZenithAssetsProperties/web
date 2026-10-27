@@ -49,32 +49,41 @@ export function PropertyInterestForm({
   }
 
   return (
-    <Card id="property-interest" className="scroll-mt-28 rounded-none border-x-0 border-y border-border/80 bg-background p-5 shadow-none sm:p-8 lg:p-10">
+    <Card
+      id="property-interest"
+      className="border-border/80 bg-background scroll-mt-28 rounded-none border-x-0 border-y p-5 shadow-none sm:p-8 lg:p-10"
+    >
       <div className="grid gap-8 lg:grid-cols-[0.75fr_1.25fr] lg:gap-14">
         <div>
           <p className="text-brand-600 text-[10px] font-semibold tracking-[0.18em] uppercase">
-            Property enquiry <span className="px-1 text-foreground/35">/</span> {propertyTitle}
+            Property enquiry <span className="text-foreground/35 px-1">/</span> {propertyTitle}
           </p>
           <h2 className="font-heading mt-3 text-3xl leading-tight font-normal tracking-tight sm:text-4xl">
             Tell us what you need next.
           </h2>
-          <Text size="sm" className="mt-3 leading-6 text-muted-foreground">
-            Choose the next step you have in mind for <span className="text-foreground">{propertyTitle}</span>.
+          <Text size="sm" className="text-muted-foreground mt-3 leading-6">
+            Choose the next step you have in mind for{" "}
+            <span className="text-foreground">{propertyTitle}</span>.
           </Text>
-          <div className="mt-6 border-l border-brand-600/35 pl-4">
-            <p className="text-[10px] font-semibold tracking-[0.14em] text-foreground uppercase">A clear next step</p>
-            <p className="mt-2 text-xs leading-5 text-muted-foreground">
-              Your email app will open with the property and enquiry details ready for you to review.
+          <div className="border-brand-600/35 mt-6 border-l pl-4">
+            <p className="text-foreground text-[10px] font-semibold tracking-[0.14em] uppercase">
+              A clear next step
+            </p>
+            <p className="text-muted-foreground mt-2 text-xs leading-5">
+              Your email app will open with the property and enquiry details ready for you to
+              review.
             </p>
           </div>
         </div>
 
         <div>
-          <div className="mb-5 flex items-start gap-3 border-b border-border/80 pb-4">
-            <ClipboardList className="mt-0.5 size-4 shrink-0 text-brand-600" aria-hidden="true" />
+          <div className="border-border/80 mb-5 flex items-start gap-3 border-b pb-4">
+            <ClipboardList className="text-brand-600 mt-0.5 size-4 shrink-0" aria-hidden="true" />
             <div>
-              <p className="text-xs font-medium text-foreground">Enquiry for {propertyTitle}</p>
-              <p className="mt-1 text-[11px] text-muted-foreground">Your property context stays with your message.</p>
+              <p className="text-foreground text-xs font-medium">Enquiry for {propertyTitle}</p>
+              <p className="text-muted-foreground mt-1 text-[11px]">
+                Your property context stays with your message.
+              </p>
             </div>
           </div>
 
@@ -86,10 +95,12 @@ export function PropertyInterestForm({
                 name="intent"
                 value={intent}
                 onChange={(event) => setIntent(event.target.value as InterestIntent)}
-                className="h-11 w-full rounded-md border border-border bg-background px-3.5 text-sm text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                className="border-border bg-background text-foreground focus-visible:ring-ring h-11 w-full rounded-md border px-3.5 text-sm focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
               >
                 {Object.entries(intentLabels).map(([value, label]) => (
-                  <option key={value} value={value}>{label}</option>
+                  <option key={value} value={value}>
+                    {label}
+                  </option>
                 ))}
               </select>
             </Field>
@@ -98,11 +109,29 @@ export function PropertyInterestForm({
               <Field id={`${id}-name`} label="Name">
                 <Input id={`${id}-name`} name="name" autoComplete="name" required />
               </Field>
-              <Field id={`${id}-email`} label={contactMethod === "phone" ? "Email address (optional)" : "Email address"}>
-                <Input id={`${id}-email`} name="email" type="email" autoComplete="email" required={contactMethod === "email"} />
+              <Field
+                id={`${id}-email`}
+                label={contactMethod === "phone" ? "Email address (optional)" : "Email address"}
+              >
+                <Input
+                  id={`${id}-email`}
+                  name="email"
+                  type="email"
+                  autoComplete="email"
+                  required={contactMethod === "email"}
+                />
               </Field>
-              <Field id={`${id}-phone`} label={contactMethod === "phone" ? "Phone number" : "Phone number (optional)"}>
-                <Input id={`${id}-phone`} name="phone" type="tel" autoComplete="tel" required={contactMethod === "phone"} />
+              <Field
+                id={`${id}-phone`}
+                label={contactMethod === "phone" ? "Phone number" : "Phone number (optional)"}
+              >
+                <Input
+                  id={`${id}-phone`}
+                  name="phone"
+                  type="tel"
+                  autoComplete="tel"
+                  required={contactMethod === "phone"}
+                />
               </Field>
               <Field id={`${id}-contact-method`} label="Preferred contact method">
                 <select
@@ -110,7 +139,7 @@ export function PropertyInterestForm({
                   name="contactMethod"
                   value={contactMethod}
                   onChange={(event) => setContactMethod(event.target.value)}
-                  className="h-10 w-full rounded-md border border-border bg-background px-3.5 text-sm text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                  className="border-border bg-background text-foreground focus-visible:ring-ring h-10 w-full rounded-md border px-3.5 text-sm focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
                 >
                   <option value="email">Email</option>
                   <option value="phone">Phone</option>
@@ -119,7 +148,7 @@ export function PropertyInterestForm({
             </div>
 
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-              <p className="max-w-sm text-[10px] leading-4 text-muted-foreground">
+              <p className="text-muted-foreground max-w-sm text-[10px] leading-4">
                 Review the prepared message in your email app and send it to complete your enquiry.
               </p>
               <Button type="submit" size="sm" className="h-10 shrink-0 px-4">
@@ -127,8 +156,16 @@ export function PropertyInterestForm({
               </Button>
             </div>
             {emailOpened && (
-              <p className="text-xs leading-5 text-brand-700" role="status" aria-live="polite">
-                Your email app should open. Send the prepared message to reach Zenith. If it does not, email <a className="font-medium underline underline-offset-2" href={`mailto:hello@zenithassetgroup.com?subject=${encodeURIComponent(`Property enquiry: ${propertyTitle}`)}`}>hello@zenithassetgroup.com</a> and include {propertyTitle}.
+              <p className="text-brand-700 text-xs leading-5" role="status" aria-live="polite">
+                Your email app should open. Send the prepared message to reach Zenith. If it does
+                not, email{" "}
+                <a
+                  className="font-medium underline underline-offset-2"
+                  href={`mailto:hello@zenithassetgroup.com?subject=${encodeURIComponent(`Property enquiry: ${propertyTitle}`)}`}
+                >
+                  hello@zenithassetgroup.com
+                </a>{" "}
+                and include {propertyTitle}.
               </p>
             )}
           </form>

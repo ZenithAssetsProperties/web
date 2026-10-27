@@ -49,7 +49,8 @@ export const demoProperties: Property[] = [
       src: "https://images.unsplash.com/photo-1766603636483-84b2a2b8ee89?auto=format&fit=crop&w=1800&q=85",
       alt: "Contemporary home with a timber facade and landscaped garden, used as concept imagery",
       photographer: "Alef Morais",
-      creditUrl: "https://unsplash.com/photos/modern-house-with-wooden-facade-and-green-lawn-p9jDz1AbLig",
+      creditUrl:
+        "https://unsplash.com/photos/modern-house-with-wooden-facade-and-green-lawn-p9jDz1AbLig",
     },
     category: "residential",
     type: "Detached duplex",
@@ -77,7 +78,8 @@ export const demoProperties: Property[] = [
       src: "https://images.unsplash.com/photo-1774199679021-db3b421867c3?auto=format&fit=crop&w=1400&q=85",
       alt: "Bright contemporary living room, used as concept imagery",
       photographer: "Clay Banks",
-      creditUrl: "https://unsplash.com/photos/modern-living-room-with-large-windows-overlooking-trees-A9DmoCgM5iw",
+      creditUrl:
+        "https://unsplash.com/photos/modern-living-room-with-large-windows-overlooking-trees-A9DmoCgM5iw",
     },
     category: "residential",
     type: "Apartment",
@@ -102,7 +104,8 @@ export const demoProperties: Property[] = [
       src: "https://images.unsplash.com/photo-1596768368272-b1b3a8fe9632?auto=format&fit=crop&w=1400&q=85",
       alt: "Open green field used as concept imagery for a fictional land listing",
       photographer: "Muhammad Ma'ruf",
-      creditUrl: "https://unsplash.com/photos/green-grass-field-under-white-sky-during-daytime-3x65TvaOLKQ",
+      creditUrl:
+        "https://unsplash.com/photos/green-grass-field-under-white-sky-during-daytime-3x65TvaOLKQ",
     },
     category: "land",
     type: "Residential land",
@@ -171,8 +174,10 @@ export function filterProperties(properties: Property[], filters: PropertyFilter
         .includes(location);
     const matchesMinPrice = filters.minPrice === undefined || property.priceNgn >= filters.minPrice;
     const matchesMaxPrice = filters.maxPrice === undefined || property.priceNgn <= filters.maxPrice;
-    const matchesBedrooms = filters.bedrooms === undefined || (property.bedrooms ?? 0) >= filters.bedrooms;
-    const matchesAvailability = !filters.availability || property.availability === filters.availability;
+    const matchesBedrooms =
+      filters.bedrooms === undefined || (property.bedrooms ?? 0) >= filters.bedrooms;
+    const matchesAvailability =
+      !filters.availability || property.availability === filters.availability;
 
     return (
       matchesQuery &&

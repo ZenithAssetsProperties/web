@@ -14,7 +14,8 @@ type PageProps = { params: Promise<{ slug: string }> };
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const property = await propertyCatalogue.findBySlug(slug);
-  if (!property) return { title: "Virtual tour not found", robots: { index: false, follow: false } };
+  if (!property)
+    return { title: "Virtual tour not found", robots: { index: false, follow: false } };
 
   return {
     title: `Virtual tour preview: ${property.title}`,
@@ -30,7 +31,7 @@ export default async function VirtualTourPage({ params }: PageProps) {
 
   return (
     <>
-      <Section spacing="sm" className="pb-4 pt-28 sm:pt-32">
+      <Section spacing="sm" className="pt-28 pb-4 sm:pt-32">
         <Container>
           <Link
             href={`/properties/${property.slug}`}
@@ -70,10 +71,10 @@ export default async function VirtualTourPage({ params }: PageProps) {
                 }}
                 aria-hidden="true"
               />
-              <div className="from-brand-950/30 absolute inset-0 bg-gradient-to-t via-transparent to-brand-950/30" />
+              <div className="from-brand-950/30 to-brand-950/30 absolute inset-0 bg-gradient-to-t via-transparent" />
               <div className="relative max-w-md">
                 <div className="mx-auto flex size-16 items-center justify-center rounded-full border border-white/20 bg-white/10 backdrop-blur-sm">
-                  <Compass className="size-7 text-brand-300" aria-hidden="true" />
+                  <Compass className="text-brand-300 size-7" aria-hidden="true" />
                 </div>
                 <p className="mt-5 text-xs font-semibold tracking-[0.16em] text-white/60 uppercase">
                   Tour media not supplied
@@ -82,13 +83,13 @@ export default async function VirtualTourPage({ params }: PageProps) {
                   This is the virtual inspection preview.
                 </h2>
                 <p className="mt-3 text-sm leading-6 text-white/70">
-                  No property video or 360° tour is attached to this fictional demo listing. Approved
-                  tour media can replace this state when it is available.
+                  No property video or 360° tour is attached to this fictional demo listing.
+                  Approved tour media can replace this state when it is available.
                 </p>
               </div>
             </div>
 
-            <div className="mt-5 flex flex-col justify-between gap-4 rounded-xl border border-border bg-background p-5 sm:flex-row sm:items-center">
+            <div className="border-border bg-background mt-5 flex flex-col justify-between gap-4 rounded-xl border p-5 sm:flex-row sm:items-center">
               <div>
                 <p className="font-semibold">Preview only</p>
                 <p className="text-muted-foreground mt-1 text-sm">

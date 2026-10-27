@@ -23,8 +23,7 @@ const faqs: AccordionItemData[] = [
   },
   {
     question: "Can I arrange an inspection?",
-    answer:
-      "Contact Zenith to discuss viewing options for a specific property.",
+    answer: "Contact Zenith to discuss viewing options for a specific property.",
   },
   {
     question: "Can I reserve or pay for a property online?",
@@ -52,7 +51,9 @@ export function Faq() {
               >
                 FAQ
               </Text>
-              <Heading as="h2" level="h1">Questions, answered.</Heading>
+              <Heading as="h2" level="h1">
+                Questions, answered.
+              </Heading>
               <Text size="sm" className="text-muted-foreground">
                 Can&apos;t find what you&apos;re looking for?{" "}
                 <a
