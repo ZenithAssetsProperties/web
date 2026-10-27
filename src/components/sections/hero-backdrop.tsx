@@ -35,11 +35,11 @@ export function HeroBackdrop() {
         fill
         priority
         sizes="100vw"
-        className={`animate-ken-burns object-cover object-[58%_center] brightness-[0.78] saturate-[0.82] transition-opacity duration-700 ${videoReady ? "opacity-0" : "opacity-100"}`}
+        className={`object-cover object-center brightness-[0.78] saturate-[0.82] transition-opacity duration-700 md:object-contain ${videoReady ? "opacity-0" : "opacity-100"}`}
       />
       {videoEnabled && (
         <video
-          className={`absolute inset-0 size-full object-cover object-[58%_center] brightness-[0.78] saturate-[0.82] transition-opacity duration-1000 ${videoReady ? "opacity-100" : "opacity-0"}`}
+          className={`absolute inset-0 size-full object-cover object-center brightness-[0.78] saturate-[0.82] transition-opacity duration-1000 md:object-contain ${videoReady ? "opacity-100" : "opacity-0"}`}
           src="/videos/hero-lagos.mp4"
           poster="/videos/hero-lagos-poster.jpg"
           autoPlay

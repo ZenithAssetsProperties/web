@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils";
 
 const primaryNav = siteConfig.nav.filter((item) => item.href !== "/");
 
-/** Numbered editorial navigation, tuned to the cinematic home opening. */
+/** Editorial navigation, tuned to the cinematic home opening. */
 export function SiteHeader() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
@@ -29,17 +29,26 @@ export function SiteHeader() {
   const solid = scrolled || menuOpen;
 
   return (
-    <div
-      className={cn(
-        "fixed inset-x-0 top-0 z-50 border-b transition-[background-color,border-color,backdrop-filter] duration-500 ease-out",
-        solid ? "border-border/80 bg-background/95 backdrop-blur-xl" : "border-white/15 bg-gradient-to-b from-black/20 to-transparent",
-      )}
-    >
-      <header className="mx-auto grid w-full max-w-[1600px] grid-cols-[1fr_auto] items-center px-5 py-4 sm:px-8 lg:grid-cols-[1fr_auto_1fr] lg:px-12 lg:py-5">
+    <div className="fixed inset-x-0 top-0 z-50">
+      <div
+        aria-hidden="true"
+        className={cn(
+          "pointer-events-none absolute inset-x-0 top-0 h-full origin-top border-b border-border/80 bg-background/94 opacity-0 backdrop-blur-2xl transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none",
+          solid ? "scale-y-100 opacity-100" : "scale-y-[0.92] opacity-0",
+        )}
+      />
+      <div
+        aria-hidden="true"
+        className={cn(
+          "pointer-events-none absolute inset-x-0 bottom-0 h-px origin-left bg-gradient-to-r from-brand-600 via-brand-300/70 to-transparent transition-transform duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none",
+          solid ? "scale-x-100" : "scale-x-0",
+        )}
+      />
+      <header className={cn("relative mx-auto grid w-full max-w-[1600px] grid-cols-[1fr_auto] items-center px-5 transition-[padding] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] sm:px-8 lg:grid-cols-[1fr_auto_1fr] lg:px-12", solid ? "py-3" : "py-4 sm:py-5")}>
         <Link href="/" aria-label="Zenith Asset Group home" className="group flex w-fit items-center gap-3">
-          <Image src="/brand/icon.png" alt="" width={38} height={38} priority className="size-9 shrink-0" />
+          <Image src="/brand/icon.png" alt="" width={38} height={38} priority className={cn("shrink-0 transition-[width,height] duration-500 ease-out", solid ? "size-8" : "size-9")} />
           <span className={cn("flex flex-col leading-none transition-colors", solid ? "text-foreground" : "text-white")}>
-            <span className="font-heading text-[23px] tracking-[-0.04em]">Zenith</span>
+            <span className={cn("font-heading tracking-[-0.04em] transition-[font-size] duration-500", solid ? "text-[21px]" : "text-[23px]")}>Zenith</span>
             <span className="mt-1.5 text-[8px] font-semibold tracking-[0.26em]">ASSET GROUP</span>
           </span>
           <span className={cn("ml-2 hidden h-8 w-px sm:block", solid ? "bg-border" : "bg-white/30")} />
@@ -49,7 +58,7 @@ export function SiteHeader() {
         </Link>
 
         <nav aria-label="Main navigation" className="hidden items-center gap-5 lg:flex xl:gap-8">
-          {primaryNav.map((item, index) => {
+          {primaryNav.map((item) => {
             const active = pathname === item.href || pathname.startsWith(`${item.href}/`);
             return (
               <Link
@@ -57,14 +66,13 @@ export function SiteHeader() {
                 href={item.href}
                 aria-current={active ? "page" : undefined}
                 className={cn(
-                  "group relative flex items-baseline gap-1.5 py-2 text-[12px] tracking-[0.02em] transition-colors after:absolute after:right-0 after:bottom-0 after:left-0 after:h-px after:origin-left after:scale-x-0 after:transition-transform after:duration-300 hover:after:scale-x-100 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current",
+              "group relative flex items-baseline gap-1.5 py-2 text-[12px] tracking-[0.02em] transition-colors duration-500 after:absolute after:right-0 after:bottom-0 after:left-0 after:h-px after:origin-left after:scale-x-0 after:bg-current after:transition-transform after:duration-500 hover:after:scale-x-100 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current",
                   solid ? "after:bg-foreground" : "after:bg-white",
                   active
                     ? solid ? "text-foreground after:scale-x-100" : "text-white after:scale-x-100"
                     : solid ? "text-muted-foreground hover:text-foreground" : "text-white/75 hover:text-white",
                 )}
               >
-                <span className="relative -top-1 font-mono text-[8px] opacity-45">0{index + 1}</span>
                 {item.label}
               </Link>
             );
@@ -75,12 +83,12 @@ export function SiteHeader() {
           <Link
             href="/properties"
             className={cn(
-              "group hidden items-center gap-3 border-b pb-1.5 text-[11px] font-medium tracking-[0.04em] transition-colors md:inline-flex",
-              solid ? "border-foreground/30 text-foreground hover:border-brand-600" : "border-white/45 text-white hover:border-white",
+              "group relative hidden items-center gap-3 py-2 text-[11px] font-medium tracking-[0.04em] transition-colors duration-500 after:absolute after:right-0 after:bottom-0 after:left-0 after:h-px after:origin-left after:scale-x-0 after:bg-current after:transition-transform after:duration-500 hover:after:scale-x-100 md:inline-flex",
+              solid ? "text-foreground" : "text-white",
             )}
           >
             Explore properties
-            <ArrowUpRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true" />
+            <ArrowUpRight className="size-3.5 transition-transform duration-500 ease-out group-hover:translate-x-1 group-hover:-translate-y-1" aria-hidden="true" />
           </Link>
           <Button
             variant="ghost"
@@ -98,22 +106,21 @@ export function SiteHeader() {
       {menuOpen && (
         <nav aria-label="Mobile navigation" className="absolute inset-x-4 top-full mx-auto mt-2 max-w-[480px] animate-fade-in border border-border bg-background motion-reduce:animate-none lg:hidden">
           <div className="flex flex-col p-3">
-            {siteConfig.nav.map((item, index) => {
+            {siteConfig.nav.map((item) => {
               const active = pathname === item.href || (item.href !== "/" && pathname.startsWith(`${item.href}/`));
               return (
                 <Link
                   key={item.href}
                   href={item.href}
                   aria-current={active ? "page" : undefined}
-                  className={cn("flex items-center gap-3 border-b border-border/70 px-3 py-3 text-sm", active ? "text-foreground" : "text-muted-foreground")}
+                  className={cn("flex items-center gap-3 border-b border-border/70 px-3 py-3 text-sm transition-[background-color,color,padding] duration-300 hover:bg-muted hover:pl-4", active ? "text-foreground" : "text-muted-foreground")}
                   onClick={() => setMenuOpen(false)}
                 >
-                  <span className="font-mono text-[9px] text-brand-600">0{index + 1}</span>
                   {item.label}
                 </Link>
               );
             })}
-            <Link href="/properties" className="mt-3 flex items-center justify-between bg-brand-700 px-4 py-3 text-sm font-medium text-white">
+            <Link href="/properties" className="group mt-3 flex items-center justify-between bg-brand-700 px-4 py-3 text-sm font-medium text-white transition-colors hover:bg-brand-800">
               Explore properties <ArrowUpRight className="size-4" aria-hidden="true" />
             </Link>
           </div>
