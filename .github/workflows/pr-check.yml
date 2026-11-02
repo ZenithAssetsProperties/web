@@ -13,7 +13,19 @@ jobs:
     name: Conventional PR Title Verification
     runs-on: ubuntu-latest
     steps:
+      - name: Check for Branch Sync PRs
+        id: branch_check
+        run: |
+          TITLE="${{ github.event.pull_request.title }}"
+          if [[ "$TITLE" =~ ^[Dd]evelop$ || "$TITLE" =~ ^[Mm]erge || "$TITLE" =~ ^[Rr]elease ]]; then
+            echo "Branch sync or release PR title detected ('$TITLE'). Skipping strict semantic prefix requirement."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Validate PR Title Format
+        if: steps.branch_check.outputs.skip != 'true'
         uses: amannn/action-semantic-pull-request@v5
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -30,4 +42,15 @@ jobs:
             ci
             chore
             revert
+            release
+            develop
+            sync
+            merge
           requireScope: false
+          wip: true
+          validateSingleCommit: false
+          ignoreLabels: |
+            bot
+            ignore-semantic-pull-request
+            dependencies
+            release
