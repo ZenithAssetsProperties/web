@@ -31,9 +31,11 @@ export default async function InsightArticlePage({ params }: PageProps) {
   return (
     <>
       <PageHero
-        eyebrow={`The journal / ${article.category}`}
+        breadcrumbs={[{ label: "Insights", href: "/insights" }, { label: article.category }]}
+        eyebrow={`The Journal / ${article.category}`}
         title={article.title}
         description={article.excerpt}
+        backgroundImage={article.image}
       />
 
       <Section spacing="md">

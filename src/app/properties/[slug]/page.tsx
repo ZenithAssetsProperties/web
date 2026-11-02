@@ -1,15 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import {
-  ArrowLeft,
-  ArrowUpRight,
-  Bath,
-  BedDouble,
-  CarFront,
-  FileText,
-  Maximize2,
-} from "lucide-react";
+import { ArrowUpRight, Bath, BedDouble, CarFront, FileText, Maximize2 } from "lucide-react";
+import { PageHero } from "@/components/page-hero";
 import { DemoPropertyVisual } from "@/components/properties/demo-property-visual";
 import { PropertyInterestForm } from "@/components/properties/property-interest-form";
 import { Badge } from "@/components/ui/badge";
@@ -49,16 +42,14 @@ export default async function PropertyDetailPage({ params }: PageProps) {
 
   return (
     <>
-      <Section spacing="sm" className="pt-28 pb-4 sm:pt-32">
-        <Container>
-          <Link
-            href="/properties"
-            className="text-muted-foreground hover:text-foreground inline-flex items-center gap-2 text-sm transition-colors"
-          >
-            <ArrowLeft className="size-4" aria-hidden="true" /> Back to properties
-          </Link>
-        </Container>
-      </Section>
+      <PageHero
+        breadcrumbs={[{ label: "Properties", href: "/properties" }, { label: property.title }]}
+        eyebrow={`${property.category} / ${property.location.area}, ${property.location.city}`}
+        title={property.title}
+        description={property.description}
+        backgroundImage={property.image.src}
+        size="compact"
+      />
 
       <Section spacing="sm" className="pt-3">
         <Container>

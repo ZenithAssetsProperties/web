@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, ChevronRight, SlidersHorizontal } from "lucide-react";
+import { ArrowRight, SlidersHorizontal } from "lucide-react";
+import { PageHero } from "@/components/page-hero";
 import { PropertyCard } from "@/components/properties/property-card";
 import {
   PropertySearchForm,
@@ -82,44 +83,18 @@ export default async function PropertiesPage({ searchParams }: { searchParams: S
 
   return (
     <>
-      <section className="bg-brand-950 relative isolate overflow-hidden pt-32 pb-12 text-white sm:pt-36 sm:pb-16">
-        <div
-          className="absolute inset-0 -z-20 bg-cover bg-center opacity-35"
-          style={{ backgroundImage: "url(/videos/hero-modern-villa-poster.jpg)" }}
-          aria-hidden="true"
-        />
-        <div className="from-brand-950 via-brand-950/85 to-brand-950/55 absolute inset-0 -z-10 bg-gradient-to-r" />
-        <Container size="xl" className="relative">
-          <Reveal>
-            <nav
-              aria-label="Breadcrumb"
-              className="mb-7 flex items-center gap-2 text-[10px] text-white/60"
-            >
-              <Link href="/" className="transition-colors hover:text-white">
-                Home
-              </Link>
-              <ChevronRight className="size-3" aria-hidden="true" />
-              <span className="text-white/90" aria-current="page">
-                Properties
-              </span>
-            </nav>
-            <p className="text-brand-200 text-[10px] font-semibold tracking-[0.2em] uppercase">
-              Zenith Asset Group <span className="px-2 text-white/40">/</span> Property collection
-            </p>
-            <Heading as="h1" level="display" className="mt-3 text-white sm:text-6xl">
-              Explore properties.
-            </Heading>
-            <Text
-              size="lead"
-              className="mt-4 max-w-2xl text-sm leading-6 text-white/75 sm:text-base sm:leading-7"
-            >
-              Explore residential, land, and commercial property listings.
-            </Text>
-          </Reveal>
-        </Container>
-      </section>
+      <PageHero
+        breadcrumbs={[{ label: "Properties" }]}
+        eyebrow="Property Collection & Investment"
+        title={
+          <>
+            Explore curated <span className="font-normal italic">properties.</span>
+          </>
+        }
+        description="Explore residential, land, and commercial property opportunities vetted for clear title, architectural quality, and lasting investment value."
+      />
 
-      <Section spacing="sm" className="relative z-10 -mt-4 pt-0 sm:-mt-6">
+      <Section spacing="sm" className="relative z-10 -mt-8 pt-0 sm:-mt-12">
         <Container size="xl">
           <Reveal delay={100}>
             <PropertySearchForm values={values} />

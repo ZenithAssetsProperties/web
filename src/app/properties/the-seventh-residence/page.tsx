@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowDown, ArrowRight } from "lucide-react";
+import { PageHero } from "@/components/page-hero";
 import { ProjectGallery } from "@/components/properties/project-gallery";
 import { PropertyInterestForm } from "@/components/properties/property-interest-form";
 import { Button } from "@/components/ui/button";
@@ -21,47 +22,32 @@ export const metadata: Metadata = {
 export default function SeventhResidencePage() {
   return (
     <>
-      <section className="bg-brand-950 relative -mt-20 flex min-h-[670px] items-end overflow-hidden text-white sm:min-h-[min(780px,94svh)]">
-        <Image
-          src="/properties/seventh-residence/lounge.jpg"
-          alt="Interior rendering supplied for The Seventh Residence"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-        />
-        <div className="from-brand-950/90 via-brand-950/25 to-brand-950/15 absolute inset-0 bg-gradient-to-t" />
-        <Container size="xl" className="relative z-10 pt-36 pb-12 sm:pb-16">
-          <Reveal>
-            <p className="text-[10px] font-semibold tracking-[0.2em] text-white/80 uppercase">
-              Residential <span className="px-2 text-white/45">/</span> Architecture &amp; interiors
-            </p>
-            <Heading
-              as="h1"
-              level="display"
-              className="mt-4 max-w-4xl text-white sm:text-7xl lg:text-[5.5rem]"
-            >
-              The Seventh <span className="font-normal italic">Residence</span>
-            </Heading>
-            <Text
-              size="lead"
-              className="mt-4 max-w-xl text-base leading-7 text-white/75 sm:text-lg"
-            >
-              Explore the architectural and interior renderings supplied for this project.
-            </Text>
-            <div className="mt-7 flex flex-wrap items-center gap-5">
-              <Button asChild size="sm" className="rounded-sm px-4">
-                <a href="#project-gallery">
-                  View the gallery <ArrowDown aria-hidden="true" />
-                </a>
-              </Button>
-              <span className="text-[10px] tracking-[0.14em] text-white/65 uppercase">
-                Specifications awaiting confirmation
-              </span>
-            </div>
-          </Reveal>
-        </Container>
-      </section>
+      <PageHero
+        breadcrumbs={[
+          { label: "Properties", href: "/properties" },
+          { label: "The Seventh Residence" },
+        ]}
+        eyebrow="Residential / Architecture & Interiors"
+        title={
+          <>
+            The Seventh <span className="font-normal italic">Residence</span>
+          </>
+        }
+        description="Explore the architectural and interior renderings supplied for this flagship residential landmark."
+        backgroundImage="/properties/seventh-residence/lounge.jpg"
+        size="large"
+      >
+        <div className="flex flex-wrap items-center gap-5">
+          <Button asChild size="sm" className="rounded-sm px-4">
+            <a href="#project-gallery">
+              View the gallery <ArrowDown aria-hidden="true" />
+            </a>
+          </Button>
+          <span className="text-[10px] tracking-[0.14em] text-white/65 uppercase">
+            Specifications awaiting confirmation
+          </span>
+        </div>
+      </PageHero>
 
       <Section spacing="lg" border="bottom">
         <Container size="xl">

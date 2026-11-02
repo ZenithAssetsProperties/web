@@ -1,0 +1,21 @@
+services:
+  web:
+    container_name: zenith-web
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "${PORT:-3000}:3000"
+    environment:
+      - PORT=3000
+      - HOSTNAME=0.0.0.0
+      - NEXT_PUBLIC_SITE_NAME=${NEXT_PUBLIC_SITE_NAME:-Zenith Asset Group}
+      - NEXT_PUBLIC_SITE_URL=${NEXT_PUBLIC_SITE_URL:-http://localhost:3000}
+    networks:
+      - zenith-network
+
+networks:
+  zenith-network:
+    name: zenith-network
+    driver: bridge

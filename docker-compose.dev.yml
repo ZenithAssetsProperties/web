@@ -1,0 +1,36 @@
+services:
+  web:
+    container_name: zenith-web-dev
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    image: zenith-asset-group:dev
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+      - HOSTNAME=0.0.0.0
+      - NEXT_TELEMETRY_DISABLED=1
+      - WATCHPACK_POLLING=true
+      - NEXT_PUBLIC_SITE_NAME=${NEXT_PUBLIC_SITE_NAME:-Zenith Asset Group}
+      - NEXT_PUBLIC_SITE_URL=${NEXT_PUBLIC_SITE_URL:-http://localhost:3000}
+    volumes:
+      # Mount host directory for real-time live code updates
+      - .:/app
+      # Anonymous volumes to preserve container build assets & dependencies
+      - /app/node_modules
+      - /app/.next
+    stdin_open: true
+    tty: true
+    develop:
+      watch:
+        - action: sync
+          path: ./src
+          target: /app/src
+        - action: sync
+          path: ./public
+          target: /app/public
+        - action: rebuild
+          path: ./package.json
