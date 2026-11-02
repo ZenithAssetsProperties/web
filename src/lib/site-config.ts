@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: process.env.NEXT_PUBLIC_SITE_NAME ?? "Zenith Asset Group",
   description:
-    "Zenith Asset Group is a Nigerian real estate investment company making property ownership accessible through fractional investing — own shares of income-generating properties without needing millions upfront.",
+    "Zenith Asset Group is a real estate brand committed to providing reliable, strategic, and value-driven property solutions that empower individuals, families, and businesses to make confident real estate decisions.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   nav: [
     { label: "Home", href: "/" },

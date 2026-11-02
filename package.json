@@ -17,6 +17,11 @@
     "format:check": "prettier --check .",
     "analyze": "ANALYZE=true next build",
     "verify": "pnpm lint && pnpm typecheck && pnpm format:check && pnpm build",
+    "docker:dev": "docker compose -f docker-compose.yml -f docker-compose.dev.yml up --build",
+    "docker:dev:down": "docker compose -f docker-compose.yml -f docker-compose.dev.yml down",
+    "docker:prod": "docker compose -f docker-compose.yml -f docker-compose.prod.yml up --build -d",
+    "docker:prod:down": "docker compose -f docker-compose.yml -f docker-compose.prod.yml down",
+    "docker:build": "docker build -t zenith-asset-group:latest .",
     "prepare": "git config core.hooksPath .githooks"
   },
   "dependencies": {
