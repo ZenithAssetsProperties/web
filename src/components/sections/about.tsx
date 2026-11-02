@@ -135,7 +135,7 @@ export function About() {
         <Container size="lg">
           <Stack gap="xl">
             <Reveal>
-              <div className="border-brand-600/30 from-brand-950 via-brand-900 to-brand-950 relative overflow-hidden rounded-2xl border bg-gradient-to-br p-8 text-white shadow-xl sm:p-12">
+              <div className="border-brand-600/30 from-brand-950 via-brand-900 to-brand-950 relative overflow-hidden rounded-2xl border bg-linear-to-br p-8 text-white shadow-xl sm:p-12">
                 <div
                   className="absolute inset-0 opacity-[0.06]"
                   style={{
