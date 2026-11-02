@@ -8,7 +8,7 @@
 # --- Stage 1: Base Alpine Environment ---
 FROM node:20-alpine AS base
 WORKDIR /app
-RUN apk add --no-cache libc6-compat wget
+RUN apk add --no-cache libc6-compat wget git
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 RUN corepack enable && corepack prepare pnpm@9.15.0 --activate
@@ -17,6 +17,7 @@ RUN corepack enable && corepack prepare pnpm@9.15.0 --activate
 FROM base AS deps
 WORKDIR /app
 COPY package.json pnpm-lock.yaml ./
+ENV CI=true
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store \
     pnpm install --frozen-lockfile
 

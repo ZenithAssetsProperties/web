@@ -22,7 +22,7 @@
     "docker:prod": "docker compose -f docker-compose.yml -f docker-compose.prod.yml up --build -d",
     "docker:prod:down": "docker compose -f docker-compose.yml -f docker-compose.prod.yml down",
     "docker:build": "docker build -t zenith-asset-group:latest .",
-    "prepare": "git config core.hooksPath .githooks"
+    "prepare": "git config core.hooksPath .githooks 2>/dev/null || true"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",
