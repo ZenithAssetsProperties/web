@@ -6,11 +6,11 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-[background-color,color,border-color,opacity,transform] duration-150 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background active:scale-[0.97] disabled:pointer-events-none disabled:opacity-50 disabled:active:scale-100 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-sm text-sm font-medium transition-[background-color,color,border-color,opacity,transform] duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50 disabled:active:scale-100 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
-        primary: "bg-brand-600 text-white shadow-sm hover:bg-brand-700 active:bg-brand-800",
+        primary: "bg-brand-700 text-white hover:bg-brand-800 active:bg-brand-900",
         secondary:
           "border border-border bg-transparent text-foreground hover:bg-muted active:bg-muted/70",
         ghost: "bg-transparent text-foreground hover:bg-muted active:bg-muted/70",
@@ -20,8 +20,8 @@ const buttonVariants = cva(
       },
       size: {
         sm: "h-9 px-4",
-        md: "h-11 px-6",
-        lg: "h-12 px-8 text-base",
+        md: "h-10 px-5",
+        lg: "h-11 px-6 text-sm",
         icon: "size-10",
       },
     },

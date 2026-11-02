@@ -5,7 +5,9 @@ export const siteConfig = {
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   nav: [
     { label: "Home", href: "/" },
-    { label: "Listings", href: "/listings" },
+    { label: "Properties", href: "/properties" },
+    { label: "How It Works", href: "/how-it-works" },
+    { label: "Insights", href: "/insights" },
     { label: "About", href: "/about" },
     { label: "Contact", href: "/contact" },
   ],

@@ -94,7 +94,7 @@ export function Dialog({ open, onClose, title, description, children, className 
         aria-describedby={description ? descriptionId : undefined}
         tabIndex={-1}
         className={cn(
-          "animate-dialog-in border-border bg-background relative z-10 max-h-[90vh] w-full max-w-md overflow-y-auto rounded-xl border p-6 shadow-2xl focus:outline-none",
+          "animate-dialog-in border-border bg-background relative z-10 max-h-[90vh] w-full max-w-md overflow-y-auto rounded-xl border p-6 focus:outline-none",
           className,
         )}
       >
@@ -110,7 +110,7 @@ export function Dialog({ open, onClose, title, description, children, className 
         <div className="space-y-1.5 pr-8">
           <h2
             id={titleId}
-            className="font-heading text-foreground text-xl font-bold tracking-tight"
+            className="font-heading text-foreground text-xl font-normal tracking-tight"
           >
             {title}
           </h2>

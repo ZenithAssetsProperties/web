@@ -668,7 +668,7 @@ export function About() {
       <Section id="cta" spacing="lg" border="none">
         <Container size="lg">
           <Reveal>
-            <div className="border-brand-600/40 bg-brand-950 relative overflow-hidden rounded-3xl border p-10 text-center text-white shadow-2xl sm:p-16">
+            <div className="border-brand-600/40 bg-brand-950 relative mx-auto overflow-hidden rounded-3xl border p-10 text-center text-white shadow-2xl sm:p-16">
               <div
                 className="absolute inset-0 opacity-[0.05]"
                 style={{

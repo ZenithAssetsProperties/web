@@ -1,14 +1,17 @@
-import { Inter, League_Spartan } from "next/font/google";
+import { DM_Sans, Instrument_Serif } from "next/font/google";
 
-// Per the official brand guideline: League Spartan for headings, Inter for body.
-export const inter = Inter({
+// Confident editorial display face with a clear, modern interface sans.
+export const dmSans = DM_Sans({
   subsets: ["latin"],
-  variable: "--font-inter",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-dm-sans",
   display: "swap",
 });
 
-export const leagueSpartan = League_Spartan({
+export const instrumentSerif = Instrument_Serif({
   subsets: ["latin"],
-  variable: "--font-league-spartan",
+  weight: "400",
+  style: ["normal", "italic"],
+  variable: "--font-instrument-serif",
   display: "swap",
 });
