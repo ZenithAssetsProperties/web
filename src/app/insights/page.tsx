@@ -18,9 +18,14 @@ export default function InsightsPage() {
   return (
     <>
       <PageHero
-        eyebrow="The Zenith journal"
-        title="Perspective for the property journey."
-        description="Practical notes to help you explore, review, and ask better questions along the way."
+        breadcrumbs={[{ label: "Insights" }]}
+        eyebrow="The Zenith Journal"
+        title={
+          <>
+            Perspective for the <span className="font-normal italic">property journey.</span>
+          </>
+        }
+        description="Practical notes, market intelligence, and advisory insights to help you explore, review, and make confident real estate decisions."
       />
 
       <Section spacing="lg">

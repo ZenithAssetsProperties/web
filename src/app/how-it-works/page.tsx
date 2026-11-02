@@ -9,11 +9,11 @@ import {
   MapPinned,
   ScanSearch,
 } from "lucide-react";
+import { PageHero } from "@/components/page-hero";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Grid } from "@/components/ui/grid";
 import { Section } from "@/components/ui/section";
-import { Stack } from "@/components/ui/stack";
 import { Heading, Text } from "@/components/ui/typography";
 
 export const metadata: Metadata = {
@@ -67,31 +67,16 @@ const steps = [
 export default function HowItWorksPage() {
   return (
     <>
-      <section className="bg-brand-950 relative overflow-hidden pt-32 pb-14 text-white sm:pt-40 sm:pb-20">
-        <div
-          className="absolute inset-0 opacity-10"
-          style={{
-            backgroundImage: "url(/brand/pattern-tile.png)",
-            backgroundSize: "112px 117px",
-            backgroundRepeat: "repeat",
-          }}
-          aria-hidden="true"
-        />
-        <Container className="relative">
-          <Stack gap="md" className="max-w-3xl">
-            <p className="text-brand-200 text-[10px] font-semibold tracking-[0.18em] uppercase">
-              The Zenith approach
-            </p>
-            <Heading as="h1" level="display" className="text-white">
-              A clearer path to your next property.
-            </Heading>
-            <Text size="lead" className="max-w-2xl text-white/70">
-              Explore the stages of the property journey and understand what to review before you
-              proceed.
-            </Text>
-          </Stack>
-        </Container>
-      </section>
+      <PageHero
+        breadcrumbs={[{ label: "How It Works" }]}
+        eyebrow="The Zenith Approach"
+        title={
+          <>
+            A clearer path to your <span className="font-normal italic">next property.</span>
+          </>
+        }
+        description="Explore the stages of the property journey and understand what to review before you proceed with confidence."
+      />
 
       <Section spacing="lg">
         <Container>

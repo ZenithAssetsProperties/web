@@ -12,9 +12,15 @@ export default function AboutPage() {
   return (
     <>
       <PageHero
-        eyebrow="ABOUT ZENITH ASSET GROUP"
-        title="Building a foundation for lasting prosperity."
-        description="Your vision. Our commitment. A future of lasting value."
+        breadcrumbs={[{ label: "About" }]}
+        eyebrow="About Zenith Asset Group"
+        title={
+          <>
+            Building a foundation for{" "}
+            <span className="font-normal italic">lasting prosperity.</span>
+          </>
+        }
+        description="At Zenith Asset Group, we believe that real estate is more than just property; it is an opportunity to build lasting value, create wealth, and secure a better future."
       />
       <About />
     </>
