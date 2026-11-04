@@ -40,7 +40,7 @@ WORKDIR /app
 
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
-ENV PORT=3000
+ENV PORT=2000
 ENV HOSTNAME="0.0.0.0"
 
 # Install lightweight utility for health probe and ensure glibc compatibility
@@ -63,11 +63,11 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 # Switch to unprivileged user
 USER nextjs
 
-EXPOSE 3000
+EXPOSE 2000
 
 # Continuous container health validation
 HEALTHCHECK --interval=30s --timeout=5s --start-period=15s --retries=3 \
-  CMD wget --no-verbose --tries=1 --spider http://127.0.0.1:3000/api/health || exit 1
+  CMD wget --no-verbose --tries=1 --spider http://127.0.0.1:2000/api/health || exit 1
 
 # Launch standalone Node.js server
 CMD ["node", "server.js"]
