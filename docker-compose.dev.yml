@@ -7,7 +7,7 @@ services:
     image: zenith-asset-group:dev
     restart: unless-stopped
     ports:
-      - "2000:2000"
+      - "${HOST_PORT:-2000}:2000"
     environment:
       - NODE_ENV=development
       - PORT=2000

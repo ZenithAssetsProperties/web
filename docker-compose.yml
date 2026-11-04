@@ -6,7 +6,7 @@ services:
       dockerfile: Dockerfile
     restart: unless-stopped
     ports:
-      - "${PORT:-2000}:2000"
+      - "${HOST_PORT:-2000}:2000"
     environment:
       - PORT=2000
       - HOSTNAME=0.0.0.0
